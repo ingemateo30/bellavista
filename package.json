@@ -1,0 +1,27 @@
+{
+  "name": "productos-bellavista-v2",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Sitio web corporativo B2B ultra-moderno para Productos Bellavista - Exportador de panela, piloncillo y café",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "framer-motion": "^11.0.3",
+    "lucide-react": "^0.263.1",
+    "react-hook-form": "^7.50.1",
+    "react-intersection-observer": "^9.8.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.0",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.17"
+  }
+}
