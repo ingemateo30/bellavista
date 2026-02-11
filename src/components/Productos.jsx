@@ -1,79 +1,181 @@
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 export default function Productos() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // Cada producto tiene posiciones personalizables (0-100 en %)
+  const listaProductos = [
+    { 
+      nombre: 'Panela Pulverizada', 
+      imagen: '/PRODUCTOS.png', 
+      categoria: 'Endulzantes',
+      // Posiciones del producto (imagen)
+      productoTop: 70,    // % desde arriba
+      productoLeft: 50,   // % desde izquierda
+      // Posiciones del letrero
+      letreroTop: 95,     // % desde arriba
+      letreroLeft: 35,    // % desde izquierda
+    },
+    { 
+      nombre: 'Piloncillo / Panela', 
+      imagen: '/piloncillo.png', 
+      categoria: 'Tradicional',
+      productoTop: 35,
+      productoLeft: 50,
+      letreroTop: 80,
+      letreroLeft: 50,
+    },
+    { 
+      nombre: 'Café de Origen', 
+      imagen: '/cafe.png', 
+      categoria: 'Premium',
+      productoTop: 45,
+      productoLeft: 50,
+      letreroTop: 78,
+      letreroLeft: 50,
+    },
+    { 
+      nombre: 'Nuevos Derivados', 
+      imagen: '/proximamente.png', 
+      categoria: 'Próximamente',
+      productoTop: 40,
+      productoLeft: 50,
+      letreroTop: 75,
+      letreroLeft: 50,
+    },
+    // Puedes agregar más productos aquí
+  ];
+
+  const productosPerSlide = 4;
+  const totalSlides = Math.ceil(listaProductos.length / productosPerSlide);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const getCurrentProducts = () => {
+    const start = currentSlide * productosPerSlide;
+    return listaProductos.slice(start, start + productosPerSlide);
+  };
+
   return (
-    <section id="productos" className="relative py-20 bg-gradient-to-b from-[#8B7355] via-[#A0826D] to-[#8B7355]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Letrero de madera */}
-        <div className="text-center mb-12">
-          <div className="inline-block relative">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-2 h-6 bg-gray-700 rounded"></div>
-            <div className="bg-[#D4A574] px-12 py-6 rounded-lg shadow-2xl border-8 border-[#8B6F47] relative"
-                 style={{boxShadow: '0 10px 30px rgba(0,0,0,0.3), inset 0 -2px 5px rgba(0,0,0,0.2)'}}>
-              <div className="absolute top-3 left-3 w-2 h-2 bg-gray-800 rounded-full"></div>
-              <div className="absolute top-3 right-3 w-2 h-2 bg-gray-800 rounded-full"></div>
-              <div className="absolute bottom-3 left-3 w-2 h-2 bg-gray-800 rounded-full"></div>
-              <div className="absolute bottom-3 right-3 w-2 h-2 bg-gray-800 rounded-full"></div>
-              <h2 className="handwriting-title text-5xl text-[#3E2723]">
-                Nuestros Productos
-              </h2>
-            </div>
+    <section id="productos" className="relative bg-[#F7EAE4] w-full min-h-screen py-24 overflow-hidden flex items-center">
+      
+      {/* CAPA 1: IMAGEN DEL PAISAJE (Fondo profundo) */}
+      <div className="absolute inset-0">
+        <img 
+          src="/PRODUCTOS100-32.png" 
+          className="absolute bottom-0 w-full h-full object-contain"
+          alt="Paisaje Bellavista"
+        />
+      </div>
+
+      {/* CAPA 3: CONTENIDO (Productos y Texto) */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-8 sm:px-16 lg:px-24">
+        
+        {/* Controles de navegación */}
+        <div className="flex justify-between items-center mb-8">
+          <button
+            onClick={prevSlide}
+            disabled={totalSlides <= 1}
+            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            aria-label="Productos anteriores"
+          >
+            <ChevronLeft size={28} />
+          </button>
+
+          {/* Indicadores de slides */}
+          <div className="flex gap-2">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-3 rounded-full transition-all ${
+                  currentSlide === index 
+                    ? 'w-8 bg-[#5D8B3F]' 
+                    : 'w-3 bg-[#5D8B3F]/30 hover:bg-[#5D8B3F]/50'
+                }`}
+                aria-label={`Ir al slide ${index + 1}`}
+              />
+            ))}
           </div>
-          <div className="mt-8">
-            <button className="bg-verde-oscuro text-white px-10 py-3 rounded-xl font-bold shadow-lg hover:bg-opacity-90 transition-all">
-              Ver Todos
-            </button>
-          </div>
+
+          <button
+            onClick={nextSlide}
+            disabled={totalSlides <= 1}
+            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            aria-label="Siguientes productos"
+          >
+            <ChevronRight size={28} />
+          </button>
         </div>
 
-        {/* Estantería con fondo de montañas */}
-        <div className="relative bg-[#A0826D] p-8 rounded-3xl shadow-2xl"
-             style={{boxShadow: '0 20px 60px rgba(0,0,0,0.4), inset 0 -5px 15px rgba(0,0,0,0.2)'}}>
-          {/* Fondo de paisaje */}
-          <div className="absolute inset-0 rounded-3xl overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-b from-sky-300 via-green-200 to-green-300 opacity-50"></div>
-          </div>
+        {/* Slider de Productos */}
+        <div className="relative overflow-hidden">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+              <div 
+                key={slideIndex}
+                className="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12"
+              >
+                {listaProductos
+                  .slice(slideIndex * productosPerSlide, (slideIndex + 1) * productosPerSlide)
+                  .map((prod, index) => (
+                    <div 
+                      key={index} 
+                      className="group relative flex flex-col items-center transition-all duration-500"
+                      style={{ minHeight: '500px' }}
+                    >
+                      {/* Contenedor con posicionamiento absoluto para máxima flexibilidad */}
+                      <div className="relative w-full h-full">
+                        
+                        {/* Imagen del Producto - Posicionable */}
+                        <div 
+                          className="absolute transition-all duration-500 group-hover:-translate-y-4"
+                          style={{
+                            top: `${prod.productoTop}%`,
+                            left: `${prod.productoLeft}%`,
+                            transform: 'translate(-50%, -50%)',
+                          }}
+                        >
+                          <img
+                            src={prod.imagen}
+                            alt={prod.nombre}
+                            className="w-[298px] h-[298px] object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.4)]"
+                          />
+                          {/* Sombra de contacto */}
+                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-black/20 blur-xl rounded-full -z-10"></div>
+                        </div>
 
-          {/* Productos en estantes */}
-          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6">
-            {/* Panela */}
-            <div className="bg-white/95 backdrop-blur rounded-xl p-4 shadow-xl hover:scale-105 transition-transform">
-              <div className="aspect-square bg-gradient-to-br from-amber-50 to-amber-100 rounded-lg mb-3 flex items-center justify-center border-4 border-amber-200">
-                <p className="text-gray-400 text-xs text-center">Panela</p>
-              </div>
-              <div className="bg-[#D4A574] px-3 py-2 rounded-lg text-center border-4 border-[#8B6F47] shadow-md">
-                <p className="handwriting-title text-lg text-[#3E2723]">• Panela •</p>
-              </div>
-            </div>
+                        {/* Etiqueta de madera - Posicionable */}
+                        <div 
+                          className="absolute transition-all duration-500 group-hover:-translate-y-4"
+                          style={{
+                            top: `${prod.letreroTop}%`,
+                            left: `${prod.letreroLeft}%`,
+                            transform: 'translate(-50%, -50%)',
+                          }}
+                        >
+                          <div className="bg-[#F2E8DF] border-x-4 border-b-2 border-[#7A5C41] px-4 py-1 shadow-md whitespace-nowrap">
+                            <h3 className="text-lg font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
+                              {prod.nombre}
+                            </h3>
+                          </div>
+                        </div>
 
-            {/* Piloncillo */}
-            <div className="bg-white/95 backdrop-blur rounded-xl p-4 shadow-xl hover:scale-105 transition-transform">
-              <div className="aspect-square bg-gradient-to-br from-amber-50 to-amber-100 rounded-lg mb-3 flex items-center justify-center border-4 border-amber-200">
-                <p className="text-gray-400 text-xs text-center">Piloncillo</p>
+                      </div>
+                    </div>
+                  ))}
               </div>
-              <div className="bg-[#D4A574] px-3 py-2 rounded-lg text-center border-4 border-[#8B6F47] shadow-md">
-                <p className="handwriting-title text-lg text-[#3E2723]">• Piloncillo •</p>
-              </div>
-            </div>
-
-            {/* Café */}
-            <div className="bg-white/95 backdrop-blur rounded-xl p-4 shadow-xl hover:scale-105 transition-transform">
-              <div className="aspect-square bg-gradient-to-br from-amber-50 to-amber-100 rounded-lg mb-3 flex items-center justify-center border-4 border-amber-200">
-                <p className="text-gray-400 text-xs text-center">Café</p>
-              </div>
-              <div className="bg-[#D4A574] px-3 py-2 rounded-lg text-center border-4 border-[#8B6F47] shadow-md">
-                <p className="handwriting-title text-lg text-[#3E2723]">• Café •</p>
-              </div>
-            </div>
-
-            {/* Próximamente */}
-            <div className="bg-white/95 backdrop-blur rounded-xl p-4 shadow-xl hover:scale-105 transition-transform border-4 border-dashed border-[#8B6F47]">
-              <div className="aspect-square bg-crema rounded-lg mb-3 flex items-center justify-center">
-                <span className="text-6xl">❓</span>
-              </div>
-              <div className="bg-crema px-3 py-2 rounded-lg text-center border-4 border-dashed border-[#8B6F47]">
-                <p className="handwriting text-sm text-marron">Próximamente</p>
-                <p className="handwriting-title text-xs text-gray-600 mt-1">• Nuevo Producto •</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

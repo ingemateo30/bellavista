@@ -42,36 +42,38 @@ export default function Nosotros() {
   ];
 
   return (
-    <section id="exportacion" className="relative py-20 bg-crema">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="handwriting-title text-4xl md:text-5xl text-marron mb-4">
+    <section id="exportacion" className="relative py-16 bg-[#F7EAE4] overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Título */}
+        <div className="text-center mb-12">
+          <h2 className="text-[38px] md:text-[44px] text-[#2C1810] mb-2 font-['Schoolbell',_cursive] leading-tight">
             Proceso de Compra
           </h2>
-          <p className="handwriting text-lg text-gray-700 leading-relaxed">
+          <p className="text-[15px] text-[#2C1810] leading-relaxed font-['Kumbh_Sans',_sans-serif] max-w-2xl mx-auto">
             Así es trabajar con Productos Bellavista:<br/>
             simple, eficiente y enfocado en tus necesidades mayoristas.
           </p>
         </div>
 
         {/* Tarjetas de proceso */}
-        <div className="grid md:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           {pasos.map((paso, i) => (
             <div key={i} className="relative">
-              <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border-2 border-gray-200">
+              <div className="bg-[#FDF8F4] rounded-2xl p-6 shadow-sm">
                 <div 
-                  className="w-24 h-24 mx-auto mb-4 text-marron"
+                  className="w-20 h-20 mx-auto mb-4 text-[#3D3D3D] opacity-80"
                   dangerouslySetInnerHTML={{ __html: paso.icon }}
                 />
-                <h3 className="handwriting-title text-xl text-marron mb-3 text-center">
+                <h3 className="text-[18px] text-[#2C1810] mb-2 text-center font-['Handlee',_cursive] leading-snug">
                   {paso.title}
                 </h3>
-                <p className="text-gray-700 text-sm text-center leading-relaxed">
+                <p className="text-[#6B5E55] text-[13px] text-center leading-relaxed font-['Kumbh_Sans',_sans-serif]">
                   {paso.desc}
                 </p>
               </div>
+              {/* Flecha entre tarjetas */}
               {i < 3 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-4xl text-marron">
+                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-3xl text-[#3D3D3D] opacity-40">
                   →
                 </div>
               )}
@@ -80,37 +82,27 @@ export default function Nosotros() {
         </div>
 
         {/* CTA Final */}
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center border-4 border-marron/20">
-          <h3 className="handwriting-title text-3xl md:text-4xl text-marron mb-4">
-            ¿Listo para importar Auténticos productos agrícolas Colombianos?
+        <div className="bg-[#F7EAE4] rounded-2xl p-8 text-center shadow-sm max-w-3xl mx-auto">
+          <h3 className="text-[26px] md:text-[30px] text-[#2C1810] mb-3 font-['Handlee',_cursive] leading-snug">
+            ¿Listo para comenzar?
           </h3>
-          <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Habla con nosotros hoy y descubre cómo podemos ser tu proveedor de confianza en Colombia.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <a href="https://wa.me/573101234567" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-verde-oscuro text-white px-8 py-4 rounded-lg hover:bg-opacity-90 transition-all font-semibold text-lg shadow-lg">
-              📱 Cotizar por Whatsapp
-            </a>
-            <span className="handwriting text-2xl text-marron font-bold">o</span>
-            <a href="#contacto"
-              className="inline-flex items-center gap-2 bg-white text-marron px-8 py-4 rounded-lg border-2 border-marron hover:bg-gray-50 transition-all font-semibold text-lg shadow-lg">
-              ✉️ Contacto por Email
-            </a>
-          </div>
-          <button className="bg-marron text-white px-12 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-opacity-90 transition-all">
+          
+          <a 
+            href="#contacto"
+            className="inline-block bg-[#6B4E3D] text-white px-10 py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-[15px] hover:bg-[#5A3F2F] transition-all shadow-sm"
+          >
             Solicitar Cotización
-          </button>
+          </a>
         </div>
       </div>
 
-      {/* Ondas */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150" className="w-full">
-          <path fill="#F4C430" d="M0,50 Q360,0 720,50 T1440,50 L1440,150 L0,150 Z" opacity="0.5"/>
-          <path fill="#5C7A3C" d="M0,80 Q360,30 720,80 T1440,80 L1440,150 L0,150 Z" opacity="0.3"/>
-          <path fill="#4A5D2E" d="M0,100 Q360,60 720,100 T1440,100 L1440,150 L0,150 Z"/>
-        </svg>
+      {/* Ondas del final - Aquí insertas tu SVG */}
+      <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+         <img 
+          src="/54.svg" 
+          alt="" 
+          className="w-full h-auto object-bottom" 
+        />
       </div>
     </section>
   );
