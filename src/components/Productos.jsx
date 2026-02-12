@@ -138,30 +138,67 @@ export default function Productos() {
                   .map((prod, index) => (
                     <div
                       key={index}
-                      className="group relative flex flex-col items-center justify-center transition-all duration-500 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px] px-4"
+                      className="group relative transition-all duration-500"
+                      style={{
+                        minHeight: 'clamp(400px, 50vh, 600px)',
+                        aspectRatio: '1 / 1'
+                      }}
                     >
-                      {/* Contenedor flex centrado para mantener proporciones */}
-                      <div className="relative flex flex-col items-center justify-center w-full h-full">
+                      {/* Contenedor con posiciones relativas a la pantalla */}
+                      <div className="relative w-full h-full overflow-visible">
 
-                        {/* Imagen del Producto - Centrada con escala proporcional */}
-                        <div className="relative flex items-center justify-center transition-all duration-500 group-hover:-translate-y-4 z-10 mb-6 sm:mb-8 md:mb-10">
+                        {/* Imagen del Producto - Posicionada proporcionalmente */}
+                        <div
+                          className="absolute transition-all duration-500 group-hover:-translate-y-2 z-10"
+                          style={{
+                            top: `${prod.productoTop}%`,
+                            left: `${prod.productoLeft}%`,
+                            transform: `translate(-50%, -50%)`,
+                          }}
+                        >
                           <img
                             src={prod.imagen}
                             alt={t(prod.nombreKey)}
-                            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[250px] md:h-[250px] lg:w-[280px] lg:h-[280px] xl:w-[298px] xl:h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
+                            className="object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
                             style={{
-                              transform: `scale(${Math.min(prod.productoScale || 1, 1.5)})`,
-                              transformOrigin: 'center center',
+                              width: `clamp(150px, ${15 * (prod.productoScale || 1)}vw, ${298 * (prod.productoScale || 1)}px)`,
+                              height: `clamp(150px, ${15 * (prod.productoScale || 1)}vw, ${298 * (prod.productoScale || 1)}px)`,
                             }}
                           />
                           {/* Sombra de contacto */}
-                          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-3 sm:w-24 sm:h-4 lg:w-28 lg:h-5 bg-black/25 blur-xl rounded-full"></div>
+                          <div
+                            className="absolute left-1/2 -translate-x-1/2 bg-black/25 blur-xl rounded-full"
+                            style={{
+                              bottom: '0',
+                              width: `clamp(60px, 8vw, 120px)`,
+                              height: `clamp(15px, 2vw, 25px)`,
+                            }}
+                          ></div>
                         </div>
 
-                        {/* Etiqueta de madera - Centrada debajo del producto */}
-                        <div className="relative transition-all duration-500 group-hover:-translate-y-4 z-20">
-                          <div className="bg-[#F2E8DF] border-x-2 sm:border-x-3 lg:border-x-4 border-b-2 border-[#7A5C41] px-4 py-2 sm:px-5 sm:py-2.5 lg:px-6 lg:py-3 shadow-lg whitespace-nowrap">
-                            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
+                        {/* Etiqueta de madera - Posicionada proporcionalmente */}
+                        <div
+                          className="absolute transition-all duration-500 group-hover:-translate-y-2 z-20"
+                          style={{
+                            top: `${prod.letreroTop}%`,
+                            left: `${prod.letreroLeft}%`,
+                            transform: 'translate(-50%, -50%)',
+                          }}
+                        >
+                          <div
+                            className="bg-[#F2E8DF] border-b-2 border-[#7A5C41] shadow-lg whitespace-nowrap"
+                            style={{
+                              borderLeftWidth: `clamp(2px, 0.3vw, 4px)`,
+                              borderRightWidth: `clamp(2px, 0.3vw, 4px)`,
+                              padding: `clamp(6px, 1vw, 12px) clamp(12px, 2vw, 24px)`,
+                            }}
+                          >
+                            <h3
+                              className="font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]"
+                              style={{
+                                fontSize: `clamp(14px, 1.5vw, 20px)`,
+                              }}
+                            >
                               {t(prod.nombreKey)}
                             </h3>
                           </div>
