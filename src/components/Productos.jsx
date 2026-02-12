@@ -14,41 +14,41 @@ export default function Productos() {
       categoriaKey: 'productos.endulzantes',
       // Posiciones del producto (imagen)
       productoTop: 65,    // % desde arriba
-      productoLeft: 42,   // % desde izquierda
+      productoLeft: 33,   // % desde izquierda
       productoScale: 1.5, // Escala de la imagen (1.3 = 30% más grande)
       // Posiciones del letrero
-      letreroTop: 96.5,     // % desde arriba
-      letreroLeft: 38,    // % desde izquierda
+      letreroTop: 111.5,     // % desde arriba
+      letreroLeft: 28,    // % desde izquierda
     },
     {
       nombreKey: 'productos.piloncillo',
       imagen: '/PRODUCTOS (5).png',
       categoriaKey: 'productos.tradicional',
       productoTop: 70,
-      productoLeft: 75,
+      productoLeft: 45,
       productoScale: 3.5,
-      letreroTop: 96.5,
-      letreroLeft: 70,
+      letreroTop: 111.5,
+      letreroLeft: 40,
     },
     {
       nombreKey: 'productos.cafe',
       imagen: '/PRODUCTOS (3).png',
       categoriaKey: 'productos.premium',
       productoTop: 70,
-      productoLeft: 80,
+      productoLeft: 43,
       productoScale: 4.3,
-      letreroTop: 96.5,
-      letreroLeft: 85,
+      letreroTop: 111.5,
+      letreroLeft: 52,
     },
     {
       nombreKey: 'productos.derivados',
       imagen: '/PRODUCTOS (6).png',
       categoriaKey: 'productos.proximamente',
-      productoTop: 70,
-      productoLeft: 75,
-      productoScale: 4.3,
-      letreroTop: 96.5,
-      letreroLeft: 90,
+      productoTop: 80,
+      productoLeft: 43,
+      productoScale: 8.3,
+      letreroTop: 111.5,
+      letreroLeft: 55,
     },
 
     // Puedes agregar más productos aquí
