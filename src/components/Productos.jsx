@@ -138,40 +138,29 @@ export default function Productos() {
                   .map((prod, index) => (
                     <div
                       key={index}
-                      className="group relative flex flex-col items-center transition-all duration-500 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px]"
+                      className="group relative flex flex-col items-center justify-center transition-all duration-500 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px] px-4"
                     >
-                      {/* Contenedor con posicionamiento absoluto para máxima flexibilidad */}
-                      <div className="relative w-full h-full overflow-visible">
-                        
-                        {/* Imagen del Producto - Posicionable y Escalable */}
-                        <div
-                          className="absolute transition-all duration-500 group-hover:-translate-y-4 z-10"
-                          style={{
-                            top: `${prod.productoTop}%`,
-                            left: `${prod.productoLeft}%`,
-                            transform: `translate(-50%, -50%) scale(${prod.productoScale || 1})`,
-                            transformOrigin: 'center center',
-                          }}
-                        >
+                      {/* Contenedor flex centrado para mantener proporciones */}
+                      <div className="relative flex flex-col items-center justify-center w-full h-full">
+
+                        {/* Imagen del Producto - Centrada con escala proporcional */}
+                        <div className="relative flex items-center justify-center transition-all duration-500 group-hover:-translate-y-4 z-10 mb-6 sm:mb-8 md:mb-10">
                           <img
                             src={prod.imagen}
                             alt={t(prod.nombreKey)}
-                            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[270px] md:h-[270px] lg:w-[298px] lg:h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
+                            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[250px] md:h-[250px] lg:w-[280px] lg:h-[280px] xl:w-[298px] xl:h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
+                            style={{
+                              transform: `scale(${Math.min(prod.productoScale || 1, 1.5)})`,
+                              transformOrigin: 'center center',
+                            }}
                           />
                           {/* Sombra de contacto */}
-                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 sm:w-28 sm:h-5 lg:w-32 lg:h-6 bg-black/25 blur-xl rounded-full -z-10"></div>
+                          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-3 sm:w-24 sm:h-4 lg:w-28 lg:h-5 bg-black/25 blur-xl rounded-full"></div>
                         </div>
 
-                        {/* Etiqueta de madera - Posicionable con z-index superior */}
-                        <div
-                          className="absolute transition-all duration-500 group-hover:-translate-y-4 z-20"
-                          style={{
-                            top: `${prod.letreroTop}%`,
-                            left: `${prod.letreroLeft}%`,
-                            transform: 'translate(-50%, -50%)',
-                          }}
-                        >
-                          <div className="bg-[#F2E8DF] border-x-2 sm:border-x-3 lg:border-x-4 border-b-2 border-[#7A5C41] px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-2 shadow-lg whitespace-nowrap">
+                        {/* Etiqueta de madera - Centrada debajo del producto */}
+                        <div className="relative transition-all duration-500 group-hover:-translate-y-4 z-20">
+                          <div className="bg-[#F2E8DF] border-x-2 sm:border-x-3 lg:border-x-4 border-b-2 border-[#7A5C41] px-4 py-2 sm:px-5 sm:py-2.5 lg:px-6 lg:py-3 shadow-lg whitespace-nowrap">
                             <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
                               {t(prod.nombreKey)}
                             </h3>
