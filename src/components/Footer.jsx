@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative w-full overflow-hidden bg-[#F7EAE4]">
       {/* Imagen superior con semicírculo invertido en la parte inferior */}
@@ -16,7 +19,7 @@ const Footer = () => {
           {/* Texto "Nosotros" sobre la imagen */}
           <div className="absolute top-8 left-1/2 transform -translate-x-1/2">
             <h2 className="text-4xl md:text-5xl font-['Handlee',_cursive] text-gray-800">
-              Nosotros
+              {t('footer.nosotros')}
             </h2>
           </div>
         </div>
@@ -52,13 +55,13 @@ const Footer = () => {
             {/* Textos debajo del logo */}
             <div className="text-left space-y-2 md:-mt-20">
               <p className="text-sm md:text-base text-gray-700 font-semibold leading-tight">
-                Calidad Colombiana para el mercado Mundial
+                {t('footer.tagline')}
               </p>
               <p className="text-sm md:text-base text-gray-600 leading-snug">
-                Somos expertos en exportación de productos artesanales de nuestro agro.
+                {t('footer.descripcion1')}
               </p>
               <p className="text-sm md:text-base text-gray-600 leading-snug">
-                Con productos Bellavista, tu empresa mayorista o marca privada de alimentos confía en un abastecimiento continuo y de calidad.
+                {t('footer.descripcion2')}
               </p>
             </div>
           </div>
@@ -85,15 +88,15 @@ const Footer = () => {
 
             {/* Ubicación */}
             <div className="flex items-start space-x-3">
-              <svg 
-                className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" 
-                fill="currentColor" 
+              <svg
+                className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+                fill="currentColor"
                 viewBox="0 0 20 20"
               >
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               <span className="text-sm md:text-base text-gray-700 text-left">
-                Mogotes, Colombia
+                {t('footer.ubicacion')}
               </span>
             </div>
           </div>

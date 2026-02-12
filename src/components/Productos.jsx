@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Productos() {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   // Cada producto tiene posiciones personalizables (0-100 en %)
   const listaProductos = [
-    { 
-      nombre: 'Panela Pulverizada', 
-      imagen: '/PRODUCTOS.png', 
-      categoria: 'Endulzantes',
+    {
+      nombreKey: 'productos.panelaPulverizada',
+      imagen: '/PRODUCTOS.png',
+      categoriaKey: 'productos.endulzantes',
       // Posiciones del producto (imagen)
       productoTop: 65,    // % desde arriba
       productoLeft: 42,   // % desde izquierda
@@ -18,37 +20,37 @@ export default function Productos() {
       letreroTop: 96.5,     // % desde arriba
       letreroLeft: 38,    // % desde izquierda
     },
-    { 
-      nombre: 'Piloncillo / Panela', 
-      imagen: '/PRODUCTOS (5).png', 
-      categoria: 'Tradicional',
+    {
+      nombreKey: 'productos.piloncillo',
+      imagen: '/PRODUCTOS (5).png',
+      categoriaKey: 'productos.tradicional',
       productoTop: 70,
       productoLeft: 75,
       productoScale: 3.5,
       letreroTop: 96.5,
       letreroLeft: 70,
     },
-    { 
-      nombre: 'Café de Origen', 
-      imagen: '/PRODUCTOS (3).png', 
-      categoria: 'Premium',
+    {
+      nombreKey: 'productos.cafe',
+      imagen: '/PRODUCTOS (3).png',
+      categoriaKey: 'productos.premium',
       productoTop: 70,
       productoLeft: 80,
       productoScale: 4.3,
       letreroTop: 96.5,
       letreroLeft: 85,
     },
-    { 
-      nombre: 'Nuevos Derivados', 
-      imagen: '/PRODUCTOS (6).png', 
-      categoria: 'Próximamente',
+    {
+      nombreKey: 'productos.derivados',
+      imagen: '/PRODUCTOS (6).png',
+      categoriaKey: 'productos.proximamente',
       productoTop: 70,
       productoLeft: 75,
       productoScale: 4.3,
       letreroTop: 96.5,
       letreroLeft: 90,
     },
-    
+
     // Puedes agregar más productos aquí
   ];
 
@@ -89,7 +91,7 @@ export default function Productos() {
             onClick={prevSlide}
             disabled={totalSlides <= 1}
             className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            aria-label="Productos anteriores"
+            aria-label={t('productos.productosAnteriores')}
           >
             <ChevronLeft size={28} />
           </button>
@@ -101,11 +103,11 @@ export default function Productos() {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`h-3 rounded-full transition-all ${
-                  currentSlide === index 
-                    ? 'w-8 bg-[#5D8B3F]' 
+                  currentSlide === index
+                    ? 'w-8 bg-[#5D8B3F]'
                     : 'w-3 bg-[#5D8B3F]/30 hover:bg-[#5D8B3F]/50'
                 }`}
-                aria-label={`Ir al slide ${index + 1}`}
+                aria-label={`${t('productos.irAlSlide')} ${index + 1}`}
               />
             ))}
           </div>
@@ -114,7 +116,7 @@ export default function Productos() {
             onClick={nextSlide}
             disabled={totalSlides <= 1}
             className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            aria-label="Siguientes productos"
+            aria-label={t('productos.siguientesProductos')}
           >
             <ChevronRight size={28} />
           </button>
@@ -143,7 +145,7 @@ export default function Productos() {
                       <div className="relative w-full h-full overflow-visible">
                         
                         {/* Imagen del Producto - Posicionable y Escalable */}
-                        <div 
+                        <div
                           className="absolute transition-all duration-500 group-hover:-translate-y-4 z-10"
                           style={{
                             top: `${prod.productoTop}%`,
@@ -154,7 +156,7 @@ export default function Productos() {
                         >
                           <img
                             src={prod.imagen}
-                            alt={prod.nombre}
+                            alt={t(prod.nombreKey)}
                             className="w-[298px] h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
                           />
                           {/* Sombra de contacto */}
@@ -162,7 +164,7 @@ export default function Productos() {
                         </div>
 
                         {/* Etiqueta de madera - Posicionable con z-index superior */}
-                        <div 
+                        <div
                           className="absolute transition-all duration-500 group-hover:-translate-y-4 z-20"
                           style={{
                             top: `${prod.letreroTop}%`,
@@ -172,7 +174,7 @@ export default function Productos() {
                         >
                           <div className="bg-[#F2E8DF] border-x-4 border-b-2 border-[#7A5C41] px-6 py-2 shadow-lg whitespace-nowrap">
                             <h3 className="text-xl font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
-                              {prod.nombre}
+                              {t(prod.nombreKey)}
                             </h3>
                           </div>
                         </div>
