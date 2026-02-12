@@ -1,3 +1,4 @@
+import './i18n';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Ventajas from './components/Ventajas';

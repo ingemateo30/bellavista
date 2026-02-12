@@ -1,0 +1,90 @@
+{
+  "navbar": {
+    "inicio": "Accueil",
+    "productos": "Produits",
+    "exportacion": "Exportation",
+    "contacto": "Contact",
+    "nosotros": "À Propos",
+    "cotizar": "Demander un Devis"
+  },
+  "hero": {
+    "productos": "PRODUITS",
+    "slide1": "Production et exportation de panela, piloncillo, café et autres produits agricoles, avec capacité d'approvisionnement constant et normes de qualité.",
+    "slide2": "Nous connectons notre production avec des marchés internationaux en Espagne, États-Unis, Aruba et Canada.",
+    "cotizarWhatsapp": "Devis par WhatsApp",
+    "verProductos": "Voir les Produits",
+    "goToSlide": "Aller à la diapositive"
+  },
+  "ventajas": {
+    "titulo": "Pourquoi choisir Productos Bellavista ?",
+    "enfoqueExportador": {
+      "titulo": "Orientation Exportation",
+      "descripcion": "Produits alimentaires préparés pour les marchés internationaux et les acheteurs en gros."
+    },
+    "calidadControlada": {
+      "titulo": "Qualité Contrôlée",
+      "descripcion": "Processus standardisés et sélection de matières premières d'origine agricole."
+    },
+    "capacidadSuministro": {
+      "titulo": "Capacité d'Approvisionnement",
+      "descripcion": "Production constante à des volumes ajustés aux besoins du client B2B."
+    },
+    "privateLabel": {
+      "titulo": "Marque Blanche",
+      "descripcion": "Produits sans marque prêts à commercialiser sous votre propre identité."
+    },
+    "ctaTitulo": "Vous cherchez un fournisseur fiable pour votre marché ?",
+    "ctaBoton": "Contacter par WhatsApp"
+  },
+  "productos": {
+    "panelaPulverizada": "Panela en Poudre",
+    "piloncillo": "Piloncillo / Panela",
+    "cafe": "Café d'Origine",
+    "derivados": "Nouveaux Dérivés",
+    "endulzantes": "Édulcorants",
+    "tradicional": "Traditionnel",
+    "premium": "Premium",
+    "proximamente": "Prochainement",
+    "productosAnteriores": "Produits précédents",
+    "siguientesProductos": "Produits suivants",
+    "irAlSlide": "Aller à la diapositive"
+  },
+  "nosotros": {
+    "titulo": "Processus d'Achat",
+    "subtitulo": "Voici comment travailler avec Productos Bellavista fonctionne :",
+    "subtitulo2": "simple, efficace et axé sur vos besoins en gros.",
+    "paso1": {
+      "titulo": "Contactez-nous",
+      "descripcion": "Parlez-nous via WhatsApp ou ouvrez notre formulaire et racontez-nous vos besoins"
+    },
+    "paso2": {
+      "titulo": "Devis",
+      "descripcion": "Nous vous envoyons une proposition personnalisée avec des prix et des conditions selon vos exigences"
+    },
+    "paso3": {
+      "titulo": "Production",
+      "descripcion": "Une fois la commande confirmée, nous coordonnons la production et l'emballage du produit selon vos spécifications"
+    },
+    "paso4": {
+      "titulo": "Exportation",
+      "descripcion": "Nous gérons l'ensemble du processus logistique et documentaire pour une exportation sûre et opportune."
+    },
+    "ctaTitulo": "Prêt à commencer ?",
+    "ctaBoton": "Demander un Devis"
+  },
+  "contacto": {
+    "titulo": "Prêt à importer d'authentiques produits agricoles colombiens ?",
+    "subtitulo": "Parlez-nous aujourd'hui et découvrez comment nous pouvons être votre fournisseur de confiance en Colombie.",
+    "cotizarWhatsapp": "Devis par WhatsApp",
+    "o": "ou",
+    "contactoEmail": "Contact par Email",
+    "solicitarCotizacion": "Demander un Devis"
+  },
+  "footer": {
+    "nosotros": "À Propos",
+    "tagline": "Qualité Colombienne pour le Marché Mondial",
+    "descripcion1": "Nous sommes experts en exportation de produits artisanaux de notre agriculture.",
+    "descripcion2": "Avec les produits Bellavista, votre entreprise de gros ou votre marque alimentaire privée compte sur un approvisionnement continu et de qualité.",
+    "ubicacion": "Mogotes, Colombie"
+  }
+}

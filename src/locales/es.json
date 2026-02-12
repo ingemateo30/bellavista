@@ -1,0 +1,90 @@
+{
+  "navbar": {
+    "inicio": "Inicio",
+    "productos": "Productos",
+    "exportacion": "Exportación",
+    "contacto": "Contacto",
+    "nosotros": "Nosotros",
+    "cotizar": "Cotizar"
+  },
+  "hero": {
+    "productos": "PRODUCTOS",
+    "slide1": "Producción y exportación de panela, piloncillo, café y otros productos agrícolas, con capacidad de suministro constante y estándares de calidad.",
+    "slide2": "Conectamos nuestra producción con mercados internacionales en España, Estados Unidos, Aruba y Canadá.",
+    "cotizarWhatsapp": "Cotizar por WhatsApp",
+    "verProductos": "Ver Productos",
+    "goToSlide": "Ir a slide"
+  },
+  "ventajas": {
+    "titulo": "¿Por qué elegir Productos Bellavista?",
+    "enfoqueExportador": {
+      "titulo": "Enfoque Exportador",
+      "descripcion": "Productos alimenticios preparados para mercados internacionales y compradores mayoristas."
+    },
+    "calidadControlada": {
+      "titulo": "Calidad Controlada",
+      "descripcion": "Procesos estandarizados y selección de materias primas de origen agrícola."
+    },
+    "capacidadSuministro": {
+      "titulo": "Capacidad de Suministro",
+      "descripcion": "Producción constante a volúmenes ajustados a la necesidad del cliente B2B."
+    },
+    "privateLabel": {
+      "titulo": "Private Label",
+      "descripcion": "Productos sin marca listos para comercializar bajo tu propia identidad."
+    },
+    "ctaTitulo": "¿Buscas un proveedor confiable para tu mercado?",
+    "ctaBoton": "Hablar por Whatsapp"
+  },
+  "productos": {
+    "panelaPulverizada": "Panela Pulverizada",
+    "piloncillo": "Piloncillo / Panela",
+    "cafe": "Café de Origen",
+    "derivados": "Nuevos Derivados",
+    "endulzantes": "Endulzantes",
+    "tradicional": "Tradicional",
+    "premium": "Premium",
+    "proximamente": "Próximamente",
+    "productosAnteriores": "Productos anteriores",
+    "siguientesProductos": "Siguientes productos",
+    "irAlSlide": "Ir al slide"
+  },
+  "nosotros": {
+    "titulo": "Proceso de Compra",
+    "subtitulo": "Así es trabajar con Productos Bellavista:",
+    "subtitulo2": "simple, eficiente y enfocado en tus necesidades mayoristas.",
+    "paso1": {
+      "titulo": "Contáctanos",
+      "descripcion": "Habla con nosotros a través de Whatsapp o abre nuestro formulario y cuéntanos tus necesidades"
+    },
+    "paso2": {
+      "titulo": "Cotización",
+      "descripcion": "Te enviamos una propuesta personalizada con precios y condiciones según tus requerimientos"
+    },
+    "paso3": {
+      "titulo": "Producción",
+      "descripcion": "Confirmado el pedido, coordinamos la producción y el empaque del producto bajo tus especificaciones"
+    },
+    "paso4": {
+      "titulo": "Exportación",
+      "descripcion": "Gestionamos todo el proceso logístico y documental para una exportación segura y oportuna."
+    },
+    "ctaTitulo": "¿Listo para comenzar?",
+    "ctaBoton": "Solicitar Cotización"
+  },
+  "contacto": {
+    "titulo": "¿Listo para importar Auténticos productos agrícolas Colombianos?",
+    "subtitulo": "Habla con nosotros hoy y descubre cómo podemos ser tu proveedor de confianza en Colombia.",
+    "cotizarWhatsapp": "Cotizar por Whatsapp",
+    "o": "o",
+    "contactoEmail": "Contacto por Email",
+    "solicitarCotizacion": "Solicitar Cotización"
+  },
+  "footer": {
+    "nosotros": "Nosotros",
+    "tagline": "Calidad Colombiana para el mercado Mundial",
+    "descripcion1": "Somos expertos en exportación de productos artesanales de nuestro agro.",
+    "descripcion2": "Con productos Bellavista, tu empresa mayorista o marca privada de alimentos confía en un abastecimiento continuo y de calidad.",
+    "ubicacion": "Mogotes, Colombia"
+  }
+}

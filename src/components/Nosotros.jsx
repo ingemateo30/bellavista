@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 export default function Nosotros() {
+  const { t } = useTranslation();
+
   const pasos = [
     {
       icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -7,8 +11,8 @@ export default function Nosotros() {
         <path d="M25,45 Q30,50 35,55" fill="none" stroke="currentColor" stroke-width="3"/>
         <path d="M55,75 Q60,70 65,65" fill="none" stroke="currentColor" stroke-width="3"/>
       </svg>`,
-      title: 'Contáctanos',
-      desc: 'Habla con nosotros a través de Whatsapp o abre nuestro formulario y cuéntanos tus necesidades'
+      titleKey: 'nosotros.paso1.titulo',
+      descKey: 'nosotros.paso1.descripcion'
     },
     {
       icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -17,8 +21,8 @@ export default function Nosotros() {
         <line x1="35" y1="50" x2="65" y2="50" stroke="currentColor" stroke-width="2"/>
         <line x1="35" y1="60" x2="55" y2="60" stroke="currentColor" stroke-width="2"/>
       </svg>`,
-      title: 'Cotización',
-      desc: 'Te enviamos una propuesta personalizada con precios y condiciones según tus requerimientos'
+      titleKey: 'nosotros.paso2.titulo',
+      descKey: 'nosotros.paso2.descripcion'
     },
     {
       icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -26,8 +30,8 @@ export default function Nosotros() {
         <path d="M40,35 L50,45 L70,25" fill="none" stroke="currentColor" stroke-width="3"/>
         <rect x="60" y="55" width="15" height="20" fill="none" stroke="currentColor" stroke-width="2"/>
       </svg>`,
-      title: 'Producción',
-      desc: 'Confirmado el pedido, coordinamos la producción y el empaque del producto bajo tus especificaciones'
+      titleKey: 'nosotros.paso3.titulo',
+      descKey: 'nosotros.paso3.descripcion'
     },
     {
       icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -36,8 +40,8 @@ export default function Nosotros() {
         <circle cx="35" cy="82" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
         <circle cx="65" cy="82" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
       </svg>`,
-      title: 'Exportación',
-      desc: 'Gestionamos todo el proceso logístico y documental para una exportación segura y oportuna.'
+      titleKey: 'nosotros.paso4.titulo',
+      descKey: 'nosotros.paso4.descripcion'
     }
   ];
 
@@ -47,11 +51,11 @@ export default function Nosotros() {
         {/* Título */}
         <div className="text-center mb-12">
           <h2 className="text-[38px] md:text-[44px] text-[#2C1810] mb-2 font-['Schoolbell',_cursive] leading-tight">
-            Proceso de Compra
+            {t('nosotros.titulo')}
           </h2>
           <p className="text-[15px] text-[#2C1810] leading-relaxed font-['Kumbh_Sans',_sans-serif] max-w-2xl mx-auto">
-            Así es trabajar con Productos Bellavista:<br/>
-            simple, eficiente y enfocado en tus necesidades mayoristas.
+            {t('nosotros.subtitulo')}<br/>
+            {t('nosotros.subtitulo2')}
           </p>
         </div>
 
@@ -60,15 +64,15 @@ export default function Nosotros() {
           {pasos.map((paso, i) => (
             <div key={i} className="relative">
               <div className="bg-[#FDF8F4] rounded-2xl p-6 shadow-sm">
-                <div 
+                <div
                   className="w-20 h-20 mx-auto mb-4 text-[#3D3D3D] opacity-80"
                   dangerouslySetInnerHTML={{ __html: paso.icon }}
                 />
                 <h3 className="text-[18px] text-[#2C1810] mb-2 text-center font-['Handlee',_cursive] leading-snug">
-                  {paso.title}
+                  {t(paso.titleKey)}
                 </h3>
                 <p className="text-[#6B5E55] text-[13px] text-center leading-relaxed font-['Kumbh_Sans',_sans-serif]">
-                  {paso.desc}
+                  {t(paso.descKey)}
                 </p>
               </div>
               {/* Flecha entre tarjetas */}
@@ -84,14 +88,14 @@ export default function Nosotros() {
         {/* CTA Final */}
         <div className="bg-[#F7EAE4] rounded-2xl p-8 text-center shadow-sm max-w-3xl mx-auto">
           <h3 className="text-[26px] md:text-[30px] text-[#2C1810] mb-3 font-['Handlee',_cursive] leading-snug">
-            ¿Listo para comenzar?
+            {t('nosotros.ctaTitulo')}
           </h3>
-          
-          <a 
+
+          <a
             href="#contacto"
             className="inline-block bg-[#6B4E3D] text-white px-10 py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-[15px] hover:bg-[#5A3F2F] transition-all shadow-sm"
           >
-            Solicitar Cotización
+            {t('nosotros.ctaBoton')}
           </a>
         </div>
       </div>
