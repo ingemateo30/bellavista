@@ -36,7 +36,7 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="bg-[#F2E8DF]">
-      <div className="relative w-full h-[85vh] flex items-center overflow-hidden">
+      <div className="relative w-full min-h-[600px] h-[85vh] flex items-center overflow-hidden">
         {/* Fondo con imagen curveada */}
         <div className="absolute inset-0 z-0">
           {/* Contenedor para transición de opacidad */}
@@ -59,24 +59,24 @@ export default function Hero() {
           <img
             src="/esquinaderecha.svg"
             alt=""
-            className="absolute top-0 right-0 w-[65%] max-w-[700px] pointer-events-none z-10"
+            className="absolute top-0 right-0 w-[80%] sm:w-[70%] md:w-[65%] max-w-[700px] pointer-events-none z-10"
           />
 
           {/* SVG inferior izquierdo */}
           <img
             src="/3.svg"
             alt=""
-            className="absolute bottom-0 left-0 w-[55%] max-w-[1000px] pointer-events-none z-10"
+            className="absolute bottom-0 left-0 w-[70%] sm:w-[60%] md:w-[55%] max-w-[1000px] pointer-events-none z-10"
           />
         </div>
 
         {/* Contenido */}
-        <div className="relative z-20 max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 w-full h-full flex items-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 w-full h-full flex items-center">
           <div className="max-w-xl">
             {/* Logo con PRODUCTOS integrado */}
-            <div className="mb-6 relative h-[70px]">
+            <div className="mb-6 relative h-[50px] sm:h-[60px] md:h-[70px]">
               {/* Texto PRODUCTOS */}
-              <span className="text-sm font-bold text-[#6E3A0D] tracking-[0.25em] block mb-1 mt-1 ml-12">
+              <span className="text-xs sm:text-sm font-bold text-[#6E3A0D] tracking-[0.15em] sm:tracking-[0.25em] block mb-1 mt-1 ml-8 sm:ml-10 md:ml-12">
                 {t('hero.productos')}
               </span>
 
@@ -84,25 +84,25 @@ export default function Hero() {
               <img
                 src="/VERSIONES LOGO-02.png"
                 alt="BellaVista"
-                className="absolute -left-4 -top-20 h-64 w-auto object-contain"
+                className="absolute -left-2 sm:-left-3 md:-left-4 -top-12 sm:-top-16 md:-top-20 h-40 sm:h-52 md:h-64 w-auto object-contain"
               />
             </div>
 
             {/* Texto descriptivo con transición */}
-            <p className="text-base text-[#2C2C2C] leading-relaxed mb-8 font-medium max-w-[420px] transition-opacity duration-500">
+            <p className="text-sm sm:text-base text-[#2C2C2C] leading-relaxed mb-6 sm:mb-8 font-medium max-w-[420px] transition-opacity duration-500">
               {t(slides[currentSlide].titleKey)}
             </p>
 
             {/* Botones */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
 
                <a href="https://wa.me/573101234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#5D8B3F] text-white px-6 py-3.5 rounded-xl hover:bg-[#4E7535] transition-all font-bold shadow-lg shadow-[#5D8B3F]/20 text-sm"
+                className="inline-flex items-center gap-2 bg-[#5D8B3F] text-white px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-[#4E7535] transition-all font-bold shadow-lg shadow-[#5D8B3F]/20 text-xs sm:text-sm"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -113,7 +113,7 @@ export default function Hero() {
 
 
                <a href="#productos"
-                className="inline-flex items-center bg-[#EDE0D4] text-[#2C2C2C] px-8 py-3.5 rounded-xl hover:bg-[#E2D5C8] transition-all font-bold shadow-lg shadow-black/5 text-sm"
+                className="inline-flex items-center bg-[#EDE0D4] text-[#2C2C2C] px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-[#E2D5C8] transition-all font-bold shadow-lg shadow-black/5 text-xs sm:text-sm"
               >
                 {t('hero.verProductos')}
               </a>
@@ -122,14 +122,14 @@ export default function Hero() {
         </div>
 
         {/* Indicadores de slides */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-2 sm:gap-3">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 currentSlide === index
-                  ? 'bg-[#5D8B3F] w-8'
+                  ? 'bg-[#5D8B3F] w-6 sm:w-8'
                   : 'bg-white/50 hover:bg-white/80'
               }`}
               aria-label={`${t('hero.goToSlide')} ${index + 1}`}

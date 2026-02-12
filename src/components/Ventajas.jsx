@@ -57,7 +57,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="relative bg-[#F7EAE4] py-20 px-6 overflow-hidden">
+    <section className="relative bg-[#F7EAE4] py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden">
       
       <div className="max-w-6xl mx-auto text-center relative z-10">
 
