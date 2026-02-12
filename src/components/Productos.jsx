@@ -11,39 +11,44 @@ export default function Productos() {
       imagen: '/PRODUCTOS.png', 
       categoria: 'Endulzantes',
       // Posiciones del producto (imagen)
-      productoTop: 70,    // % desde arriba
-      productoLeft: 50,   // % desde izquierda
+      productoTop: 65,    // % desde arriba
+      productoLeft: 42,   // % desde izquierda
+      productoScale: 1.5, // Escala de la imagen (1.3 = 30% más grande)
       // Posiciones del letrero
-      letreroTop: 95,     // % desde arriba
-      letreroLeft: 35,    // % desde izquierda
+      letreroTop: 96.5,     // % desde arriba
+      letreroLeft: 38,    // % desde izquierda
     },
     { 
       nombre: 'Piloncillo / Panela', 
-      imagen: '/piloncillo.png', 
+      imagen: '/PRODUCTOS (5).png', 
       categoria: 'Tradicional',
-      productoTop: 35,
-      productoLeft: 50,
-      letreroTop: 80,
-      letreroLeft: 50,
+      productoTop: 70,
+      productoLeft: 75,
+      productoScale: 3.5,
+      letreroTop: 96.5,
+      letreroLeft: 70,
     },
     { 
       nombre: 'Café de Origen', 
-      imagen: '/cafe.png', 
+      imagen: '/PRODUCTOS (3).png', 
       categoria: 'Premium',
-      productoTop: 45,
-      productoLeft: 50,
-      letreroTop: 78,
-      letreroLeft: 50,
+      productoTop: 70,
+      productoLeft: 80,
+      productoScale: 4.3,
+      letreroTop: 96.5,
+      letreroLeft: 85,
     },
     { 
       nombre: 'Nuevos Derivados', 
-      imagen: '/proximamente.png', 
+      imagen: '/PRODUCTOS (6).png', 
       categoria: 'Próximamente',
-      productoTop: 40,
-      productoLeft: 50,
-      letreroTop: 75,
-      letreroLeft: 50,
+      productoTop: 70,
+      productoLeft: 75,
+      productoScale: 4.3,
+      letreroTop: 96.5,
+      letreroLeft: 90,
     },
+    
     // Puedes agregar más productos aquí
   ];
 
@@ -67,7 +72,7 @@ export default function Productos() {
     <section id="productos" className="relative bg-[#F7EAE4] w-full min-h-screen py-24 overflow-hidden flex items-center">
       
       {/* CAPA 1: IMAGEN DEL PAISAJE (Fondo profundo) */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         <img 
           src="/PRODUCTOS100-32.png" 
           className="absolute bottom-0 w-full h-full object-contain"
@@ -116,7 +121,7 @@ export default function Productos() {
         </div>
 
         {/* Slider de Productos */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-visible">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -132,40 +137,41 @@ export default function Productos() {
                     <div 
                       key={index} 
                       className="group relative flex flex-col items-center transition-all duration-500"
-                      style={{ minHeight: '500px' }}
+                      style={{ minHeight: '550px' }}
                     >
                       {/* Contenedor con posicionamiento absoluto para máxima flexibilidad */}
-                      <div className="relative w-full h-full">
+                      <div className="relative w-full h-full overflow-visible">
                         
-                        {/* Imagen del Producto - Posicionable */}
+                        {/* Imagen del Producto - Posicionable y Escalable */}
                         <div 
-                          className="absolute transition-all duration-500 group-hover:-translate-y-4"
+                          className="absolute transition-all duration-500 group-hover:-translate-y-4 z-10"
                           style={{
                             top: `${prod.productoTop}%`,
                             left: `${prod.productoLeft}%`,
-                            transform: 'translate(-50%, -50%)',
+                            transform: `translate(-50%, -50%) scale(${prod.productoScale || 1})`,
+                            transformOrigin: 'center center',
                           }}
                         >
                           <img
                             src={prod.imagen}
                             alt={prod.nombre}
-                            className="w-[298px] h-[298px] object-contain drop-shadow-[0_20px_20px_rgba(0,0,0,0.4)]"
+                            className="w-[298px] h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
                           />
                           {/* Sombra de contacto */}
-                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-black/20 blur-xl rounded-full -z-10"></div>
+                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black/25 blur-xl rounded-full -z-10"></div>
                         </div>
 
-                        {/* Etiqueta de madera - Posicionable */}
+                        {/* Etiqueta de madera - Posicionable con z-index superior */}
                         <div 
-                          className="absolute transition-all duration-500 group-hover:-translate-y-4"
+                          className="absolute transition-all duration-500 group-hover:-translate-y-4 z-20"
                           style={{
                             top: `${prod.letreroTop}%`,
                             left: `${prod.letreroLeft}%`,
                             transform: 'translate(-50%, -50%)',
                           }}
                         >
-                          <div className="bg-[#F2E8DF] border-x-4 border-b-2 border-[#7A5C41] px-4 py-1 shadow-md whitespace-nowrap">
-                            <h3 className="text-lg font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
+                          <div className="bg-[#F2E8DF] border-x-4 border-b-2 border-[#7A5C41] px-6 py-2 shadow-lg whitespace-nowrap">
+                            <h3 className="text-xl font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
                               {prod.nombre}
                             </h3>
                           </div>
