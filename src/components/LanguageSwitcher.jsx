@@ -7,9 +7,38 @@ export default function LanguageSwitcher() {
   const dropdownRef = useRef(null);
 
   const languages = [
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+    { 
+      code: 'es', 
+      name: 'Español', 
+      flag: (
+        <svg className="w-6 h-4" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+          <rect width="900" height="600" fill="#c60b1e"/>
+          <rect width="900" height="200" y="200" fill="#ffc400"/>
+        </svg>
+      )
+    },
+    { 
+      code: 'en-US', 
+      name: 'English', 
+      flag: (
+        <svg className="w-6 h-4" viewBox="0 0 7410 3900" xmlns="http://www.w3.org/2000/svg">
+          <rect width="7410" height="3900" fill="#b22234"/>
+          <path d="M0,450H7410m0,600H0m0,600H7410m0,600H0m0,600H7410m0,600H0" stroke="#fff" strokeWidth="300"/>
+          <rect width="2964" height="2100" fill="#3c3b6e"/>
+        </svg>
+      )
+    },
+    { 
+      code: 'fr', 
+      name: 'Français', 
+      flag: (
+        <svg className="w-6 h-4" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+          <rect width="900" height="600" fill="#ED2939"/>
+          <rect width="600" height="600" fill="#fff"/>
+          <rect width="300" height="600" fill="#002395"/>
+        </svg>
+      )
+    }
   ];
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
@@ -38,21 +67,14 @@ export default function LanguageSwitcher() {
         style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
         aria-label="Cambiar idioma"
       >
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-          />
-        </svg>
-        <span className="hidden sm:inline">{currentLanguage.flag} {currentLanguage.name}</span>
-        <span className="sm:hidden">{currentLanguage.flag}</span>
+        
+        <div className="hidden sm:flex items-center gap-2.5">
+          <div className="flex-shrink-0">{currentLanguage.flag}</div>
+          <span style={{ fontFamily: 'Kumbh Sans, sans-serif' }}>{currentLanguage.name}</span>
+        </div>
+        <div className="sm:hidden flex items-center flex-shrink-0">
+          {currentLanguage.flag}
+        </div>
         <svg
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
@@ -74,8 +96,10 @@ export default function LanguageSwitcher() {
               }`}
               style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
             >
-              <span className="text-2xl">{lang.flag}</span>
-              <span className="text-[#2C1810]">{lang.name}</span>
+              <div className="flex-shrink-0">{lang.flag}</div>
+              <span className="text-[#2C1810]" style={{ fontFamily: 'Kumbh Sans, sans-serif' }}>
+                {lang.name}
+              </span>
               {i18n.language === lang.code && (
                 <svg
                   className="w-5 h-5 ml-auto text-[#5D8B3F]"
