@@ -17,10 +17,10 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-24">
             {/* Logo */}
             <div className="flex items-center">
-              <img 
-                src="/VERSIONES LOGO-02.png" 
-                alt="Productos BellaVista" 
-                className="h-40 w-auto" 
+              <img
+                src="/VERSIONES LOGO-02.png"
+                alt="Productos BellaVista"
+                className="h-32 sm:h-36 md:h-40 w-auto"
               />
             </div>
 

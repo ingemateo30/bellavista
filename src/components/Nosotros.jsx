@@ -60,7 +60,7 @@ export default function Nosotros() {
         </div>
 
         {/* Tarjetas de proceso */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {pasos.map((paso, i) => (
             <div key={i} className="relative">
               <div className="bg-[#FDF8F4] rounded-2xl p-6 shadow-sm">
@@ -77,7 +77,7 @@ export default function Nosotros() {
               </div>
               {/* Flecha entre tarjetas */}
               {i < 3 && (
-                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-3xl text-[#3D3D3D] opacity-40">
+                <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-3xl text-[#3D3D3D] opacity-40">
                   →
                 </div>
               )}

@@ -71,41 +71,41 @@ export default function Productos() {
   };
 
   return (
-    <section id="productos" className="relative bg-[#F7EAE4] w-full min-h-screen py-24 overflow-hidden flex items-center">
-      
+    <section id="productos" className="relative bg-[#F7EAE4] w-full min-h-screen py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden flex items-center">
+
       {/* CAPA 1: IMAGEN DEL PAISAJE (Fondo profundo) */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/PRODUCTOS100-32.png" 
+        <img
+          src="/PRODUCTOS100-32.png"
           className="absolute bottom-0 w-full h-full object-contain"
           alt="Paisaje Bellavista"
         />
       </div>
 
       {/* CAPA 3: CONTENIDO (Productos y Texto) */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-8 sm:px-16 lg:px-24">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-24">
         
         {/* Controles de navegación */}
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-6 sm:mb-8">
           <button
             onClick={prevSlide}
             disabled={totalSlides <= 1}
-            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-2 sm:p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             aria-label={t('productos.productosAnteriores')}
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
 
           {/* Indicadores de slides */}
-          <div className="flex gap-2">
+          <div className="flex gap-1.5 sm:gap-2">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`h-3 rounded-full transition-all ${
+                className={`h-2 sm:h-3 rounded-full transition-all ${
                   currentSlide === index
-                    ? 'w-8 bg-[#5D8B3F]'
-                    : 'w-3 bg-[#5D8B3F]/30 hover:bg-[#5D8B3F]/50'
+                    ? 'w-6 sm:w-8 bg-[#5D8B3F]'
+                    : 'w-2 sm:w-3 bg-[#5D8B3F]/30 hover:bg-[#5D8B3F]/50'
                 }`}
                 aria-label={`${t('productos.irAlSlide')} ${index + 1}`}
               />
@@ -115,10 +115,10 @@ export default function Productos() {
           <button
             onClick={nextSlide}
             disabled={totalSlides <= 1}
-            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-2 sm:p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             aria-label={t('productos.siguientesProductos')}
           >
-            <ChevronRight size={28} />
+            <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
         </div>
 
@@ -129,17 +129,16 @@ export default function Productos() {
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-              <div 
+              <div
                 key={slideIndex}
-                className="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12"
+                className="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12"
               >
                 {listaProductos
                   .slice(slideIndex * productosPerSlide, (slideIndex + 1) * productosPerSlide)
                   .map((prod, index) => (
-                    <div 
-                      key={index} 
-                      className="group relative flex flex-col items-center transition-all duration-500"
-                      style={{ minHeight: '550px' }}
+                    <div
+                      key={index}
+                      className="group relative flex flex-col items-center transition-all duration-500 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px]"
                     >
                       {/* Contenedor con posicionamiento absoluto para máxima flexibilidad */}
                       <div className="relative w-full h-full overflow-visible">
@@ -157,10 +156,10 @@ export default function Productos() {
                           <img
                             src={prod.imagen}
                             alt={t(prod.nombreKey)}
-                            className="w-[298px] h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
+                            className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[270px] md:h-[270px] lg:w-[298px] lg:h-[298px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
                           />
                           {/* Sombra de contacto */}
-                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black/25 blur-xl rounded-full -z-10"></div>
+                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-4 sm:w-28 sm:h-5 lg:w-32 lg:h-6 bg-black/25 blur-xl rounded-full -z-10"></div>
                         </div>
 
                         {/* Etiqueta de madera - Posicionable con z-index superior */}
@@ -172,8 +171,8 @@ export default function Productos() {
                             transform: 'translate(-50%, -50%)',
                           }}
                         >
-                          <div className="bg-[#F2E8DF] border-x-4 border-b-2 border-[#7A5C41] px-6 py-2 shadow-lg whitespace-nowrap">
-                            <h3 className="text-xl font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
+                          <div className="bg-[#F2E8DF] border-x-2 sm:border-x-3 lg:border-x-4 border-b-2 border-[#7A5C41] px-3 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-2 shadow-lg whitespace-nowrap">
+                            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]">
                               {t(prod.nombreKey)}
                             </h3>
                           </div>

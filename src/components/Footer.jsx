@@ -44,16 +44,16 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           
           {/* COLUMNA 1 - Logo y descripción */}
-          <div className="flex flex-col items-start -mt-40 md:-mt-44">
+          <div className="flex flex-col items-start -mt-32 sm:-mt-36 md:-mt-44">
             {/* Logo grande que sobrepone la curva */}
-            <img 
-              src="/VERSIONES LOGO-02.png" 
-              alt="Productos BellaVista" 
-              className="w-48 md:w-56 lg:w-64 h-auto mb-1"
+            <img
+              src="/VERSIONES LOGO-02.png"
+              alt="Productos BellaVista"
+              className="w-40 sm:w-48 md:w-56 lg:w-64 h-auto mb-1"
             />
-            
+
             {/* Textos debajo del logo */}
-            <div className="text-left space-y-2 md:-mt-20">
+            <div className="text-left space-y-2 -mt-12 sm:-mt-16 md:-mt-20">
               <p className="text-sm md:text-base text-gray-700 font-semibold leading-tight">
                 {t('footer.tagline')}
               </p>
