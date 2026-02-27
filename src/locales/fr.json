@@ -55,7 +55,8 @@
   "productoDetalle": {
     "ctaTitulo": "Intéressé par ce produit ? Contactez-nous pour un devis personnalisé.",
     "cotizarWhatsapp": "Devis par WhatsApp",
-    "verTodos": "Voir tous les produits"
+    "verTodos": "Voir tous les produits",
+    "formatos": "Formats disponibles"
   },
   "nosotros": {
     "titulo": "Processus d'Achat",
