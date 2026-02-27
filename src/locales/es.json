@@ -55,7 +55,8 @@
   "productoDetalle": {
     "ctaTitulo": "¿Interesado en este producto? Contáctanos para una cotización personalizada.",
     "cotizarWhatsapp": "Cotizar por WhatsApp",
-    "verTodos": "Ver todos los productos"
+    "verTodos": "Ver todos los productos",
+    "formatos": "Formatos disponibles"
   },
   "nosotros": {
     "titulo": "Proceso de Compra",

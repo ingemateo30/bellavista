@@ -55,7 +55,8 @@
   "productoDetalle": {
     "ctaTitulo": "Interested in this product? Contact us for a personalized quote.",
     "cotizarWhatsapp": "Get Quote via WhatsApp",
-    "verTodos": "View all products"
+    "verTodos": "View all products",
+    "formatos": "Available formats"
   },
   "nosotros": {
     "titulo": "Purchase Process",
