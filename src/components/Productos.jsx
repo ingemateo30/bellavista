@@ -1,215 +1,133 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { listaProductos } from '../data/productos';
+
+// Aspect ratio del fondo de gondola principal: 7877×3774 → 47.9%
+const GONDOLA_PB = '47.9%';
 
 export default function Productos() {
   const { t } = useTranslation();
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Cada producto tiene posiciones personalizables (0-100 en %)
-  const listaProductos = [
-    {
-      nombreKey: 'productos.panelaPulverizada',
-      imagen: '/PRODUCTOS.png',
-      categoriaKey: 'productos.endulzantes',
-      // Posiciones del producto (imagen)
-      productoTop: 65,    // % desde arriba
-      productoLeft: 33,   // % desde izquierda
-      productoScale: 1.5, // Escala de la imagen (1.3 = 30% más grande)
-      // Posiciones del letrero
-      letreroTop: 111.5,     // % desde arriba
-      letreroLeft: 28,    // % desde izquierda
-    },
-    {
-      nombreKey: 'productos.piloncillo',
-      imagen: '/PRODUCTOS (5).png',
-      categoriaKey: 'productos.tradicional',
-      productoTop: 70,
-      productoLeft: 45,
-      productoScale: 3.5,
-      letreroTop: 111.5,
-      letreroLeft: 40,
-    },
-    {
-      nombreKey: 'productos.cafe',
-      imagen: '/PRODUCTOS (3).png',
-      categoriaKey: 'productos.premium',
-      productoTop: 70,
-      productoLeft: 43,
-      productoScale: 4.3,
-      letreroTop: 111.5,
-      letreroLeft: 52,
-    },
-    {
-      nombreKey: 'productos.derivados',
-      imagen: '/PRODUCTOS (6).png',
-      categoriaKey: 'productos.proximamente',
-      productoTop: 80,
-      productoLeft: 43,
-      productoScale: 8.3,
-      letreroTop: 111.5,
-      letreroLeft: 55,
-    },
-
-    // Puedes agregar más productos aquí
-  ];
-
-  const productosPerSlide = 4;
-  const totalSlides = Math.ceil(listaProductos.length / productosPerSlide);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const getCurrentProducts = () => {
-    const start = currentSlide * productosPerSlide;
-    return listaProductos.slice(start, start + productosPerSlide);
-  };
 
   return (
-    <section id="productos" className="relative bg-[#F7EAE4] w-full min-h-screen py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden flex items-center">
+    <section id="productos" className="w-full bg-[#F7EAE4]">
 
-      {/* CAPA 1: IMAGEN DEL PAISAJE (Fondo profundo) */}
-      <div className="absolute inset-0 z-0">
+      {/* ── DESKTOP: Gondola con productos encima ── */}
+      <div className="hidden md:block relative w-full overflow-hidden" style={{ paddingBottom: GONDOLA_PB }}>
+
+        {/* Fondo de gondola – mantiene su aspect ratio exacto */}
         <img
           src="/PRODUCTOS100-32.png"
-          className="absolute bottom-0 w-full h-full object-contain"
-          alt="Paisaje Bellavista"
+          alt="Gondola Bellavista"
+          className="absolute inset-0 w-full h-full"
+          style={{ objectFit: 'fill' }}
         />
+
+        {/* Fila de productos posicionada sobre el estante */}
+        <div
+          className="absolute inset-0 flex items-end justify-evenly"
+          style={{ paddingBottom: '6%', paddingLeft: '8%', paddingRight: '8%' }}
+        >
+          {listaProductos.map((prod) => (
+            <Link
+              key={prod.id}
+              to={`/producto/${prod.slug}`}
+              className="group flex flex-col items-center cursor-pointer"
+              style={{ textDecoration: 'none' }}
+            >
+              {/* Imagen del producto */}
+              <div className="relative">
+                <img
+                  src={prod.imagen}
+                  alt={t(prod.nombreKey)}
+                  className="object-contain transition-transform duration-300 group-hover:-translate-y-2"
+                  style={{
+                    width: 'clamp(70px, 9vw, 165px)',
+                    height: 'clamp(70px, 9vw, 165px)',
+                    filter: 'drop-shadow(0 12px 20px rgba(0,0,0,0.45))',
+                  }}
+                />
+                {/* Sombra de contacto */}
+                <div
+                  className="absolute left-1/2 -translate-x-1/2 bg-black/20 blur-md rounded-full"
+                  style={{ bottom: '-4px', width: '60%', height: '8px' }}
+                />
+              </div>
+
+              {/* Letrero de madera */}
+              <div
+                className="mt-2 bg-[#F2E8DF] border-b-2 border-l border-r border-[#7A5C41] shadow-md whitespace-nowrap"
+                style={{ padding: 'clamp(4px, 0.4vw, 8px) clamp(8px, 0.9vw, 18px)' }}
+              >
+                <h3
+                  className="font-bold text-[#2C1810] text-center"
+                  style={{
+                    fontFamily: "'Patrick Hand SC', 'Kalam', cursive",
+                    fontSize: 'clamp(10px, 1vw, 16px)',
+                  }}
+                >
+                  {t(prod.nombreKey)}
+                </h3>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
 
-      {/* CAPA 3: CONTENIDO (Productos y Texto) */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-24">
-        
-        {/* Controles de navegación */}
-        <div className="flex justify-between items-center mb-6 sm:mb-8">
-          <button
-            onClick={prevSlide}
-            disabled={totalSlides <= 1}
-            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-2 sm:p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            aria-label={t('productos.productosAnteriores')}
-          >
-            <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
-          </button>
+      {/* ── MÓVIL: Cards sin gondola ── */}
+      <div className="md:hidden bg-[#F7EAE4] px-5 py-10">
+        <h2
+          className="text-center font-bold text-[#2C1810] mb-8"
+          style={{ fontFamily: "'Patrick Hand SC', 'Kalam', cursive", fontSize: '1.6rem' }}
+        >
+          {t('navbar.productos')}
+        </h2>
 
-          {/* Indicadores de slides */}
-          <div className="flex gap-1.5 sm:gap-2">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`h-2 sm:h-3 rounded-full transition-all ${
-                  currentSlide === index
-                    ? 'w-6 sm:w-8 bg-[#5D8B3F]'
-                    : 'w-2 sm:w-3 bg-[#5D8B3F]/30 hover:bg-[#5D8B3F]/50'
-                }`}
-                aria-label={`${t('productos.irAlSlide')} ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={nextSlide}
-            disabled={totalSlides <= 1}
-            className="bg-[#5D8B3F] hover:bg-[#4a6f32] text-white p-2 sm:p-3 rounded-full shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            aria-label={t('productos.siguientesProductos')}
-          >
-            <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
-          </button>
-        </div>
-
-        {/* Slider de Productos */}
-        <div className="relative overflow-visible">
-          <div 
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-              <div
-                key={slideIndex}
-                className="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12"
-              >
-                {listaProductos
-                  .slice(slideIndex * productosPerSlide, (slideIndex + 1) * productosPerSlide)
-                  .map((prod, index) => (
-                    <div
-                      key={index}
-                      className="group relative transition-all duration-500"
-                      style={{
-                        minHeight: 'clamp(400px, 50vh, 600px)',
-                        aspectRatio: '1 / 1'
-                      }}
-                    >
-                      {/* Contenedor con posiciones relativas a la pantalla */}
-                      <div className="relative w-full h-full overflow-visible">
-
-                        {/* Imagen del Producto - Posicionada proporcionalmente */}
-                        <div
-                          className="absolute transition-all duration-500 group-hover:-translate-y-2 z-10"
-                          style={{
-                            top: `${prod.productoTop}%`,
-                            left: `${prod.productoLeft}%`,
-                            transform: `translate(-50%, -50%)`,
-                          }}
-                        >
-                          <img
-                            src={prod.imagen}
-                            alt={t(prod.nombreKey)}
-                            className="object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)]"
-                            style={{
-                              width: `clamp(150px, ${15 * (prod.productoScale || 1)}vw, ${298 * (prod.productoScale || 1)}px)`,
-                              height: `clamp(150px, ${15 * (prod.productoScale || 1)}vw, ${298 * (prod.productoScale || 1)}px)`,
-                            }}
-                          />
-                          {/* Sombra de contacto */}
-                          <div
-                            className="absolute left-1/2 -translate-x-1/2 bg-black/25 blur-xl rounded-full"
-                            style={{
-                              bottom: '0',
-                              width: `clamp(60px, 8vw, 120px)`,
-                              height: `clamp(15px, 2vw, 25px)`,
-                            }}
-                          ></div>
-                        </div>
-
-                        {/* Etiqueta de madera - Posicionada proporcionalmente */}
-                        <div
-                          className="absolute transition-all duration-500 group-hover:-translate-y-2 z-20"
-                          style={{
-                            top: `${prod.letreroTop}%`,
-                            left: `${prod.letreroLeft}%`,
-                            transform: 'translate(-50%, -50%)',
-                          }}
-                        >
-                          <div
-                            className="bg-[#F2E8DF] border-b-2 border-[#7A5C41] shadow-lg whitespace-nowrap"
-                            style={{
-                              borderLeftWidth: `clamp(2px, 0.3vw, 4px)`,
-                              borderRightWidth: `clamp(2px, 0.3vw, 4px)`,
-                              padding: `clamp(6px, 1vw, 12px) clamp(12px, 2vw, 24px)`,
-                            }}
-                          >
-                            <h3
-                              className="font-bold text-[#2C1810] font-['Patrick_Hand_SC',_cursive]"
-                              style={{
-                                fontSize: `clamp(14px, 1.5vw, 20px)`,
-                              }}
-                            >
-                              {t(prod.nombreKey)}
-                            </h3>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  ))}
+        <div className="grid grid-cols-2 gap-5">
+          {listaProductos.map((prod) => (
+            <Link
+              key={prod.id}
+              to={`/producto/${prod.slug}`}
+              className="group bg-white rounded-2xl shadow-md overflow-hidden flex flex-col items-center p-5 active:scale-95 transition-transform duration-150"
+              style={{ textDecoration: 'none' }}
+            >
+              {/* Imagen */}
+              <div className="w-full flex justify-center mb-3">
+                <img
+                  src={prod.imagen}
+                  alt={t(prod.nombreKey)}
+                  className="object-contain"
+                  style={{ width: '100%', maxWidth: '120px', height: '120px' }}
+                />
               </div>
-            ))}
-          </div>
+
+              {/* Categoría */}
+              <span
+                className="text-[#5D8B3F] font-semibold uppercase tracking-wide mb-1"
+                style={{ fontSize: '0.65rem' }}
+              >
+                {t(prod.categoriaKey)}
+              </span>
+
+              {/* Nombre */}
+              <h3
+                className="text-[#2C1810] font-bold text-center leading-tight"
+                style={{
+                  fontFamily: "'Patrick Hand SC', 'Kalam', cursive",
+                  fontSize: '1rem',
+                }}
+              >
+                {t(prod.nombreKey)}
+              </h3>
+
+              {/* Ver más */}
+              <span
+                className="mt-3 text-[#5D8B3F] text-xs font-semibold border border-[#5D8B3F] rounded-full px-3 py-1 group-hover:bg-[#5D8B3F] group-hover:text-white transition-colors"
+              >
+                {t('productos.verDetalle')}
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

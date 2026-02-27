@@ -47,7 +47,15 @@
     "proximamente": "Coming Soon",
     "productosAnteriores": "Previous products",
     "siguientesProductos": "Next products",
-    "irAlSlide": "Go to slide"
+    "irAlSlide": "Go to slide",
+    "verDetalle": "See more",
+    "noEncontrado": "Product not found.",
+    "volverInicio": "Back to home"
+  },
+  "productoDetalle": {
+    "ctaTitulo": "Interested in this product? Contact us for a personalized quote.",
+    "cotizarWhatsapp": "Get Quote via WhatsApp",
+    "verTodos": "View all products"
   },
   "nosotros": {
     "titulo": "Purchase Process",
