@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const location = useLocation();
+
+  // En sub-páginas (ej: /producto/...) los links de sección van con prefijo /#
+  const isHome = location.pathname === '/';
+  const navHref = (hash) => (isHome ? hash : `/${hash}`);
 
   return (
     <>
@@ -27,35 +33,35 @@ export default function Navbar() {
             {/* Menu Desktop - Centrado */}
             <div className="hidden md:flex items-center justify-center flex-1 space-x-8">
               <a
-                href="#inicio"
+                href={navHref('#inicio')}
                 className="text-[#4A4A4A] hover:text-[#5D8B3F] transition-colors font-medium"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
               >
                 {t('navbar.inicio')}
               </a>
               <a
-                href="#productos"
+                href={navHref('#productos')}
                 className="text-[#4A4A4A] hover:text-[#5D8B3F] transition-colors font-medium"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
               >
                 {t('navbar.productos')}
               </a>
               <a
-                href="#exportacion"
+                href={navHref('#exportacion')}
                 className="text-[#4A4A4A] hover:text-[#5D8B3F] transition-colors font-medium"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
               >
                 {t('navbar.exportacion')}
               </a>
               <a
-                href="#contacto"
+                href={navHref('#contacto')}
                 className="text-[#4A4A4A] hover:text-[#5D8B3F] transition-colors font-medium"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
               >
                 {t('navbar.contacto')}
               </a>
               <a
-                href="#nosotros"
+                href={navHref('#nosotros')}
                 className="text-[#4A4A4A] hover:text-[#5D8B3F] transition-colors font-medium"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
               >
@@ -67,7 +73,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-3">
               <LanguageSwitcher />
               <a
-                href="#contacto"
+                href={navHref('#contacto')}
                 className="bg-[#5D8B3F] text-white px-5 py-2.5 rounded-lg hover:bg-[#4A7032] transition-all font-medium flex items-center gap-2 shadow-sm"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
               >
@@ -98,7 +104,7 @@ export default function Navbar() {
                 <LanguageSwitcher />
               </div>
               <a
-                href="#inicio"
+                href={navHref('#inicio')}
                 className="block px-3 py-2 text-[#4A4A4A] hover:bg-gray-100 rounded"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}
@@ -106,7 +112,7 @@ export default function Navbar() {
                 {t('navbar.inicio')}
               </a>
               <a
-                href="#productos"
+                href={navHref('#productos')}
                 className="block px-3 py-2 text-[#4A4A4A] hover:bg-gray-100 rounded"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}
@@ -114,7 +120,7 @@ export default function Navbar() {
                 {t('navbar.productos')}
               </a>
               <a
-                href="#exportacion"
+                href={navHref('#exportacion')}
                 className="block px-3 py-2 text-[#4A4A4A] hover:bg-gray-100 rounded"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}
@@ -122,7 +128,7 @@ export default function Navbar() {
                 {t('navbar.exportacion')}
               </a>
               <a
-                href="#contacto"
+                href={navHref('#contacto')}
                 className="block px-3 py-2 text-[#4A4A4A] hover:bg-gray-100 rounded"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}
@@ -130,7 +136,7 @@ export default function Navbar() {
                 {t('navbar.contacto')}
               </a>
               <a
-                href="#nosotros"
+                href={navHref('#nosotros')}
                 className="block px-3 py-2 text-[#4A4A4A] hover:bg-gray-100 rounded"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}
@@ -138,7 +144,7 @@ export default function Navbar() {
                 {t('navbar.nosotros')}
               </a>
               <a
-                href="#contacto"
+                href={navHref('#contacto')}
                 className="block px-3 py-2 bg-[#5D8B3F] text-white rounded text-center mt-2"
                 style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
                 onClick={() => setIsOpen(false)}

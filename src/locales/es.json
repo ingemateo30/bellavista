@@ -47,7 +47,15 @@
     "proximamente": "Próximamente",
     "productosAnteriores": "Productos anteriores",
     "siguientesProductos": "Siguientes productos",
-    "irAlSlide": "Ir al slide"
+    "irAlSlide": "Ir al slide",
+    "verDetalle": "Ver más",
+    "noEncontrado": "Producto no encontrado.",
+    "volverInicio": "Volver al inicio"
+  },
+  "productoDetalle": {
+    "ctaTitulo": "¿Interesado en este producto? Contáctanos para una cotización personalizada.",
+    "cotizarWhatsapp": "Cotizar por WhatsApp",
+    "verTodos": "Ver todos los productos"
   },
   "nosotros": {
     "titulo": "Proceso de Compra",
