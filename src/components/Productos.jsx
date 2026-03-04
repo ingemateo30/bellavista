@@ -107,11 +107,14 @@ export default function Productos() {
 
         {/* Navegación de páginas – solo si hay más de 1 página */}
         {totalPaginas > 1 && (
-          <div className="flex justify-center items-center gap-6 py-4 bg-[#F7EAE4]">
+          <div
+            className="relative flex justify-center items-center gap-6 py-6 bg-[#F7EAE4]"
+            style={{ zIndex: 20 }}
+          >
             <button
-              onClick={() => setPagina((p) => Math.max(0, p - 1))}
+              onClick={(e) => { e.stopPropagation(); setPagina((p) => Math.max(0, p - 1)); }}
               disabled={pagina === 0}
-              className="text-[#5D8B3F] font-semibold disabled:opacity-30 hover:text-[#4A7032] transition-colors text-sm"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#5D8B3F] text-[#5D8B3F] font-semibold disabled:opacity-30 hover:bg-[#5D8B3F] hover:text-white transition-all text-sm"
               style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
             >
               ← {t('productos.productosAnteriores')}
@@ -121,7 +124,7 @@ export default function Productos() {
               {Array.from({ length: totalPaginas }, (_, i) => (
                 <button
                   key={i}
-                  onClick={() => setPagina(i)}
+                  onClick={(e) => { e.stopPropagation(); setPagina(i); }}
                   aria-label={`${t('productos.irAlSlide')} ${i + 1}`}
                   className="rounded-full transition-all"
                   style={{
@@ -134,9 +137,9 @@ export default function Productos() {
             </div>
 
             <button
-              onClick={() => setPagina((p) => Math.min(totalPaginas - 1, p + 1))}
+              onClick={(e) => { e.stopPropagation(); setPagina((p) => Math.min(totalPaginas - 1, p + 1)); }}
               disabled={pagina === totalPaginas - 1}
-              className="text-[#5D8B3F] font-semibold disabled:opacity-30 hover:text-[#4A7032] transition-colors text-sm"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#5D8B3F] text-[#5D8B3F] font-semibold disabled:opacity-30 hover:bg-[#5D8B3F] hover:text-white transition-all text-sm"
               style={{ fontFamily: 'Kumbh Sans, sans-serif' }}
             >
               {t('productos.siguientesProductos')} →
