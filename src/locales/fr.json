@@ -116,6 +116,19 @@
     "titulo": "Bellavista de l'intérieur",
     "subtitulo": "Découvrez les installations, le processus et les produits qui font de Bellavista une référence de qualité artisanale colombienne."
   },
+  "imageSection": {
+    "titulo": "Notre Panela",
+    "etiqueta": "Panela 100% Naturelle",
+    "imgAlt": "Panela en poudre artisanale Bellavista",
+    "izq1Titulo": "Cultures d'Altitude",
+    "izq1Desc": "Canne à sucre cultivée à plus de 1 200 m.s.n.m. dans les montagnes de Santander, Colombie.",
+    "izq2Titulo": "Sans Additifs",
+    "izq2Desc": "100% naturelle, sans conservateurs ni colorants. Panela pure comme la nature l'entend.",
+    "der1Titulo": "Procédé Artisanal",
+    "der1Desc": "Production traditionnelle qui préserve tous les nutriments et la saveur authentique de la canne.",
+    "der2Titulo": "Riche en Minéraux",
+    "der2Desc": "Source naturelle de calcium, fer, magnésium et potassium. Énergie propre pour votre corps."
+  },
   "footer": {
     "nosotros": "À Propos",
     "tagline": "Qualité Colombienne pour le Marché Mondial",

@@ -125,7 +125,7 @@ export default function Hero() {
             {/* Botones */}
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <a
-                href="https://wa.me/573184550936"
+                href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#5D8B3F] text-white px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-[#4E7535] transition-all font-bold shadow-lg shadow-[#5D8B3F]/20 text-xs sm:text-sm"

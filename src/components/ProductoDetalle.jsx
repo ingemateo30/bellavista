@@ -216,7 +216,7 @@ export default function ProductoDetalle() {
               {/* CTA */}
               <div className="mt-2 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://wa.me/573101234567"
+                  href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#5D8B3F] hover:bg-[#4A7032] text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-md transition-all hover:scale-105"
