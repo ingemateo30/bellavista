@@ -1,163 +1,161 @@
 import { useTranslation } from 'react-i18next';
 
+const ticker = [
+  '100% Natural',
+  'Sin refinar',
+  'Sin procesar',
+  'Artesanal',
+  'Origen Colombia',
+  'Para exportar',
+  'Calidad certificada',
+  'Panela pura',
+];
+
 const stats = [
-  { numberKey: 'exportcta.stat1Numero', labelKey: 'exportcta.stat1Label' },
-  { numberKey: 'exportcta.stat2Numero', labelKey: 'exportcta.stat2Label' },
-  { numberKey: 'exportcta.stat3Numero', labelKey: 'exportcta.stat3Label' },
-  { numberKey: 'exportcta.stat4Numero', labelKey: 'exportcta.stat4Label' },
+  { num: '4+',    label: 'exportcta.stat1Label' },
+  { num: '100%',  label: 'exportcta.stat2Label' },
+  { num: '15+',   label: 'exportcta.stat3Label' },
+  { num: 'B2B',   label: 'exportcta.stat4Label' },
 ];
 
 export default function ExportCTA() {
   const { t } = useTranslation();
 
+  const tickerItems = [...ticker, ...ticker]; // duplicar para loop continuo
+
   return (
-    <section id="exportar" className="relative overflow-hidden">
-      {/* Ola superior invertida para conectar con sección anterior */}
-      <div className="absolute top-0 left-0 w-full pointer-events-none z-10">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-12 sm:h-16">
-          <path d="M0,0 C360,60 1080,60 1440,0 L1440,0 L0,0 Z" fill="#F7EAE4" />
-        </svg>
+    <section id="exportar" className="overflow-hidden">
+
+      {/* ── TICKER AMARILLO ─────────────────────────────────── */}
+      <div className="bg-[#F4C430] py-3 overflow-hidden">
+        <div className="flex whitespace-nowrap marquee-track">
+          {tickerItems.map((item, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-3 mx-6 text-[#1E3A0E] text-sm font-bold uppercase tracking-widest font-['Kumbh_Sans',_sans-serif]"
+            >
+              {item}
+              <span className="text-[#1E3A0E]/40 text-lg">✦</span>
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* Fondo oscuro principal */}
-      <div
-        className="relative py-24 sm:py-32"
-        style={{
-          background: 'linear-gradient(135deg, #2C1810 0%, #3D2410 40%, #1A3020 100%)',
-        }}
-      >
-        {/* Patrón decorativo de fondo */}
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F2E8DF' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+      {/* ── CUERPO PRINCIPAL ────────────────────────────────── */}
+      <div className="bg-[#FAFAF7] py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto px-6">
 
-        {/* Imagen de hoja decorativa */}
-        <img
-          src="/hojas.svg"
-          alt=""
-          className="absolute right-0 top-0 h-full opacity-10 pointer-events-none object-contain"
-        />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          {/* Eyebrow */}
-          <p className="text-center text-[#D4B57E] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase mb-4 font-['Kumbh_Sans',_sans-serif]">
-            {t('exportcta.eyebrow')}
-          </p>
+            {/* Columna izquierda — texto */}
+            <div>
+              <p className="text-[#5D8B3F] text-xs font-bold tracking-[0.35em] uppercase mb-5 font-['Kumbh_Sans',_sans-serif]">
+                {t('exportcta.eyebrow')}
+              </p>
 
-          {/* Título principal */}
-          <h2 className="text-center text-[#F2E8DF] text-[36px] sm:text-[50px] md:text-[62px] leading-tight mb-6 font-['Schoolbell',_cursive]">
-            {t('exportcta.titulo')}
-          </h2>
+              <h2 className="text-[#1E3A0E] text-[42px] sm:text-[54px] md:text-[62px] leading-[1.05] mb-6 font-['Schoolbell',_cursive]">
+                {t('exportcta.titulo')}
+              </h2>
 
-          {/* Línea dorada */}
-          <div className="flex justify-center mb-8">
-            <div className="w-24 h-[2px] bg-[#D4B57E]" />
-          </div>
+              {/* Línea verde */}
+              <div className="w-14 h-1 bg-[#5D8B3F] rounded-full mb-7" />
 
-          {/* Subtítulo */}
-          <p className="text-center text-[#C8B8A8] text-[15px] sm:text-[17px] leading-relaxed max-w-2xl mx-auto mb-14 font-['Kumbh_Sans',_sans-serif]">
-            {t('exportcta.subtitulo')}
-          </p>
+              <p className="text-[#4A6040] text-[16px] sm:text-[17px] leading-relaxed mb-10 font-['Kumbh_Sans',_sans-serif] max-w-lg">
+                {t('exportcta.subtitulo')}
+              </p>
 
-          {/* Estadísticas */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-14">
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-[#D4B57E] text-[38px] sm:text-[48px] font-['Schoolbell',_cursive] leading-none mb-2">
-                  {t(stat.numberKey)}
-                </div>
-                <div className="text-[#C8B8A8] text-xs sm:text-sm font-['Kumbh_Sans',_sans-serif] leading-snug uppercase tracking-wider">
-                  {t(stat.labelKey)}
-                </div>
-                {i < stats.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 right-0 w-px h-12 bg-[#D4B57E]/20 -translate-y-1/2" />
-                )}
-              </div>
-            ))}
-          </div>
+              {/* Beneficios rápidos */}
+              <ul className="space-y-3 mb-10">
+                {[
+                  t('exportcta.card1Titulo'),
+                  t('exportcta.card2Titulo'),
+                  t('exportcta.card3Titulo'),
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-[#2C4A20] font-['Kumbh_Sans',_sans-serif] text-[15px]">
+                    <span className="w-5 h-5 rounded-full bg-[#5D8B3F]/15 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-3 h-3 text-[#5D8B3F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
 
-          {/* Separador */}
-          <div className="flex items-center gap-4 max-w-lg mx-auto mb-14">
-            <div className="flex-1 h-px bg-[#D4B57E]/25" />
-            <svg className="w-5 h-5 text-[#D4B57E] opacity-60" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-            </svg>
-            <div className="flex-1 h-px bg-[#D4B57E]/25" />
-          </div>
-
-          {/* Tarjetas de beneficios */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-14">
-            {[
-              {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ),
-                titleKey: 'exportcta.card1Titulo',
-                descKey: 'exportcta.card1Desc',
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                  </svg>
-                ),
-                titleKey: 'exportcta.card2Titulo',
-                descKey: 'exportcta.card2Desc',
-              },
-              {
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                  </svg>
-                ),
-                titleKey: 'exportcta.card3Titulo',
-                descKey: 'exportcta.card3Desc',
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors duration-300"
+              <a
+                href="#contacto"
+                className="inline-flex items-center gap-3 bg-[#5D8B3F] text-white px-9 py-4 rounded-xl font-['Kumbh_Sans',_sans-serif] font-bold text-[15px] hover:bg-[#4A7032] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
               >
-                <div className="text-[#D4B57E] flex justify-center mb-4">{card.icon}</div>
-                <h3 className="text-[#F2E8DF] text-[17px] mb-2 font-['Handlee',_cursive]">
-                  {t(card.titleKey)}
-                </h3>
-                <p className="text-[#C8B8A8] text-[13px] leading-relaxed font-['Kumbh_Sans',_sans-serif]">
-                  {t(card.descKey)}
-                </p>
-              </div>
-            ))}
-          </div>
+                {t('exportcta.ctaBoton')}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
 
-          {/* CTA final */}
-          <div className="text-center">
-            <a
-              href="#contacto"
-              className="inline-flex items-center gap-3 bg-[#D4B57E] text-[#2C1810] px-10 py-4 rounded-xl font-['Kumbh_Sans',_sans-serif] font-bold text-[16px] hover:bg-[#C9A96A] transition-all shadow-lg shadow-black/30 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
-            >
-              {t('exportcta.ctaBoton')}
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <p className="text-[#C8B8A8]/60 text-xs mt-4 font-['Kumbh_Sans',_sans-serif]">
-              {t('exportcta.ctaSubtexto')}
-            </p>
+              <p className="text-[#7A9A6A] text-xs mt-4 font-['Kumbh_Sans',_sans-serif]">
+                {t('exportcta.ctaSubtexto')}
+              </p>
+            </div>
+
+            {/* Columna derecha — estadísticas */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((s, i) => (
+                <div
+                  key={i}
+                  className={`rounded-2xl p-8 flex flex-col items-center justify-center text-center ${
+                    i === 0
+                      ? 'bg-[#5D8B3F] text-white'
+                      : i === 1
+                      ? 'bg-[#F4C430] text-[#1E3A0E]'
+                      : 'bg-[#EEF3E9] text-[#1E3A0E]'
+                  }`}
+                >
+                  <span
+                    className={`text-[48px] sm:text-[58px] leading-none font-['Schoolbell',_cursive] mb-2 ${
+                      i === 0 ? 'text-white' : i === 1 ? 'text-[#1E3A0E]' : 'text-[#5D8B3F]'
+                    }`}
+                  >
+                    {s.num}
+                  </span>
+                  <span
+                    className={`text-xs sm:text-sm uppercase tracking-widest font-['Kumbh_Sans',_sans-serif] font-bold ${
+                      i === 0 ? 'text-white/80' : 'text-[#1E3A0E]/70'
+                    }`}
+                  >
+                    {t(s.label)}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Ola inferior para conectar con la siguiente sección */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-10">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-12 sm:h-16">
-          <path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60 Z" fill="#F2E8DF" />
-        </svg>
+      {/* ── FRANJA VERDE INFERIOR ───────────────────────────── */}
+      <div className="bg-[#3A6B2E] py-5">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
+            {[
+              { icon: '🌿', text: '100% Natural' },
+              { icon: '🤝', text: t('exportcta.card1Titulo') },
+              { icon: '📦', text: t('exportcta.card3Titulo') },
+              { icon: '🌎', text: 'Exportación Global' },
+            ].map((item, i) => (
+              <span
+                key={i}
+                className="flex items-center gap-2 text-[#F2E8DF] text-sm font-['Kumbh_Sans',_sans-serif] font-medium"
+              >
+                <span>{item.icon}</span>
+                {item.text}
+                {i < 3 && (
+                  <span className="hidden sm:inline text-[#F2E8DF]/30 ml-6 text-lg">|</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
+
     </section>
   );
 }
