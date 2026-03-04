@@ -11,6 +11,7 @@
     "productos": "PRODUITS",
     "slide1": "Production et exportation de panela, piloncillo, café et autres produits agricoles, avec capacité d'approvisionnement constant et normes de qualité.",
     "slide2": "Nous connectons notre production avec des marchés internationaux en Espagne, États-Unis, Aruba et Canada.",
+    "slide3": "Découvrez l'âme de Productos Bellavista : tradition, campagne colombienne et qualité qui traverse les frontières.",
     "cotizarWhatsapp": "Devis par WhatsApp",
     "verProductos": "Voir les Produits",
     "goToSlide": "Aller à la diapositive"
@@ -88,6 +89,32 @@
     "o": "ou",
     "contactoEmail": "Contact par Email",
     "solicitarCotizacion": "Demander un Devis"
+  },
+  "exportcta": {
+    "eyebrow": "Exportations Colombiennes",
+    "titulo": "Nous apportons les saveurs de Colombie au monde",
+    "subtitulo": "Nous sommes un pont entre l'agriculture colombienne et les marchés internationaux. Produits naturels, processus certifiés et engagement réel envers chaque partenaire commercial.",
+    "stat1Numero": "4+",
+    "stat1Label": "Pays de destination",
+    "stat2Numero": "100%",
+    "stat2Label": "Naturel & artisanal",
+    "stat3Numero": "15+",
+    "stat3Label": "Années de tradition",
+    "stat4Numero": "B2B",
+    "stat4Label": "Focus grossiste",
+    "card1Titulo": "Portée Mondiale",
+    "card1Desc": "Nous exportons vers l'Espagne, les États-Unis, Aruba, le Canada et les marchés émergents avec une logistique fiable.",
+    "card2Titulo": "Qualité Certifiée",
+    "card2Desc": "Processus standardisés, traçabilité complète et conformité aux normes internationales.",
+    "card3Titulo": "Stock Soutenu",
+    "card3Desc": "Production continue pour garantir un approvisionnement stable et ponctuel à votre opération.",
+    "ctaBoton": "Devenir partenaire commercial",
+    "ctaSubtexto": "Sans engagement • Réponse en moins de 24 heures"
+  },
+  "galeria": {
+    "eyebrow": "Notre Entreprise",
+    "titulo": "Bellavista de l'intérieur",
+    "subtitulo": "Découvrez les installations, le processus et les produits qui font de Bellavista une référence de qualité artisanale colombienne."
   },
   "footer": {
     "nosotros": "À Propos",

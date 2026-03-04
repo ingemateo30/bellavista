@@ -11,6 +11,7 @@
     "productos": "PRODUCTOS",
     "slide1": "Producción y exportación de panela, piloncillo, café y otros productos agrícolas, con capacidad de suministro constante y estándares de calidad.",
     "slide2": "Conectamos nuestra producción con mercados internacionales en España, Estados Unidos, Aruba y Canadá.",
+    "slide3": "Descubre el alma de Productos Bellavista: tradición, campo colombiano y calidad que cruza fronteras.",
     "cotizarWhatsapp": "Cotizar por WhatsApp",
     "verProductos": "Ver Productos",
     "goToSlide": "Ir a slide"
@@ -88,6 +89,32 @@
     "o": "o",
     "contactoEmail": "Contacto por Email",
     "solicitarCotizacion": "Solicitar Cotización"
+  },
+  "exportcta": {
+    "eyebrow": "Exportación Colombiana",
+    "titulo": "Llevamos el sabor de Colombia al mundo",
+    "subtitulo": "Somos un puente entre el agro colombiano y los mercados internacionales. Productos naturales, procesos certificados y compromiso real con cada socio comercial.",
+    "stat1Numero": "4+",
+    "stat1Label": "Países destino",
+    "stat2Numero": "100%",
+    "stat2Label": "Natural y artesanal",
+    "stat3Numero": "15+",
+    "stat3Label": "Años de tradición",
+    "stat4Numero": "B2B",
+    "stat4Label": "Enfoque mayorista",
+    "card1Titulo": "Alcance Global",
+    "card1Desc": "Exportamos a España, EE.UU., Aruba, Canadá y mercados emergentes con logística confiable.",
+    "card2Titulo": "Calidad Certificada",
+    "card2Desc": "Procesos estandarizados, trazabilidad completa y cumplimiento de normas internacionales.",
+    "card3Titulo": "Inventario Sostenido",
+    "card3Desc": "Producción continua para garantizar suministro estable y oportuno a tu operación.",
+    "ctaBoton": "Conviértete en socio comercial",
+    "ctaSubtexto": "Sin compromiso • Respuesta en menos de 24 horas"
+  },
+  "galeria": {
+    "eyebrow": "Nuestra Empresa",
+    "titulo": "Bellavista por dentro",
+    "subtitulo": "Conoce las instalaciones, el proceso y los productos que hacen de Bellavista un referente de calidad artesanal colombiana."
   },
   "footer": {
     "nosotros": "Nosotros",
