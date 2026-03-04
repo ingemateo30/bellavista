@@ -10,6 +10,7 @@ import Galeria from './components/Galeria';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import Logo from './components/logo';
+import ImageSection from './components/ImageSection';
 import ProductoDetalle from './components/ProductoDetalle';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ScrollToTop from './components/ScrollToTop';
@@ -21,6 +22,7 @@ function PaginaPrincipal() {
       <Navbar />
       <Hero />
       <Logo />
+      <ImageSection />
       <div className="-mt-12">
         <Ventajas />
       </div>
