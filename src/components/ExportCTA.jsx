@@ -99,7 +99,7 @@ export default function ExportCTA() {
                   </svg>
                 </a>
                 <a
-                  href="https://wa.me/573184550936"
+                  href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-[#5D8B3F] text-[13px] font-semibold font-['Kumbh_Sans',_sans-serif] hover:text-[#4A7032] transition-colors"

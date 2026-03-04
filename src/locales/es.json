@@ -116,6 +116,19 @@
     "titulo": "Bellavista por dentro",
     "subtitulo": "Conoce las instalaciones, el proceso y los productos que hacen de Bellavista un referente de calidad artesanal colombiana."
   },
+  "imageSection": {
+    "titulo": "Nuestra Panela",
+    "etiqueta": "Panela 100% Natural",
+    "imgAlt": "Panela pulverizada artesanal Bellavista",
+    "izq1Titulo": "Cultivos de Altura",
+    "izq1Desc": "Caña de azúcar a más de 1.200 m.s.n.m. en las montañas de Santander, Colombia.",
+    "izq2Titulo": "Sin Aditivos",
+    "izq2Desc": "100% natural, sin conservantes ni colorantes. Panela pura como la naturaleza manda.",
+    "der1Titulo": "Proceso Artesanal",
+    "der1Desc": "Producción tradicional que preserva todos los nutrientes y el sabor auténtico de la caña.",
+    "der2Titulo": "Rica en Minerales",
+    "der2Desc": "Fuente natural de calcio, hierro, magnesio y potasio. Energía limpia para tu cuerpo."
+  },
   "footer": {
     "nosotros": "Nosotros",
     "tagline": "Calidad Colombiana para el mercado Mundial",

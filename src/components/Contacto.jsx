@@ -32,7 +32,7 @@ export default function Contacto() {
         {/* Botones de contacto */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8">
           <a
-            href="https://wa.me/573101234567"
+            href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#6B9456] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-sm sm:text-[15px] hover:bg-[#5A7F48] transition-all shadow-sm"

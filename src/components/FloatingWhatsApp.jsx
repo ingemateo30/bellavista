@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 const PHONE = '+573184550936';
 const PHONE_CLEAN = '573184550936';
+const DEFAULT_MSG = 'Hola, me interesa cotizar productos Bellavista. ¿Me pueden ayudar?';
 
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
   const [showNotif, setShowNotif] = useState(true);
+  const [message, setMessage] = useState('');
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -15,7 +17,16 @@ export default function FloatingWhatsApp() {
   const handleClose = () => setIsOpen(false);
 
   const handleSend = () => {
-    window.open(`https://wa.me/${PHONE_CLEAN}`, '_blank');
+    const text = message.trim() || DEFAULT_MSG;
+    window.open(`https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(text)}`, '_blank');
+    setMessage('');
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
   };
 
   return (
@@ -66,9 +77,14 @@ export default function FloatingWhatsApp() {
 
           {/* Input area */}
           <div className="p-3 bg-white flex items-center gap-2 border-t border-gray-100">
-            <div className="flex-1 bg-[#F7F3ED] rounded-full px-4 py-2 text-sm text-[#6B5E55] font-['Kumbh_Sans',_sans-serif] border border-[#E8DCCF]">
-              Escribe un mensaje...
-            </div>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Escribe un mensaje..."
+              className="flex-1 bg-[#F7F3ED] rounded-full px-4 py-2 text-sm text-[#2C1810] font-['Kumbh_Sans',_sans-serif] border border-[#E8DCCF] outline-none focus:border-[#5D8B3F] placeholder:text-[#6B5E55]"
+            />
             <button
               onClick={handleSend}
               className="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md flex-shrink-0 transition-transform hover:scale-110 active:scale-95"
@@ -84,7 +100,7 @@ export default function FloatingWhatsApp() {
           {/* Powered by */}
           <div className="text-center py-2 bg-white">
             <a
-              href={`https://wa.me/${PHONE_CLEAN}`}
+              href={`https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(DEFAULT_MSG)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[10px] text-[#6B5E55]/60 font-['Kumbh_Sans',_sans-serif] hover:text-[#5D8B3F] transition-colors"

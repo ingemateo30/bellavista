@@ -104,7 +104,7 @@ const Features = () => {
           </h4>
 
           <a
-            href="https://wa.me/tu-numero"
+            href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
             className="flex items-center gap-2 bg-[#6B9456] text-white px-8 py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-[15px] hover:bg-[#5A7F48] transition-all shadow-sm"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

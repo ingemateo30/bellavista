@@ -116,6 +116,19 @@
     "titulo": "Inside Bellavista",
     "subtitulo": "Discover the facilities, process and products that make Bellavista a benchmark of Colombian artisan quality."
   },
+  "imageSection": {
+    "titulo": "Our Panela",
+    "etiqueta": "100% Natural Panela",
+    "imgAlt": "Artisanal powdered panela by Bellavista",
+    "izq1Titulo": "Highland Crops",
+    "izq1Desc": "Sugar cane grown at over 1,200 m.a.s.l. in the mountains of Santander, Colombia.",
+    "izq2Titulo": "No Additives",
+    "izq2Desc": "100% natural, no preservatives or colorants. Pure panela just as nature intended.",
+    "der1Titulo": "Artisanal Process",
+    "der1Desc": "Traditional production that preserves all nutrients and the authentic flavor of the cane.",
+    "der2Titulo": "Rich in Minerals",
+    "der2Desc": "Natural source of calcium, iron, magnesium and potassium. Clean energy for your body."
+  },
   "footer": {
     "nosotros": "About Us",
     "tagline": "Colombian Quality for the World Market",
