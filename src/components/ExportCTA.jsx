@@ -26,23 +26,10 @@ export default function ExportCTA() {
   return (
     <section id="exportar" className="overflow-hidden">
 
-      {/* ── TICKER AMARILLO ─────────────────────────────────── */}
-      <div className="bg-[#F4C430] py-3 overflow-hidden">
-        <div className="flex whitespace-nowrap marquee-track">
-          {tickerItems.map((item, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-3 mx-6 text-[#1E3A0E] text-sm font-bold uppercase tracking-widest font-['Kumbh_Sans',_sans-serif]"
-            >
-              {item}
-              <span className="text-[#1E3A0E]/40 text-lg">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
+     
 
       {/* ── CUERPO PRINCIPAL ────────────────────────────────── */}
-      <div className="bg-[#FAFAF7] py-20 sm:py-28">
+      <div className="bg-[#F7EAE4] py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-6">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -136,10 +123,10 @@ export default function ExportCTA() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
             {[
-              { icon: '🌿', text: '100% Natural' },
-              { icon: '🤝', text: t('exportcta.card1Titulo') },
-              { icon: '📦', text: t('exportcta.card3Titulo') },
-              { icon: '🌎', text: 'Exportación Global' },
+              { icon: '', text: '100% Natural' },
+              { icon: '', text: t('exportcta.card1Titulo') },
+              { icon: '', text: t('exportcta.card3Titulo') },
+              { icon: '', text: 'Exportación Global' },
             ].map((item, i) => (
               <span
                 key={i}
