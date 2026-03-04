@@ -233,5 +233,35 @@
     "descripcion1": "We are experts in exporting artisanal products from our agriculture.",
     "descripcion2": "With Bellavista products, your wholesale company or private food brand relies on continuous and quality supply.",
     "ubicacion": "Mogotes, Colombia"
+  },
+  "proceso": {
+    "eyebrow": "Artisan Production",
+    "titulo": "From Field to Product",
+    "subtitulo": "Every block of panela travels a path of tradition, care, and craftsmanship before reaching your market.",
+    "badge": "100% certified artisan process",
+    "cultivo": {
+      "titulo": "Cane Cultivation",
+      "desc": "Grown in the mountains of Santander at over 1,200 m.a.s.l., the cane thrives without agrochemicals in mineral-rich soils."
+    },
+    "cosecha": {
+      "titulo": "Manual Harvest",
+      "desc": "Cutting is done by hand at the optimal maturity point, selecting only the finest quality cane stalks."
+    },
+    "extraccion": {
+      "titulo": "Juice Extraction",
+      "desc": "The cane is milled in the trapiche to extract fresh, dense juice loaded with natural nutrients."
+    },
+    "coccion": {
+      "titulo": "Artisan Cooking",
+      "desc": "The juice is cooked in open pans over direct fire, removing impurities and concentrating sugars without losing minerals."
+    },
+    "moldeo": {
+      "titulo": "Beating and Molding",
+      "desc": "The hot molasses is beaten and poured into molds, taking its final form: blocks, broken pieces, or fine powder."
+    },
+    "empaque": {
+      "titulo": "Packaging and Export",
+      "desc": "Every batch undergoes quality control before being packaged to international standards and shipped to our partners worldwide."
+    }
   }
 }

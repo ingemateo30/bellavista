@@ -233,5 +233,35 @@
     "descripcion1": "Nous sommes experts en exportation de produits artisanaux de notre agriculture.",
     "descripcion2": "Avec les produits Bellavista, votre entreprise de gros ou votre marque alimentaire privée compte sur un approvisionnement continu et de qualité.",
     "ubicacion": "Mogotes, Colombie"
+  },
+  "proceso": {
+    "eyebrow": "Production Artisanale",
+    "titulo": "Du Champ au Produit",
+    "subtitulo": "Chaque bloc de panela parcourt un chemin de tradition, de soin et de travail paysan avant d'atteindre votre marché.",
+    "badge": "Processus artisanal 100% certifié",
+    "cultivo": {
+      "titulo": "Culture de la Canne",
+      "desc": "Plantée dans les montagnes de Santander à plus de 1 200 m.s.n.m., la canne pousse sans agrochimiques dans des sols riches en minéraux."
+    },
+    "cosecha": {
+      "titulo": "Récolte Manuelle",
+      "desc": "La coupe est effectuée à la main au point optimal de maturité, en ne sélectionnant que les cannes de la meilleure qualité."
+    },
+    "extraccion": {
+      "titulo": "Extraction du Jus",
+      "desc": "Les cannes sont broyées dans le moulin pour extraire le jus frais, dense et chargé de nutriments naturels."
+    },
+    "coccion": {
+      "titulo": "Cuisson Artisanale",
+      "desc": "Le jus est cuit dans des chaudrons à feu direct, éliminant les impuretés et concentrant les sucres sans perdre les minéraux."
+    },
+    "moldeo": {
+      "titulo": "Brassage et Moulage",
+      "desc": "La mélasse chaude est brassée et versée dans des moules, prenant sa forme finale : blocs, morceaux ou poudre fine."
+    },
+    "empaque": {
+      "titulo": "Emballage et Exportation",
+      "desc": "Chaque lot passe par un contrôle qualité avant d'être emballé selon les normes internationales et expédié à nos partenaires dans le monde."
+    }
   }
 }

@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import Logo from './components/logo';
 import ImageSection from './components/ImageSection';
 import ProductoDetalle from './components/ProductoDetalle';
+import ProcesoProduccion from './components/ProcesoProduccion';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingSocial from './components/FloatingSocial';
@@ -27,6 +28,7 @@ function PaginaPrincipal() {
         <Ventajas />
       </div>
       <Productos />
+      <ProcesoProduccion />
       <Nosotros />
       <ExportCTA />
       <Galeria />
