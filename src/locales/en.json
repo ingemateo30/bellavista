@@ -40,6 +40,8 @@
   "productos": {
     "panelaPulverizada": "Powdered Panela",
     "piloncillo": "Piloncillo / Panela",
+    "panelaPartida": "Block Panela",
+    "panelaFraccionada": "Fractioned Panela",
     "cafe": "Origin Coffee",
     "derivados": "New Derivatives",
     "endulzantes": "Sweeteners",
@@ -57,7 +59,103 @@
     "ctaTitulo": "Interested in this product? Contact us for a personalized quote.",
     "cotizarWhatsapp": "Get Quote via WhatsApp",
     "verTodos": "View all products",
-    "formatos": "Available formats"
+    "formatos": "Available formats",
+    "infoTitle": "Product Information",
+    "caracteristicasTitle": "Characteristics",
+    "usosTitle": "Recommended Uses",
+    "origenTitle": "Origin"
+  },
+  "productosData": {
+    "panelaPulverizada": {
+      "descripcion": "Panela ground to a fine, homogeneous powder, ready to dissolve immediately. Ideal for the food service sector and food industry seeking a natural and versatile sweetener.",
+      "caracteristicas": [
+        "Fine, homogeneous grain",
+        "No additives or preservatives",
+        "100% natural cane juice",
+        "Soluble hot or cold",
+        "Rich in essential minerals",
+        "Certified for export"
+      ],
+      "usos": [
+        "Hot and cold beverages",
+        "Artisan baking",
+        "Sauces and marinades",
+        "Refined sugar substitute"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "piloncillo": {
+      "descripcion": "Traditional cone-shaped presentation of panela, widely recognized in Mexico and Central America. Artisanally produced, it preserves all the flavor and minerals of cane juice without refining.",
+      "caracteristicas": [
+        "Traditional cone shape",
+        "No refining or bleaching",
+        "High molasses content",
+        "Durable compact presentation",
+        "Robust and deep flavor",
+        "Ready for export"
+      ],
+      "usos": [
+        "Atole and hot drinks",
+        "Mole and Latin cuisine",
+        "Tamales and traditional sweets",
+        "Artisan breads"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaPartida": {
+      "descripcion": "Hand-broken panela blocks that preserve the texture and artisanal character of the traditional process. An authentic presentation that keeps all the natural properties of the cane intact.",
+      "caracteristicas": [
+        "Natural irregular pieces",
+        "Unprocessed and unrefined",
+        "Compact and firm texture",
+        "Intense caramelized flavor",
+        "No artificial additives",
+        "Certified farm origin"
+      ],
+      "usos": [
+        "Agua de panela (cane water)",
+        "Artisan sweetener",
+        "Homemade syrups",
+        "Traditional Colombian drinks"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaFraccionada": {
+      "descripcion": "Panela in uniform portions, designed for easy dosing in industrial and mass consumption applications. Combines the authenticity of the artisan process with the practicality the modern market demands.",
+      "caracteristicas": [
+        "Uniform and precise portions",
+        "Easy industrial dosing",
+        "No additives or preservatives",
+        "Packaging adaptable to your brand",
+        "100% natural cane juice",
+        "Suitable for private label"
+      ],
+      "usos": [
+        "Food industry",
+        "Bakeries and pastry shops",
+        "Bulk export",
+        "Product formulation"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "nuevosDerivados": {
+      "descripcion": "Line of new products derived from sugar cane and other Colombian agricultural crops, currently under development. Coming soon to the international market.",
+      "caracteristicas": [
+        "Currently in development",
+        "Artisanal cane base",
+        "Innovation with tradition",
+        "Export standards",
+        "Product line diversification",
+        "Available soon"
+      ],
+      "usos": [
+        "Gastronomic innovation",
+        "New applications",
+        "Emerging markets",
+        "To be defined"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    }
   },
   "nosotros": {
     "titulo": "Purchase Process",

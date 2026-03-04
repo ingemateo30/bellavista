@@ -40,6 +40,8 @@
   "productos": {
     "panelaPulverizada": "Panela Pulverizada",
     "piloncillo": "Piloncillo / Panela",
+    "panelaPartida": "Panela Partida",
+    "panelaFraccionada": "Panela Fraccionada",
     "cafe": "Café de Origen",
     "derivados": "Nuevos Derivados",
     "endulzantes": "Endulzantes",
@@ -57,7 +59,103 @@
     "ctaTitulo": "¿Interesado en este producto? Contáctanos para una cotización personalizada.",
     "cotizarWhatsapp": "Cotizar por WhatsApp",
     "verTodos": "Ver todos los productos",
-    "formatos": "Formatos disponibles"
+    "formatos": "Formatos disponibles",
+    "infoTitle": "Información del Producto",
+    "caracteristicasTitle": "Características",
+    "usosTitle": "Usos recomendados",
+    "origenTitle": "Origen"
+  },
+  "productosData": {
+    "panelaPulverizada": {
+      "descripcion": "Panela molida hasta obtener un polvo fino y homogéneo, lista para disolver de inmediato. Ideal para el sector gastronómico y la industria alimentaria que busca un endulzante natural y versátil.",
+      "caracteristicas": [
+        "Granulado fino y homogéneo",
+        "Sin aditivos ni conservantes",
+        "100% jugo de caña natural",
+        "Soluble en frío y en caliente",
+        "Rica en minerales esenciales",
+        "Certificada para exportación"
+      ],
+      "usos": [
+        "Bebidas calientes y frías",
+        "Repostería artesanal",
+        "Salsas y marinados",
+        "Sustituto del azúcar refinado"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "piloncillo": {
+      "descripcion": "Presentación cónica tradicional de la panela, ampliamente reconocida en México y Centroamérica. Producida de forma artesanal, conserva todo el sabor y los minerales del jugo de caña sin refinación.",
+      "caracteristicas": [
+        "Forma cónica tradicional",
+        "Sin refinación ni blanqueo",
+        "Alto contenido en melaza",
+        "Presentación compacta durable",
+        "Sabor robusto y profundo",
+        "Listo para exportación"
+      ],
+      "usos": [
+        "Atole y bebidas calientes",
+        "Mole y cocina latinoamericana",
+        "Tamales y dulces típicos",
+        "Panes artesanales"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaPartida": {
+      "descripcion": "Bloques de panela partidos a mano que conservan la textura y el carácter artesanal del proceso tradicional. Una presentación auténtica que mantiene intactas todas las propiedades naturales de la caña.",
+      "caracteristicas": [
+        "Trozos irregulares naturales",
+        "Sin procesar ni refinar",
+        "Textura compacta y firme",
+        "Sabor intenso y caramelizado",
+        "Sin aditivos artificiales",
+        "Origen campesino certificado"
+      ],
+      "usos": [
+        "Agua de panela (aguapanela)",
+        "Endulzante artesanal",
+        "Miel y melados caseros",
+        "Bebidas típicas colombianas"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaFraccionada": {
+      "descripcion": "Panela en porciones uniformes, diseñada para un fácil dosificado en aplicaciones industriales y de consumo masivo. Combina la autenticidad del proceso artesanal con la practicidad que exige el mercado moderno.",
+      "caracteristicas": [
+        "Porciones uniformes y precisas",
+        "Fácil dosificado industrial",
+        "Sin aditivos ni conservantes",
+        "Empaque adaptable a tu marca",
+        "100% jugo de caña natural",
+        "Apta para private label"
+      ],
+      "usos": [
+        "Industria de alimentos",
+        "Panaderías y reposterías",
+        "Exportación a granel",
+        "Formulación de productos"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "nuevosDerivados": {
+      "descripcion": "Línea de nuevos productos derivados de la caña de azúcar y otros cultivos agrícolas colombianos, actualmente en desarrollo. Próximamente disponibles para el mercado internacional.",
+      "caracteristicas": [
+        "En fase de desarrollo",
+        "Base de caña artesanal",
+        "Innovación con tradición",
+        "Estándares de exportación",
+        "Diversificación de línea",
+        "Disponibles próximamente"
+      ],
+      "usos": [
+        "Innovación gastronómica",
+        "Nuevas aplicaciones",
+        "Mercados emergentes",
+        "Próximamente definidos"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    }
   },
   "nosotros": {
     "titulo": "Proceso de Compra",

@@ -45,7 +45,6 @@ export default function ProductoDetalle() {
     );
   }
 
-  // Usar imagenes[] si existe y tiene contenido, si no, usar la imagen principal
   const imagenes =
     producto.imagenes && producto.imagenes.length > 0
       ? producto.imagenes
@@ -56,12 +55,23 @@ export default function ProductoDetalle() {
   const handleNext = () =>
     setImgIdx((i) => (i + 1) % imagenes.length);
 
+  // Datos del producto desde traducciones
+  const dk = producto.dataKey;
+  const descripcion = dk ? t(`productosData.${dk}.descripcion`) : '';
+  const rawCarac = dk ? t(`productosData.${dk}.caracteristicas`, { returnObjects: true }) : [];
+  const caracteristicas = Array.isArray(rawCarac) ? rawCarac : [];
+  const rawUsos = dk ? t(`productosData.${dk}.usos`, { returnObjects: true }) : [];
+  const usos = Array.isArray(rawUsos) ? rawUsos : [];
+  const origen = dk ? t(`productosData.${dk}.origen`) : '';
+
+  const waMsg = `Hola, me interesa cotizar ${t(producto.nombreKey)}. ¿Me pueden dar más información?`;
+  const waUrl = `https://wa.me/573184550936?text=${encodeURIComponent(waMsg)}`;
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F7EAE4]">
       <Navbar />
 
       <main className="flex-1 w-full" style={{ fontFamily: 'Kumbh Sans, sans-serif' }}>
-        {/* ── Contenedor principal ── */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-14">
 
           {/* Volver */}
@@ -73,13 +83,11 @@ export default function ProductoDetalle() {
             {t('productoDetalle.verTodos')}
           </Link>
 
-          {/* ── Layout 2 columnas en desktop ── */}
+          {/* ── Layout 2 columnas desktop ── */}
           <div className="flex flex-col md:flex-row gap-8 lg:gap-14 items-start">
 
-            {/* ── GALERÍA DE IMÁGENES ── */}
+            {/* ── GALERÍA ── */}
             <div className="w-full md:w-[48%] flex-shrink-0">
-
-              {/* Imagen principal */}
               <div
                 className="relative bg-white rounded-2xl shadow-xl overflow-hidden flex items-center justify-center"
                 style={{ aspectRatio: '1 / 1' }}
@@ -92,7 +100,6 @@ export default function ProductoDetalle() {
                   style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.15))' }}
                 />
 
-                {/* Flechas de navegación – solo si hay más de 1 imagen */}
                 {imagenes.length > 1 && (
                   <>
                     <button
@@ -109,8 +116,6 @@ export default function ProductoDetalle() {
                     >
                       <ChevronRight />
                     </button>
-
-                    {/* Indicador de imagen actual */}
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
                       {imagenes.map((_, i) => (
                         <button
@@ -129,7 +134,6 @@ export default function ProductoDetalle() {
                 )}
               </div>
 
-              {/* Miniaturas */}
               {imagenes.length > 1 && (
                 <div className="flex gap-3 mt-4 flex-wrap">
                   {imagenes.map((img, i) => (
@@ -157,18 +161,13 @@ export default function ProductoDetalle() {
               )}
             </div>
 
-            {/* ── INFO DEL PRODUCTO ── */}
+            {/* ── INFO ── */}
             <div className="w-full md:flex-1 flex flex-col gap-5">
 
-              {/* Categoría */}
-              <span
-                className="text-[#5D8B3F] font-semibold uppercase tracking-widest"
-                style={{ fontSize: '0.72rem' }}
-              >
+              <span className="text-[#5D8B3F] font-semibold uppercase tracking-widest" style={{ fontSize: '0.72rem' }}>
                 {t(producto.categoriaKey)}
               </span>
 
-              {/* Nombre */}
               <h1
                 className="font-bold text-[#2C1810] leading-tight"
                 style={{
@@ -179,23 +178,16 @@ export default function ProductoDetalle() {
                 {t(producto.nombreKey)}
               </h1>
 
-              {/* Separador */}
               <div className="h-1 w-16 rounded-full bg-[#5D8B3F]" />
 
-              {/* Formatos (si están definidos en el producto) */}
               {producto.formatos && producto.formatos.length > 0 && (
                 <div>
-                  <p
-                    className="text-xs font-bold text-[#2C1810] uppercase tracking-widest mb-2"
-                  >
+                  <p className="text-xs font-bold text-[#2C1810] uppercase tracking-widest mb-2">
                     {t('productoDetalle.formatos')}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {producto.formatos.map((f, i) => (
-                      <span
-                        key={i}
-                        className="bg-[#F2E8DF] border border-[#7A5C41]/30 text-[#2C1810] rounded-full px-3 py-1 text-sm font-medium"
-                      >
+                      <span key={i} className="bg-[#F2E8DF] border border-[#7A5C41]/30 text-[#2C1810] rounded-full px-3 py-1 text-sm font-medium">
                         {f}
                       </span>
                     ))}
@@ -203,20 +195,15 @@ export default function ProductoDetalle() {
                 </div>
               )}
 
-              {/* Descripción (si está definida) */}
-              {producto.descripcionKey && (
-                <p
-                  className="text-[#2C1810]/75 leading-relaxed"
-                  style={{ fontSize: '0.95rem' }}
-                >
-                  {t(producto.descripcionKey)}
+              {descripcion && (
+                <p className="text-[#2C1810]/75 leading-relaxed" style={{ fontSize: '0.95rem' }}>
+                  {descripcion}
                 </p>
               )}
 
-              {/* CTA */}
               <div className="mt-2 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
+                  href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#5D8B3F] hover:bg-[#4A7032] text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-md transition-all hover:scale-105"
@@ -230,13 +217,96 @@ export default function ProductoDetalle() {
                 </a>
               </div>
 
-              <p
-                className="text-[#2C1810]/60 text-sm leading-relaxed mt-1"
-              >
+              <p className="text-[#2C1810]/60 text-sm leading-relaxed mt-1">
                 {t('productoDetalle.ctaTitulo')}
               </p>
             </div>
           </div>
+
+          {/* ── PANEL DE INFORMACIÓN DEL PRODUCTO ── */}
+          {(caracteristicas.length > 0 || usos.length > 0) && (
+            <div className="mt-10 bg-[#FDF8F4] rounded-2xl border border-[#E8DCCF] shadow-sm overflow-hidden">
+
+              {/* Cabecera del panel */}
+              <div className="bg-[#F2E8DF] border-b border-[#E8DCCF] px-6 py-4 flex items-center gap-3">
+                <div className="w-1 h-6 rounded-full bg-[#5D8B3F]" />
+                <h2
+                  className="text-[#2C1810] text-xl"
+                  style={{ fontFamily: "'Handlee', cursive" }}
+                >
+                  {t('productoDetalle.infoTitle')}
+                </h2>
+              </div>
+
+              <div className="p-6 grid md:grid-cols-2 gap-8">
+
+                {/* Características */}
+                {caracteristicas.length > 0 && (
+                  <div>
+                    <h3
+                      className="text-[#2C1810] text-[17px] mb-4 flex items-center gap-2"
+                      style={{ fontFamily: "'Handlee', cursive" }}
+                    >
+                      <svg className="w-5 h-5 text-[#5D8B3F] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                      </svg>
+                      {t('productoDetalle.caracteristicasTitle')}
+                    </h3>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {caracteristicas.map((c, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-[#2C1810]/80 font-['Kumbh_Sans',_sans-serif]">
+                          <svg className="w-4 h-4 text-[#5D8B3F] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Usos */}
+                {usos.length > 0 && (
+                  <div>
+                    <h3
+                      className="text-[#2C1810] text-[17px] mb-4 flex items-center gap-2"
+                      style={{ fontFamily: "'Handlee', cursive" }}
+                    >
+                      <svg className="w-5 h-5 text-[#D4B57E] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                      {t('productoDetalle.usosTitle')}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {usos.map((u, i) => (
+                        <span
+                          key={i}
+                          className="bg-[#F2E8DF] border border-[#D4B57E]/60 text-[#2C1810] rounded-full px-4 py-1.5 text-sm font-medium font-['Kumbh_Sans',_sans-serif]"
+                        >
+                          {u}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Origen */}
+              {origen && (
+                <div className="border-t border-[#E8DCCF] px-6 py-4 flex items-center gap-3 bg-[#F7EAE4]/60">
+                  <svg className="w-5 h-5 text-[#5D8B3F] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span className="text-sm font-['Kumbh_Sans',_sans-serif] text-[#2C1810]/70">
+                    <strong className="text-[#2C1810]/90">{t('productoDetalle.origenTitle')}:</strong>{' '}
+                    {origen}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+
         </div>
       </main>
 
