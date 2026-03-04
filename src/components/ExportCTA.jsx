@@ -1,19 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-const ticker = [
-  '100% Natural',
-  'Sin refinar',
-  'Sin procesar',
-  'Artesanal',
-  'Origen Colombia',
-  'Para exportar',
-  'Calidad certificada',
-  'Panela pura',
-];
-
 export default function ExportCTA() {
   const { t } = useTranslation();
-  const tickerItems = [...ticker, ...ticker];
+  const ticker = t('exportcta.ticker', { returnObjects: true });
+  const tickerItems = Array.isArray(ticker) ? [...ticker, ...ticker] : [];
 
   return (
     <section id="exportar" className="overflow-hidden bg-[#F2E8DF]">

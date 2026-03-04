@@ -207,7 +207,17 @@
     "card3Titulo": "Stock Soutenu",
     "card3Desc": "Production continue pour garantir un approvisionnement stable et ponctuel à votre opération.",
     "ctaBoton": "Devenir partenaire commercial",
-    "ctaSubtexto": "Sans engagement • Réponse en moins de 24 heures"
+    "ctaSubtexto": "Sans engagement • Réponse en moins de 24 heures",
+    "ticker": [
+      "100% Naturel",
+      "Non raffiné",
+      "Non transformé",
+      "Artisanal",
+      "Origine Colombie",
+      "Pour exporter",
+      "Qualité certifiée",
+      "Panela pure"
+    ]
   },
   "galeria": {
     "eyebrow": "Notre Entreprise",

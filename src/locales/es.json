@@ -207,7 +207,17 @@
     "card3Titulo": "Inventario Sostenido",
     "card3Desc": "Producción continua para garantizar suministro estable y oportuno a tu operación.",
     "ctaBoton": "Conviértete en socio comercial",
-    "ctaSubtexto": "Sin compromiso • Respuesta en menos de 24 horas"
+    "ctaSubtexto": "Sin compromiso • Respuesta en menos de 24 horas",
+    "ticker": [
+      "100% Natural",
+      "Sin refinar",
+      "Sin procesar",
+      "Artesanal",
+      "Origen Colombia",
+      "Para exportar",
+      "Calidad certificada",
+      "Panela pura"
+    ]
   },
   "galeria": {
     "eyebrow": "Nuestra Empresa",
