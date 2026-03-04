@@ -207,7 +207,17 @@
     "card3Titulo": "Sustained Inventory",
     "card3Desc": "Continuous production to guarantee stable and timely supply to your operation.",
     "ctaBoton": "Become a business partner",
-    "ctaSubtexto": "No commitment • Response within 24 hours"
+    "ctaSubtexto": "No commitment • Response within 24 hours",
+    "ticker": [
+      "100% Natural",
+      "Unrefined",
+      "Unprocessed",
+      "Artisan",
+      "Origin Colombia",
+      "Export ready",
+      "Certified quality",
+      "Pure panela"
+    ]
   },
   "galeria": {
     "eyebrow": "Our Company",
