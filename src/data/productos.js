@@ -3,19 +3,18 @@
 // productoTop/Left: % de posición absoluta sobre la góndola principal
 // productoScale: escala CSS transform (1.3 = 30% más grande)
 // letreroTop/Left: % de posición del letrero de madera
+// dataKey: clave en productosData (traducciones) para desc, características y usos
 export const listaProductos = [
   {
     id: 0,
     slug: 'panela-pulverizada',
     nombreKey: 'productos.panelaPulverizada',
     categoriaKey: 'productos.endulzantes',
+    dataKey: 'panelaPulverizada',
     imagen: '/pulverizada.png',
-    // Múltiples imágenes para la galería del detalle
     imagenes: ['/pulverizada.png'],
-    // Góndola individual para la página de detalle
     gondola: '/gon.png',
     gondolaPb: '65.2',
-    // Posiciones sobre la góndola principal
     productoTop: 94,
     productoLeft: 20,
     productoScale: 10.5,
@@ -27,11 +26,12 @@ export const listaProductos = [
     slug: 'piloncillo',
     nombreKey: 'productos.piloncillo',
     categoriaKey: 'productos.tradicional',
+    dataKey: 'piloncillo',
     imagen: '/Piloncillo.png',
     imagenes: ['/Piloncillo.png'],
     gondola: '/gon.png',
     gondolaPb: '59.5',
-    productoTop:100,
+    productoTop: 100,
     productoLeft: 43,
     productoScale: 13.5,
     letreroTop: 93.5,
@@ -39,9 +39,10 @@ export const listaProductos = [
   },
   {
     id: 2,
-    slug: 'panela partida',
-    nombreKey: 'Panela Partida',
+    slug: 'panela-partida',
+    nombreKey: 'productos.panelaPartida',
     categoriaKey: 'productos.premium',
+    dataKey: 'panelaPartida',
     imagen: '/partida.png',
     imagenes: ['/partida.png'],
     gondola: '/gon.png',
@@ -57,6 +58,7 @@ export const listaProductos = [
     slug: 'nuevos-derivados',
     nombreKey: 'productos.derivados',
     categoriaKey: 'productos.proximamente',
+    dataKey: 'nuevosDerivados',
     imagen: '/PRODUCTOS (6).png',
     imagenes: ['/PRODUCTOS (6).png'],
     gondola: '/gon.png',
@@ -67,68 +69,20 @@ export const listaProductos = [
     letreroTop: 93.5,
     letreroLeft: 90,
   },
-    {
+  {
     id: 4,
     slug: 'panela-fraccionada',
-    nombreKey: 'panela Fraccionada',
+    nombreKey: 'productos.panelaFraccionada',
     categoriaKey: 'productos.endulzantes',
+    dataKey: 'panelaFraccionada',
     imagen: '/_DSC0033.jpg',
-    // Múltiples imágenes para la galería del detalle
     imagenes: ['/_DSC0033.jpg'],
-    // Góndola individual para la página de detalle
     gondola: '/gon.png',
     gondolaPb: '65.2',
-    // Posiciones sobre la góndola principal
     productoTop: 94,
     productoLeft: 20,
     productoScale: 10.5,
     letreroTop: 93.5,
     letreroLeft: 18,
   },
-  {
-    id: 1,
-    slug: 'piloncillo',
-    nombreKey: 'productos.piloncillo',
-    categoriaKey: 'productos.tradicional',
-    imagen: '/Piloncillo.png',
-    imagenes: ['/Piloncillo.png'],
-    gondola: '/gon.png',
-    gondolaPb: '59.5',
-    productoTop:100,
-    productoLeft: 43,
-    productoScale: 13.5,
-    letreroTop: 93.5,
-    letreroLeft: 43,
-  },
-  {
-    id: 2,
-    slug: 'panela partida',
-    nombreKey: 'Panela Partida',
-    categoriaKey: 'productos.premium',
-    imagen: '/partida.png',
-    imagenes: ['/partida.png'],
-    gondola: '/gon.png',
-    gondolaPb: '57.8',
-    productoTop: 93,
-    productoLeft: 65,
-    productoScale: 9.3,
-    letreroTop: 93.5,
-    letreroLeft: 67,
-  },
-  {
-    id: 3,
-    slug: 'nuevos-derivados',
-    nombreKey: 'productos.derivados',
-    categoriaKey: 'productos.proximamente',
-    imagen: '/PRODUCTOS (6).png',
-    imagenes: ['/PRODUCTOS (6).png'],
-    gondola: '/gon.png',
-    gondolaPb: '55.2',
-    productoTop: 89,
-    productoLeft: 87,
-    productoScale: 8.3,
-    letreroTop: 93.5,
-    letreroLeft: 90,
-  },
-   
 ];

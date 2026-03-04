@@ -40,6 +40,8 @@
   "productos": {
     "panelaPulverizada": "Panela en Poudre",
     "piloncillo": "Piloncillo / Panela",
+    "panelaPartida": "Panela en Blocs",
+    "panelaFraccionada": "Panela Fractionnée",
     "cafe": "Café d'Origine",
     "derivados": "Nouveaux Dérivés",
     "endulzantes": "Édulcorants",
@@ -57,7 +59,103 @@
     "ctaTitulo": "Intéressé par ce produit ? Contactez-nous pour un devis personnalisé.",
     "cotizarWhatsapp": "Devis par WhatsApp",
     "verTodos": "Voir tous les produits",
-    "formatos": "Formats disponibles"
+    "formatos": "Formats disponibles",
+    "infoTitle": "Informations sur le Produit",
+    "caracteristicasTitle": "Caractéristiques",
+    "usosTitle": "Utilisations recommandées",
+    "origenTitle": "Origine"
+  },
+  "productosData": {
+    "panelaPulverizada": {
+      "descripcion": "Panela moulue en une poudre fine et homogène, prête à se dissoudre immédiatement. Idéale pour le secteur de la restauration et l'industrie alimentaire à la recherche d'un édulcorant naturel et polyvalent.",
+      "caracteristicas": [
+        "Grain fin et homogène",
+        "Sans additifs ni conservateurs",
+        "100% jus de canne naturel",
+        "Soluble chaud et froid",
+        "Riche en minéraux essentiels",
+        "Certifiée pour l'exportation"
+      ],
+      "usos": [
+        "Boissons chaudes et froides",
+        "Pâtisserie artisanale",
+        "Sauces et marinades",
+        "Substitut du sucre raffiné"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "piloncillo": {
+      "descripcion": "Présentation conique traditionnelle de la panela, largement reconnue au Mexique et en Amérique centrale. Produite artisanalement, elle préserve toute la saveur et les minéraux du jus de canne sans raffinage.",
+      "caracteristicas": [
+        "Forme conique traditionnelle",
+        "Sans raffinage ni blanchiment",
+        "Haute teneur en mélasse",
+        "Présentation compacte durable",
+        "Saveur robuste et profonde",
+        "Prête à l'exportation"
+      ],
+      "usos": [
+        "Atole et boissons chaudes",
+        "Mole et cuisine latino",
+        "Tamales et sucreries typiques",
+        "Pains artisanaux"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaPartida": {
+      "descripcion": "Blocs de panela cassés à la main qui préservent la texture et le caractère artisanal du processus traditionnel. Une présentation authentique qui maintient intactes toutes les propriétés naturelles de la canne.",
+      "caracteristicas": [
+        "Morceaux irréguliers naturels",
+        "Non traité ni raffiné",
+        "Texture compacte et ferme",
+        "Saveur intense et caramélisée",
+        "Sans additifs artificiels",
+        "Origine paysanne certifiée"
+      ],
+      "usos": [
+        "Eau de panela (aguapanela)",
+        "Édulcorant artisanal",
+        "Sirops et mélasses maison",
+        "Boissons typiques colombiennes"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaFraccionada": {
+      "descripcion": "Panela en portions uniformes, conçue pour un dosage facile dans les applications industrielles et de consommation de masse. Combine l'authenticité du processus artisanal avec la praticité qu'exige le marché moderne.",
+      "caracteristicas": [
+        "Portions uniformes et précises",
+        "Dosage industriel facile",
+        "Sans additifs ni conservateurs",
+        "Emballage adaptable à votre marque",
+        "100% jus de canne naturel",
+        "Adapté au marque blanche"
+      ],
+      "usos": [
+        "Industrie alimentaire",
+        "Boulangeries et pâtisseries",
+        "Exportation en vrac",
+        "Formulation de produits"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "nuevosDerivados": {
+      "descripcion": "Gamme de nouveaux produits dérivés de la canne à sucre et d'autres cultures agricoles colombiennes, actuellement en développement. Bientôt disponibles sur le marché international.",
+      "caracteristicas": [
+        "En cours de développement",
+        "Base de canne artisanale",
+        "Innovation avec tradition",
+        "Normes d'exportation",
+        "Diversification de gamme",
+        "Disponibles prochainement"
+      ],
+      "usos": [
+        "Innovation gastronomique",
+        "Nouvelles applications",
+        "Marchés émergents",
+        "À définir"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    }
   },
   "nosotros": {
     "titulo": "Processus d'Achat",
