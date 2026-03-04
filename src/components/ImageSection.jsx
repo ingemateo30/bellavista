@@ -152,7 +152,7 @@ const ImageSection = () => {
               }}
             >
               <img
-                src="/SINR0002.jpg"
+                src="/banbu.png"
                 alt="Finca y trapiche de Panela BellaVista en Santander"
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center 60%' }}
