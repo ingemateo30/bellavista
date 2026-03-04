@@ -233,5 +233,35 @@
     "descripcion1": "Somos expertos en exportación de productos artesanales de nuestro agro.",
     "descripcion2": "Con productos Bellavista, tu empresa mayorista o marca privada de alimentos confía en un abastecimiento continuo y de calidad.",
     "ubicacion": "Mogotes, Colombia"
+  },
+  "proceso": {
+    "eyebrow": "Producción Artesanal",
+    "titulo": "Del Campo al Producto",
+    "subtitulo": "Cada bloque de panela recorre un camino de tradición, cuidado y trabajo campesino antes de llegar a tu mercado.",
+    "badge": "Proceso 100% artesanal certificado",
+    "cultivo": {
+      "titulo": "Cultivo de la Caña",
+      "desc": "Sembrada en las montañas de Santander a más de 1.200 m.s.n.m., la caña crece sin agroquímicos en suelos ricos en minerales."
+    },
+    "cosecha": {
+      "titulo": "Cosecha Manual",
+      "desc": "El corte se realiza a mano en el punto óptimo de madurez, seleccionando únicamente cañas de la mejor calidad."
+    },
+    "extraccion": {
+      "titulo": "Extracción del Jugo",
+      "desc": "Las cañas son molidas en el trapiche para extraer el jugo fresco, denso y cargado de nutrientes naturales."
+    },
+    "coccion": {
+      "titulo": "Cocción Artesanal",
+      "desc": "El jugo se cocina en pailas a fuego directo, eliminando impurezas y concentrando los azúcares sin perder los minerales."
+    },
+    "moldeo": {
+      "titulo": "Batido y Moldeo",
+      "desc": "La meladura caliente se bate y vierte en moldes, tomando su forma final: bloques, panela partida o polvo fino."
+    },
+    "empaque": {
+      "titulo": "Empaque y Exportación",
+      "desc": "Cada lote pasa por control de calidad antes de ser empacado bajo normas internacionales y enviado a nuestros socios en el mundo."
+    }
   }
 }
