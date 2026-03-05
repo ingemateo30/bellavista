@@ -31,17 +31,24 @@ const slides = [
 export default function Hero() {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
+  // Solo cargamos el fondo de cada slide cuando llega su turno
+  const [visibleSlides, setVisibleSlides] = useState(new Set([0]));
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' && window.innerWidth < 768
   );
 
-  // Per-slide timer
+  // Per-slide timer + precargar el siguiente slide
   useEffect(() => {
     const duration = slides[currentSlide].duration ?? 9000;
+    // Precargamos el siguiente 2s antes de que aparezca
+    const preload = setTimeout(() => {
+      const next = (currentSlide + 1) % slides.length;
+      setVisibleSlides(prev => new Set([...prev, next]));
+    }, Math.max(duration - 2000, 0));
     const timer = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, duration);
-    return () => clearTimeout(timer);
+    return () => { clearTimeout(timer); clearTimeout(preload); };
   }, [currentSlide]);
 
   // Track mobile breakpoint
@@ -92,7 +99,7 @@ export default function Hero() {
                     <div
                       className="absolute inset-0"
                       style={{
-                        backgroundImage: `url('${slide.image}')`,
+                        backgroundImage: visibleSlides.has(index) ? `url('${slide.image}')` : 'none',
                         backgroundPosition: bgPos,
                         backgroundSize: bgSize,
                         backgroundRepeat: 'no-repeat',

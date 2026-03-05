@@ -124,7 +124,7 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
   return (
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center"
-      style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(4px)' }}
+      style={{ background: 'white' }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       {/* Botón cerrar */}
@@ -132,9 +132,9 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
         onClick={onClose}
         aria-label="Cerrar"
         className="absolute top-4 right-4 z-10 flex items-center justify-center rounded-full transition-all"
-        style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.12)', color: 'white' }}
-        onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.22)'}
-        onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+        style={{ width: 44, height: 44, background: 'rgba(44,24,16,0.08)', color: '#2C1810' }}
+        onMouseOver={e => e.currentTarget.style.background = 'rgba(44,24,16,0.15)'}
+        onMouseOut={e => e.currentTarget.style.background = 'rgba(44,24,16,0.08)'}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
           <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
@@ -144,28 +144,28 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
       {/* Controles de zoom */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
         <button onClick={zoomOut} disabled={zoom <= 1}
-          className="flex items-center justify-center rounded-full text-white transition-all"
-          style={{ width: 40, height: 40, background: zoom <= 1 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)', opacity: zoom <= 1 ? 0.4 : 1 }}
-          onMouseOver={e => { if (zoom > 1) e.currentTarget.style.background = 'rgba(255,255,255,0.28)'; }}
-          onMouseOut={e => { e.currentTarget.style.background = zoom <= 1 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)'; }}
+          className="flex items-center justify-center rounded-full transition-all"
+          style={{ width: 40, height: 40, background: 'rgba(44,24,16,0.08)', color: '#2C1810', opacity: zoom <= 1 ? 0.35 : 1 }}
+          onMouseOver={e => { if (zoom > 1) e.currentTarget.style.background = 'rgba(44,24,16,0.15)'; }}
+          onMouseOut={e => { e.currentTarget.style.background = 'rgba(44,24,16,0.08)'; }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /></svg>
         </button>
 
         <button onClick={zoomReset}
-          className="rounded-full px-4 text-sm font-semibold text-white transition-all"
-          style={{ height: 40, background: 'rgba(255,255,255,0.16)', minWidth: 60 }}
-          onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.28)'}
-          onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.16)'}
+          className="rounded-full px-4 text-sm font-semibold transition-all"
+          style={{ height: 40, background: 'rgba(44,24,16,0.08)', color: '#2C1810', minWidth: 60 }}
+          onMouseOver={e => e.currentTarget.style.background = 'rgba(44,24,16,0.15)'}
+          onMouseOut={e => e.currentTarget.style.background = 'rgba(44,24,16,0.08)'}
         >
           {Math.round(zoom * 100)}%
         </button>
 
         <button onClick={zoomIn} disabled={zoom >= 4}
-          className="flex items-center justify-center rounded-full text-white transition-all"
-          style={{ width: 40, height: 40, background: zoom >= 4 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)', opacity: zoom >= 4 ? 0.4 : 1 }}
-          onMouseOver={e => { if (zoom < 4) e.currentTarget.style.background = 'rgba(255,255,255,0.28)'; }}
-          onMouseOut={e => { e.currentTarget.style.background = zoom >= 4 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)'; }}
+          className="flex items-center justify-center rounded-full transition-all"
+          style={{ width: 40, height: 40, background: 'rgba(44,24,16,0.08)', color: '#2C1810', opacity: zoom >= 4 ? 0.35 : 1 }}
+          onMouseOver={e => { if (zoom < 4) e.currentTarget.style.background = 'rgba(44,24,16,0.15)'; }}
+          onMouseOut={e => { e.currentTarget.style.background = 'rgba(44,24,16,0.08)'; }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
         </button>
@@ -175,10 +175,10 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
       {imagenes.length > 1 && (
         <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); onPrev(); }}
           aria-label="Anterior"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center rounded-full text-white transition-all"
-          style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.12)' }}
-          onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.24)'}
-          onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center rounded-full transition-all"
+          style={{ width: 48, height: 48, background: 'rgba(44,24,16,0.08)', color: '#2C1810' }}
+          onMouseOver={e => e.currentTarget.style.background = 'rgba(44,24,16,0.15)'}
+          onMouseOut={e => e.currentTarget.style.background = 'rgba(44,24,16,0.08)'}
         >
           <ChevronLeftLg />
         </button>
@@ -188,10 +188,10 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
       {imagenes.length > 1 && (
         <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); onNext(); }}
           aria-label="Siguiente"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center rounded-full text-white transition-all"
-          style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.12)' }}
-          onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.24)'}
-          onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center rounded-full transition-all"
+          style={{ width: 48, height: 48, background: 'rgba(44,24,16,0.08)', color: '#2C1810' }}
+          onMouseOver={e => e.currentTarget.style.background = 'rgba(44,24,16,0.15)'}
+          onMouseOut={e => e.currentTarget.style.background = 'rgba(44,24,16,0.08)'}
         >
           <ChevronRight />
         </button>
@@ -200,7 +200,7 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
       {/* Contador */}
       {imagenes.length > 1 && (
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-sm font-medium"
-          style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(0,0,0,0.35)', borderRadius: 99, padding: '4px 14px' }}>
+          style={{ color: 'rgba(44,24,16,0.5)', background: 'rgba(44,24,16,0.07)', borderRadius: 99, padding: '4px 14px' }}>
           {imgIdx + 1} / {imagenes.length}
         </div>
       )}
