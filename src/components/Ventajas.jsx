@@ -8,51 +8,30 @@ const Features = () => {
     {
       titleKey: "ventajas.enfoqueExportador.titulo",
       descKey: "ventajas.enfoqueExportador.descripcion",
-      icon: (
-        <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="32" cy="32" r="28" />
-          <path d="M4 32 Q16 20, 32 32 T60 32" />
-          <path d="M32 4 Q20 16, 32 32 T32 60" />
-          <circle cx="32" cy="32" r="3" fill="currentColor" />
-          <path d="M20 18 L26 12 L24 8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
+       icon: (
+  <img src="/1.svg" alt="icon" className="w-22 h-22" />
+),
     },
     {
       titleKey: "ventajas.calidadControlada.titulo",
       descKey: "ventajas.calidadControlada.descripcion",
-      icon: (
-        <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="12" y="8" width="40" height="48" rx="2" />
-          <rect x="12" y="8" width="40" height="12" fill="currentColor" opacity="0.1" />
-          <path d="M20 28 L28 36 L44 20" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
-        </svg>
-      ),
+       icon: (
+  <img src="/2.svg" alt="icon" className="w-22 h-22" />
+),
     },
     {
       titleKey: "ventajas.capacidadSuministro.titulo",
       descKey: "ventajas.capacidadSuministro.descripcion",
       icon: (
-        <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="8" y="32" width="48" height="24" />
-          <rect x="12" y="24" width="12" height="8" />
-          <rect x="28" y="20" width="12" height="12" />
-          <rect x="44" y="16" width="12" height="16" />
-          <circle cx="38" cy="48" r="4" fill="currentColor" />
-        </svg>
-      ),
+  <img src="/11.svg" alt="icon" className="w-22 h-22" />
+),
     },
     {
       titleKey: "ventajas.privateLabel.titulo",
       descKey: "ventajas.privateLabel.descripcion",
-      icon: (
-        <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M32 8 L48 16 L48 28 L32 36 L16 28 L16 16 Z" />
-          <path d="M32 36 L32 56" />
-          <path d="M16 28 L8 32 L8 44 L32 56" />
-          <path d="M48 28 L56 32 L56 44 L32 56" />
-        </svg>
-      ),
+    icon: (
+  <img src="/111.svg" alt="icon" className="w-22 h-22" />
+),
     }
   ];
 

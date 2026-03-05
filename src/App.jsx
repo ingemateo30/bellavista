@@ -28,7 +28,6 @@ function PaginaPrincipal() {
         <Ventajas />
       </div>
       <Productos />
-      <ProcesoProduccion />
       <Nosotros />
       <ExportCTA />
       <Galeria />
