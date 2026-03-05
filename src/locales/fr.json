@@ -56,7 +56,9 @@
     "volverInicio": "Retour à l'accueil",
     "panelaFraccionadaX2": "Panela Fractionnée x2",
     "panelaCuadrada": "Panela Carrée",
-    "panelaCuadradaX2": "Panela Carrée x2"
+    "panelaCuadradaX2": "Panela Carrée x2",
+    "panelaPastilla": "Panela Pastille",
+    "panelaRedonda": "Panela Ronde"
   },
   "productoDetalle": {
     "ctaTitulo": "Intéressé par ce produit ? Contactez-nous pour un devis personnalisé.",
@@ -124,7 +126,7 @@
       "origen": "San Gil, Santander · Colombie"
     },
     "panelaFraccionada": {
-      "descripcion": "Petites portions rondes de panela, parfaites pour la consommation individuelle et un dosage précis. Son format compact facilite l'emballage et la distribution internationale.",
+      "descripcion": "Panela en portions fractionnées uniformes, conçue pour un dosage précis dans les applications industrielles et de grande consommation. Allie l'authenticité du processus artisanal à la praticité exigée par le marché moderne.",
       "caracteristicas": [
         "Forme ronde compacte",
         "Portion individuelle pratique",
@@ -210,6 +212,42 @@
         "Exportation en volume",
         "Industrie alimentaire",
         "Chaînes d'approvisionnement"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaPastilla": {
+      "descripcion": "Panela en format pastille : petites tablettes compactes de jus de canne non raffiné, parfaites pour un dosage précis et un emballage moderne. Idéal pour les consommateurs qui recherchent la praticité sans sacrifier l'authenticité.",
+      "caracteristicas": [
+        "Forme de pastille compacte",
+        "Dosage exact par unité",
+        "Sans additifs ni conservateurs",
+        "Facile à dissoudre dans les liquides",
+        "100% jus de canne naturel",
+        "Emballage adaptable à votre marque"
+      ],
+      "usos": [
+        "Boissons chaudes individuelles",
+        "Shots et préparations express",
+        "Distribution retail moderne",
+        "Hôtels et hôtellerie"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaRedonda": {
+      "descripcion": "Bloc de panela de forme circulaire, une présentation classique et reconnue sur les marchés latino-américains et européens. Sa forme ronde facilite le râpage et la dissolution, tout en préservant tous les minéraux et la saveur caractéristique de la canne.",
+      "caracteristicas": [
+        "Forme circulaire traditionnelle",
+        "Facile à râper et dissoudre",
+        "Sans raffinage ni blanchiment",
+        "Texture compacte et ferme",
+        "Sans additifs artificiels",
+        "Certifié pour l'exportation"
+      ],
+      "usos": [
+        "Eau de panela (aguapanela)",
+        "Édulcorant artisanal râpé",
+        "Cuisine traditionnelle et gastronomique",
+        "Boissons typiques colombiennes"
       ],
       "origen": "San Gil, Santander · Colombie"
     }

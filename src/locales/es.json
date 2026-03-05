@@ -56,7 +56,9 @@
     "volverInicio": "Volver al inicio",
     "panelaFraccionadaX2": "Panela Fraccionada x2",
     "panelaCuadrada": "Panela Cuadrada",
-    "panelaCuadradaX2": "Panela Cuadrada x2"
+    "panelaCuadradaX2": "Panela Cuadrada x2",
+    "panelaPastilla": "Panela Pastilla",
+    "panelaRedonda": "Panela Redonda"
   },
   "productoDetalle": {
     "ctaTitulo": "¿Interesado en este producto? Contáctanos para una cotización personalizada.",
@@ -124,7 +126,7 @@
       "origen": "San Gil, Santander · Colombia"
     },
     "panelaFraccionada": {
-      "descripcion": "Panela redonda en porciones pequeñas, perfecta para el consumo individual y la dosificación precisa. Su formato compacto facilita el empaque y la distribución para el mercado internacional.",
+      "descripcion": "Panela en porciones fraccionadas uniformes, diseñada para una dosificación precisa en aplicaciones industriales y de consumo masivo. Combina la autenticidad del proceso artesanal con la practicidad que exige el mercado moderno.",
       "caracteristicas": [
         "Forma redonda compacta",
         "Porción individual práctica",
@@ -210,6 +212,42 @@
         "Exportación en volumen",
         "Industria de alimentos",
         "Cadenas de suministro"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaPastilla": {
+      "descripcion": "Panela en formato pastilla: pequeñas tabletas compactas de jugo de caña sin refinar, perfectas para un dosificado preciso y un empaque moderno. Ideal para consumidores que buscan comodidad sin sacrificar la autenticidad.",
+      "caracteristicas": [
+        "Forma de tableta compacta",
+        "Dosificación exacta por unidad",
+        "Sin aditivos ni conservantes",
+        "Fácil de disolver en líquidos",
+        "100% jugo de caña natural",
+        "Empaque adaptable a tu marca"
+      ],
+      "usos": [
+        "Bebidas calientes individuales",
+        "Shots y preparaciones express",
+        "Distribución retail moderna",
+        "Hoteles y hostelería"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaRedonda": {
+      "descripcion": "Bloque de panela en forma circular, una presentación clásica y reconocida en mercados latinoamericanos y europeos. Su forma redonda facilita el rallado y la disolución, manteniendo intactos todos los minerales y el sabor característico de la caña.",
+      "caracteristicas": [
+        "Forma circular tradicional",
+        "Fácil de rallar y disolver",
+        "Sin refinación ni blanqueo",
+        "Textura compacta y firme",
+        "Sin aditivos artificiales",
+        "Certificada para exportación"
+      ],
+      "usos": [
+        "Agua de panela (aguapanela)",
+        "Endulzante artesanal rallado",
+        "Cocina tradicional y gourmet",
+        "Bebidas típicas colombianas"
       ],
       "origen": "San Gil, Santander · Colombia"
     }
