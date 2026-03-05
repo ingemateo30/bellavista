@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
@@ -29,10 +29,197 @@ function ChevronLeftLg() {
   );
 }
 
+/* ── Lightbox con zoom y paneo ── */
+function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef(null);
+  const containerRef = useRef(null);
+
+  // Reset zoom/pan al cambiar imagen
+  useEffect(() => {
+    setZoom(1);
+    setPan({ x: 0, y: 0 });
+  }, [imgIdx]);
+
+  // Teclas: ESC cierra, flechas navegan, +/- hacen zoom
+  useEffect(() => {
+    function handleKey(e) {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') { setZoom(1); setPan({ x: 0, y: 0 }); onNext(); }
+      if (e.key === 'ArrowLeft') { setZoom(1); setPan({ x: 0, y: 0 }); onPrev(); }
+      if (e.key === '+' || e.key === '=') setZoom(z => Math.min(z + 0.5, 4));
+      if (e.key === '-') setZoom(z => { const nz = Math.max(z - 0.5, 1); if (nz === 1) setPan({ x: 0, y: 0 }); return nz; });
+    }
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [onClose, onNext, onPrev]);
+
+  // Scroll wheel para zoom
+  function handleWheel(e) {
+    e.preventDefault();
+    setZoom(z => {
+      const delta = e.deltaY < 0 ? 0.25 : -0.25;
+      const nz = Math.min(Math.max(z + delta, 1), 4);
+      if (nz === 1) setPan({ x: 0, y: 0 });
+      return nz;
+    });
+  }
+
+  // Mouse drag para paneo
+  function handleMouseDown(e) {
+    if (zoom <= 1) return;
+    setDragging(true);
+    dragStart.current = { x: e.clientX - pan.x, y: e.clientY - pan.y };
+  }
+  function handleMouseMove(e) {
+    if (!dragging || !dragStart.current) return;
+    setPan({ x: e.clientX - dragStart.current.x, y: e.clientY - dragStart.current.y });
+  }
+  function handleMouseUp() { setDragging(false); }
+
+  // Touch drag para paneo en móvil
+  function handleTouchStart(e) {
+    if (e.touches.length !== 1 || zoom <= 1) return;
+    setDragging(true);
+    dragStart.current = { x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y };
+  }
+  function handleTouchMove(e) {
+    if (!dragging || !dragStart.current || e.touches.length !== 1) return;
+    e.preventDefault();
+    setPan({ x: e.touches[0].clientX - dragStart.current.x, y: e.touches[0].clientY - dragStart.current.y });
+  }
+  function handleTouchEnd() { setDragging(false); }
+
+  function zoomIn() { setZoom(z => Math.min(z + 0.5, 4)); }
+  function zoomOut() { setZoom(z => { const nz = Math.max(z - 0.5, 1); if (nz === 1) setPan({ x: 0, y: 0 }); return nz; }); }
+  function zoomReset() { setZoom(1); setPan({ x: 0, y: 0 }); }
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center"
+      style={{ background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(4px)' }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    >
+      {/* Botón cerrar */}
+      <button
+        onClick={onClose}
+        aria-label="Cerrar"
+        className="absolute top-4 right-4 z-10 flex items-center justify-center rounded-full transition-all"
+        style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.12)', color: 'white' }}
+        onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.22)'}
+        onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      {/* Controles de zoom */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+        <button onClick={zoomOut} disabled={zoom <= 1}
+          className="flex items-center justify-center rounded-full text-white transition-all"
+          style={{ width: 40, height: 40, background: zoom <= 1 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)', opacity: zoom <= 1 ? 0.4 : 1 }}
+          onMouseOver={e => { if (zoom > 1) e.currentTarget.style.background = 'rgba(255,255,255,0.28)'; }}
+          onMouseOut={e => { e.currentTarget.style.background = zoom <= 1 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)'; }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12" /></svg>
+        </button>
+
+        <button onClick={zoomReset}
+          className="rounded-full px-4 text-sm font-semibold text-white transition-all"
+          style={{ height: 40, background: 'rgba(255,255,255,0.16)', minWidth: 60 }}
+          onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.28)'}
+          onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.16)'}
+        >
+          {Math.round(zoom * 100)}%
+        </button>
+
+        <button onClick={zoomIn} disabled={zoom >= 4}
+          className="flex items-center justify-center rounded-full text-white transition-all"
+          style={{ width: 40, height: 40, background: zoom >= 4 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)', opacity: zoom >= 4 ? 0.4 : 1 }}
+          onMouseOver={e => { if (zoom < 4) e.currentTarget.style.background = 'rgba(255,255,255,0.28)'; }}
+          onMouseOut={e => { e.currentTarget.style.background = zoom >= 4 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.16)'; }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+        </button>
+      </div>
+
+      {/* Flecha anterior */}
+      {imagenes.length > 1 && (
+        <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); onPrev(); }}
+          aria-label="Anterior"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center rounded-full text-white transition-all"
+          style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.12)' }}
+          onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.24)'}
+          onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+        >
+          <ChevronLeftLg />
+        </button>
+      )}
+
+      {/* Flecha siguiente */}
+      {imagenes.length > 1 && (
+        <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); onNext(); }}
+          aria-label="Siguiente"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center rounded-full text-white transition-all"
+          style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.12)' }}
+          onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.24)'}
+          onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+        >
+          <ChevronRight />
+        </button>
+      )}
+
+      {/* Contador */}
+      {imagenes.length > 1 && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-sm font-medium"
+          style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(0,0,0,0.35)', borderRadius: 99, padding: '4px 14px' }}>
+          {imgIdx + 1} / {imagenes.length}
+        </div>
+      )}
+
+      {/* Área de imagen con zoom/pan */}
+      <div
+        ref={containerRef}
+        className="w-full h-full flex items-center justify-center overflow-hidden"
+        style={{ cursor: zoom > 1 ? (dragging ? 'grabbing' : 'grab') : 'zoom-in' }}
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onClick={(e) => { if (zoom === 1 && !dragging) zoomIn(); }}
+      >
+        <img
+          src={imagenes[imgIdx]}
+          alt={`Imagen ${imgIdx + 1}`}
+          loading="eager"
+          draggable={false}
+          style={{
+            maxWidth: '90vw',
+            maxHeight: '85vh',
+            objectFit: 'contain',
+            transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
+            transition: dragging ? 'none' : 'transform 0.2s ease',
+            userSelect: 'none',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function ProductoDetalle() {
   const { slug } = useParams();
   const { t } = useTranslation();
   const [imgIdx, setImgIdx] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -52,8 +239,8 @@ export default function ProductoDetalle() {
       ? producto.imagenes
       : [producto.imagen];
 
-  const handlePrev = () => setImgIdx((i) => (i - 1 + imagenes.length) % imagenes.length);
-  const handleNext = () => setImgIdx((i) => (i + 1) % imagenes.length);
+  const handlePrev = useCallback(() => setImgIdx((i) => (i - 1 + imagenes.length) % imagenes.length), [imagenes.length]);
+  const handleNext = useCallback(() => setImgIdx((i) => (i + 1) % imagenes.length), [imagenes.length]);
 
   const dk = producto.dataKey;
   const descripcion = dk ? t(`productosData.${dk}.descripcion`) : '';
@@ -69,6 +256,17 @@ export default function ProductoDetalle() {
   return (
     <div className="min-h-screen flex flex-col" style={{ background: '#F7EAE4' }}>
       <Navbar />
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <Lightbox
+          imagenes={imagenes}
+          imgIdx={imgIdx}
+          onClose={() => setLightboxOpen(false)}
+          onPrev={handlePrev}
+          onNext={handleNext}
+        />
+      )}
 
       {/* ── BREADCRUMB STRIP ── */}
       <div style={{ background: '#2C1810' }}>
@@ -113,36 +311,56 @@ export default function ProductoDetalle() {
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16 items-start">
 
             {/* ── GALERÍA ── */}
-            <div className="w-full md:w-[46%] flex-shrink-0">
+            <div className="w-full md:w-[54%] flex-shrink-0">
               {/* Imagen principal con marco decorativo */}
               <div className="relative">
                 {/* Marco offset decorativo */}
                 <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl"
                   style={{ background: 'rgba(93,139,63,0.12)', border: '1.5px solid rgba(93,139,63,0.2)' }} />
 
-                <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden flex items-center justify-center"
-                  style={{ aspectRatio: '1 / 1' }}>
+                <div
+                  className="relative bg-white rounded-2xl shadow-xl overflow-hidden flex items-center justify-center group"
+                  style={{ aspectRatio: '1 / 1' }}
+                >
                   <img
                     key={imgIdx}
                     src={imagenes[imgIdx]}
                     alt={`${t(producto.nombreKey)} – ${imgIdx + 1}`}
-                    className="object-contain w-full h-full p-8"
+                    className="object-contain w-full h-full p-6 transition-transform duration-300 group-hover:scale-[1.03]"
                     style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.12))' }}
+                    loading={imgIdx === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={imgIdx === 0 ? 'high' : 'auto'}
                   />
+
+                  {/* Overlay de zoom al hover */}
+                  <div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-zoom-in"
+                    style={{ background: 'rgba(0,0,0,0.08)' }}
+                    onClick={() => setLightboxOpen(true)}
+                  >
+                    <div className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold"
+                      style={{ background: 'rgba(255,255,255,0.9)', color: '#2C1810', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
+                      </svg>
+                      Ver en grande
+                    </div>
+                  </div>
 
                   {imagenes.length > 1 && (
                     <>
                       <button onClick={handlePrev} aria-label="Imagen anterior"
                         className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full w-9 h-9 flex items-center justify-center shadow-md transition-all hover:scale-110"
-                        style={{ color: '#2C1810' }}>
+                        style={{ color: '#2C1810', zIndex: 2 }}>
                         <ChevronLeftLg />
                       </button>
                       <button onClick={handleNext} aria-label="Siguiente imagen"
                         className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full w-9 h-9 flex items-center justify-center shadow-md transition-all hover:scale-110"
-                        style={{ color: '#2C1810' }}>
+                        style={{ color: '#2C1810', zIndex: 2 }}>
                         <ChevronRight />
                       </button>
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5" style={{ zIndex: 2 }}>
                         {imagenes.map((_, i) => (
                           <button key={i} onClick={() => setImgIdx(i)}
                             className="rounded-full transition-all"
@@ -165,12 +383,17 @@ export default function ProductoDetalle() {
                     <button key={i} onClick={() => setImgIdx(i)}
                       className="rounded-xl bg-white shadow-md p-1.5 flex items-center justify-center transition-all"
                       style={{
-                        width: '68px', height: '68px',
+                        width: '72px', height: '72px',
                         outline: i === imgIdx ? '2px solid #5D8B3F' : '2px solid transparent',
-                        opacity: i === imgIdx ? 1 : 0.5,
+                        opacity: i === imgIdx ? 1 : 0.55,
                         transform: i === imgIdx ? 'scale(1.06)' : 'scale(1)',
                       }}>
-                      <img src={img} alt={`miniatura ${i + 1}`} className="object-contain w-full h-full" />
+                      <img
+                        src={img}
+                        alt={`miniatura ${i + 1}`}
+                        className="object-contain w-full h-full"
+                        loading="lazy"
+                      />
                     </button>
                   ))}
                 </div>
