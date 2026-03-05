@@ -3,11 +3,18 @@ import { useTranslation } from 'react-i18next';
 
 const slides = [
   {
+    type: 'video',
+    video: '/videobella.mp4',
+    titleKey: 'hero.slide3',
+    duration: 16000,
+  },
+  {
     type: 'image',
     image: '/banner1.png',
     titleKey: 'hero.slide1',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    duration: 8000,
   },
   {
     type: 'image',
@@ -15,67 +22,90 @@ const slides = [
     titleKey: 'hero.slide2',
     backgroundSize: '70%',
     backgroundPosition: 'right 15%',
-  },
-  {
-    type: 'video',
-    video: '/videobella.mp4',
-    titleKey: 'hero.slide3',
+    backgroundSizeMobile: 'cover',
+    backgroundPositionMobile: 'center center',
+    duration: 8000,
   },
 ];
 
 export default function Hero() {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth < 768
+  );
 
+  // Per-slide timer
   useEffect(() => {
-    const interval = setInterval(() => {
+    const duration = slides[currentSlide].duration ?? 9000;
+    const timer = setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 9000);
-    return () => clearInterval(interval);
+    }, duration);
+    return () => clearTimeout(timer);
+  }, [currentSlide]);
+
+  // Track mobile breakpoint
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
   }, []);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
+  const goToSlide = (index) => setCurrentSlide(index);
+  const isVideoSlide = slides[currentSlide].type === 'video';
 
   return (
     <section id="inicio" className="bg-[#F2E8DF]">
       <div className="relative w-full min-h-[600px] h-[85vh] flex items-center overflow-hidden">
         {/* Fondos: imágenes y video */}
         <div className="absolute inset-0 z-0">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                currentSlide === index ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              {slide.type === 'video' ? (
-                <>
-                  <video
-                    src={slide.video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Overlay oscuro para legibilidad del texto */}
-                  <div className="absolute inset-0 bg-black/40" />
-                </>
-              ) : (
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `url('${slide.image}')`,
-                    backgroundPosition: slide.backgroundPosition,
-                    backgroundSize: slide.backgroundSize,
-                    backgroundRepeat: 'no-repeat',
-                  }}
-                />
-              )}
-            </div>
-          ))}
+          {slides.map((slide, index) => {
+            const bgSize = isMobile
+              ? (slide.backgroundSizeMobile ?? slide.backgroundSize)
+              : slide.backgroundSize;
+            const bgPos = isMobile
+              ? (slide.backgroundPositionMobile ?? slide.backgroundPosition)
+              : slide.backgroundPosition;
+
+            return (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                  currentSlide === index ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                {slide.type === 'video' ? (
+                  <>
+                    <video
+                      src={slide.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40" />
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `url('${slide.image}')`,
+                        backgroundPosition: bgPos,
+                        backgroundSize: bgSize,
+                        backgroundRepeat: 'no-repeat',
+                      }}
+                    />
+                    {/* Overlay en móvil para mejorar legibilidad sobre el mapa */}
+                    {isMobile && slide.backgroundSizeMobile && (
+                      <div className="absolute inset-0 bg-[#F2E8DF]/50" />
+                    )}
+                  </>
+                )}
+              </div>
+            );
+          })}
 
           {/* SVG superior derecho */}
           <img
@@ -99,7 +129,7 @@ export default function Hero() {
             <div className="mb-6 relative h-[50px] sm:h-[60px] md:h-[70px]">
               <span
                 className={`text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.25em] block mb-1 mt-1 ml-8 sm:ml-10 md:ml-12 transition-colors duration-500 ${
-                  currentSlide === 2 ? 'text-[#F2E8DF]' : 'text-[#6E3A0D]'
+                  isVideoSlide ? 'text-[#F2E8DF]' : 'text-[#6E3A0D]'
                 }`}
               >
                 {t('hero.productos')}
@@ -114,7 +144,7 @@ export default function Hero() {
             {/* Texto descriptivo */}
             <p
               className={`text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 font-medium max-w-[420px] transition-all duration-500 ${
-                currentSlide === 2
+                isVideoSlide
                   ? 'text-[#F2E8DF] drop-shadow-lg'
                   : 'text-[#2C2C2C]'
               }`}
@@ -139,7 +169,7 @@ export default function Hero() {
               <a
                 href="#productos"
                 className={`inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl transition-all font-bold shadow-lg text-xs sm:text-sm ${
-                  currentSlide === 2
+                  isVideoSlide
                     ? 'bg-white/20 text-white backdrop-blur-sm border border-white/30 hover:bg-white/30'
                     : 'bg-[#EDE0D4] text-[#2C2C2C] shadow-black/5 hover:bg-[#E2D5C8]'
                 }`}
@@ -166,8 +196,8 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Ícono de video en slide 3 */}
-        {currentSlide === 2 && (
+        {/* Badge de video */}
+        {isVideoSlide && (
           <div className="absolute top-6 right-6 z-30 flex items-center gap-2 bg-black/30 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full">
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
