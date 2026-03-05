@@ -4,14 +4,11 @@ import { useTranslation } from 'react-i18next';
 const imagenes = [
   { src: '/SINR0002.jpg', alt: 'Instalaciones Bellavista' },
   { src: '/SINR0004.jpg', alt: 'Proceso de producción' },
-  { src: '/Mesa de trabajo 13@2x.png', alt: 'Productos Bellavista' },
-  { src: '/Mesa de trabajo 13 copia@2x.png', alt: 'Panela artesanal' },
-  { src: '/Mesa de trabajo 13 copia 2@2x.png', alt: 'Exportación' },
-  { src: '/Mesa de trabajo 13 copia 3@2x.png', alt: 'Calidad certificada' },
-  { src: '/Mesa de trabajo 13 copia 4@2x.png', alt: 'Producto natural' },
-  { src: '/Mesa de trabajo 13 copia 5@2x.png', alt: 'Proceso artesanal' },
-  { src: '/Mesa de trabajo 13 copia 6@2x.png', alt: 'Presentación premium' },
-  { src: '/Mesa de trabajo 13 copia 7@2x.png', alt: 'Productos del campo' },
+  { src: '/_DSC0035.jpg', alt: 'Productos Bellavista' },
+  { src: '/_DSC0042(1).jpg', alt: 'Panela artesanal' },
+  { src: '/_DSC0048.jpg', alt: 'Exportación' },
+  { src: '/_DSC0058(1).jpg', alt: 'Calidad certificada' },
+  { src: '/_DSC0063.jpg', alt: 'Producto natural' },
 ];
 
 export default function Galeria() {

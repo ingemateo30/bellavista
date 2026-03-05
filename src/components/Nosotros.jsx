@@ -5,41 +5,22 @@ export default function Nosotros() {
 
   const pasos = [
     {
-      icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="35" cy="35" r="25" fill="none" stroke="currentColor" stroke-width="3"/>
-        <circle cx="65" cy="65" r="25" fill="none" stroke="currentColor" stroke-width="3"/>
-        <path d="M25,45 Q30,50 35,55" fill="none" stroke="currentColor" stroke-width="3"/>
-        <path d="M55,75 Q60,70 65,65" fill="none" stroke="currentColor" stroke-width="3"/>
-      </svg>`,
+      icon: `<img src="/41.svg" alt="icon" class="w-28 h-28" />`,
       titleKey: 'nosotros.paso1.titulo',
       descKey: 'nosotros.paso1.descripcion'
     },
     {
-      icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <rect x="25" y="25" width="50" height="60" rx="3" fill="none" stroke="currentColor" stroke-width="3"/>
-        <line x1="35" y1="40" x2="65" y2="40" stroke="currentColor" stroke-width="2"/>
-        <line x1="35" y1="50" x2="65" y2="50" stroke="currentColor" stroke-width="2"/>
-        <line x1="35" y1="60" x2="55" y2="60" stroke="currentColor" stroke-width="2"/>
-      </svg>`,
+     icon: `<img src="/I3.svg" alt="icon" class="w-28 h-28" />`,
       titleKey: 'nosotros.paso2.titulo',
       descKey: 'nosotros.paso2.descripcion'
     },
     {
-      icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="3"/>
-        <path d="M40,35 L50,45 L70,25" fill="none" stroke="currentColor" stroke-width="3"/>
-        <rect x="60" y="55" width="15" height="20" fill="none" stroke="currentColor" stroke-width="2"/>
-      </svg>`,
+      icon: `<img src="/I4.svg" alt="icon" class="w-28 h-28" />`,
       titleKey: 'nosotros.paso3.titulo',
       descKey: 'nosotros.paso3.descripcion'
     },
     {
-      icon: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20,60 L30,40 L70,40 L80,60 L20,60 Z" fill="none" stroke="currentColor" stroke-width="3"/>
-        <rect x="25" y="60" width="50" height="15" fill="none" stroke="currentColor" stroke-width="3"/>
-        <circle cx="35" cy="82" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
-        <circle cx="65" cy="82" r="8" fill="none" stroke="currentColor" stroke-width="3"/>
-      </svg>`,
+      icon: `<img src="/I2.svg" alt="icon" class="w-32 h-32" />`,
       titleKey: 'nosotros.paso4.titulo',
       descKey: 'nosotros.paso4.descripcion'
     }

@@ -18,7 +18,7 @@ const slides = [
   },
   {
     type: 'video',
-    video: '/video-bellavista.mp4',
+    video: '/videobella.mp4',
     titleKey: 'hero.slide3',
   },
 ];
@@ -30,7 +30,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    }, 9000);
     return () => clearInterval(interval);
   }, []);
 
