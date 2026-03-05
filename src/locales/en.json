@@ -56,7 +56,9 @@
     "volverInicio": "Back to home",
     "panelaFraccionadaX2": "Fractioned Panela x2",
     "panelaCuadrada": "Square Panela",
-    "panelaCuadradaX2": "Square Panela x2"
+    "panelaCuadradaX2": "Square Panela x2",
+    "panelaPastilla": "Panela Tablet",
+    "panelaRedonda": "Round Panela"
   },
   "productoDetalle": {
     "ctaTitulo": "Interested in this product? Contact us for a personalized quote.",
@@ -124,7 +126,7 @@
       "origen": "San Gil, Santander · Colombia"
     },
     "panelaFraccionada": {
-      "descripcion": "Small round panela portions, perfect for individual consumption and precise dosing. Its compact format makes packaging and international distribution easy.",
+      "descripcion": "Panela in uniform fractioned portions, designed for precise dosing in industrial and mass-consumption applications. Combines the authenticity of the artisan process with the practicality demanded by the modern market.",
       "caracteristicas": [
         "Compact round shape",
         "Practical single-serve portion",
@@ -210,6 +212,42 @@
         "Volume export",
         "Food industry",
         "Supply chains"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaPastilla": {
+      "descripcion": "Panela in tablet format: small, compact tablets of unrefined cane juice, perfect for precise dosing and modern packaging. Ideal for consumers seeking convenience without sacrificing authenticity.",
+      "caracteristicas": [
+        "Compact tablet shape",
+        "Exact dosing per unit",
+        "No additives or preservatives",
+        "Easy to dissolve in liquids",
+        "100% natural cane juice",
+        "Adaptable packaging for your brand"
+      ],
+      "usos": [
+        "Individual hot beverages",
+        "Express shots and preparations",
+        "Modern retail distribution",
+        "Hotels and hospitality"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaRedonda": {
+      "descripcion": "Round panela block — a classic, widely recognized presentation in Latin American and European markets. Its circular shape makes grating and dissolving easy while preserving all the minerals and characteristic flavor of the cane.",
+      "caracteristicas": [
+        "Traditional circular shape",
+        "Easy to grate and dissolve",
+        "No refining or bleaching",
+        "Compact and firm texture",
+        "No artificial additives",
+        "Certified for export"
+      ],
+      "usos": [
+        "Panela water (aguapanela)",
+        "Grated artisan sweetener",
+        "Traditional and gourmet cooking",
+        "Colombian traditional beverages"
       ],
       "origen": "San Gil, Santander · Colombia"
     }
