@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
@@ -33,6 +33,8 @@ export default function ProductoDetalle() {
   const { slug } = useParams();
   const { t } = useTranslation();
   const [imgIdx, setImgIdx] = useState(0);
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const producto = listaProductos.find((p) => p.slug === slug);
 

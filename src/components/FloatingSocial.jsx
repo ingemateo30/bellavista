@@ -37,7 +37,7 @@ export default function FloatingSocial() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed left-4 bottom-6 z-50 flex flex-col-reverse items-center gap-2">
+    <div className="fixed left-4 bottom-20 z-50 flex flex-col-reverse items-center gap-2">
       {/* Redes sociales (se muestran al abrir) */}
       {sociales.map((social, i) => (
         <a
