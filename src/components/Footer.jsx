@@ -10,10 +10,11 @@ const Footer = () => {
       <div className="relative w-full">
         {/* Contenedor de la imagen de fondo */}
         <div className="relative w-full h-64 md:h-80 lg:h-96">
-          <img 
-            src="/Footer.png" 
-            alt="Nosotros" 
+          <img
+            src="/Footer.png"
+            alt="Nosotros"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           
           {/* Texto "Nosotros" sobre la imagen */}
@@ -162,10 +163,11 @@ const Footer = () => {
 
       {/* SVG de montañas en la parte inferior */}
       <div className="relative w-full md:-mt-20">
-        <img 
-          src="/porprodu.svg" 
-          alt="" 
-          className="w-full h-auto object-bottom" 
+        <img
+          src="/porprodu.svg"
+          alt=""
+          className="w-full h-auto object-bottom"
+          loading="lazy"
         />
       </div>
     </footer>

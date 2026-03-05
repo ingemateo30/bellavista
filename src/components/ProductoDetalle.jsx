@@ -79,18 +79,43 @@ function Lightbox({ imagenes, imgIdx, onClose, onPrev, onNext }) {
   }
   function handleMouseUp() { setDragging(false); }
 
-  // Touch drag para paneo en móvil
+  // Touch: paneo con 1 dedo (cuando hay zoom) y pinch-to-zoom con 2 dedos
+  const pinchRef = useRef({ dist: 0, zoom: 1 });
+
+  function getTouchDist(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
   function handleTouchStart(e) {
-    if (e.touches.length !== 1 || zoom <= 1) return;
-    setDragging(true);
-    dragStart.current = { x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y };
+    if (e.touches.length === 2) {
+      // Inicio de pellizco
+      pinchRef.current = { dist: getTouchDist(e.touches), zoom: zoom };
+      setDragging(false);
+    } else if (e.touches.length === 1 && zoom > 1) {
+      setDragging(true);
+      dragStart.current = { x: e.touches[0].clientX - pan.x, y: e.touches[0].clientY - pan.y };
+    }
   }
   function handleTouchMove(e) {
-    if (!dragging || !dragStart.current || e.touches.length !== 1) return;
     e.preventDefault();
-    setPan({ x: e.touches[0].clientX - dragStart.current.x, y: e.touches[0].clientY - dragStart.current.y });
+    if (e.touches.length === 2) {
+      // Zoom por pellizco
+      const newDist = getTouchDist(e.touches);
+      const ratio = newDist / pinchRef.current.dist;
+      const nz = Math.min(Math.max(pinchRef.current.zoom * ratio, 1), 4);
+      setZoom(nz);
+      if (nz === 1) setPan({ x: 0, y: 0 });
+    } else if (e.touches.length === 1 && dragging && dragStart.current) {
+      // Paneo con 1 dedo
+      setPan({ x: e.touches[0].clientX - dragStart.current.x, y: e.touches[0].clientY - dragStart.current.y });
+    }
   }
-  function handleTouchEnd() { setDragging(false); }
+  function handleTouchEnd(e) {
+    if (e.touches.length < 2) pinchRef.current = { dist: 0, zoom: zoom };
+    if (e.touches.length === 0) setDragging(false);
+  }
 
   function zoomIn() { setZoom(z => Math.min(z + 0.5, 4)); }
   function zoomOut() { setZoom(z => { const nz = Math.max(z - 0.5, 1); if (nz === 1) setPan({ x: 0, y: 0 }); return nz; }); }

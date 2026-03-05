@@ -119,6 +119,7 @@ export default function ExportCTA() {
                     src="/SINR0002.jpg"
                     alt="Exportación Productos Bellavista"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                     onError={(e) => {
                       e.target.src = '/banner1.png';
                       e.target.className = 'w-full h-full object-cover object-top';
