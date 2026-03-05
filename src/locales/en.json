@@ -53,7 +53,10 @@
     "irAlSlide": "Go to slide",
     "verDetalle": "See more",
     "noEncontrado": "Product not found.",
-    "volverInicio": "Back to home"
+    "volverInicio": "Back to home",
+    "panelaFraccionadaX2": "Fractioned Panela x2",
+    "panelaCuadrada": "Square Panela",
+    "panelaCuadradaX2": "Square Panela x2"
   },
   "productoDetalle": {
     "ctaTitulo": "Interested in this product? Contact us for a personalized quote.",
@@ -121,20 +124,20 @@
       "origen": "San Gil, Santander · Colombia"
     },
     "panelaFraccionada": {
-      "descripcion": "Panela in uniform portions, designed for easy dosing in industrial and mass consumption applications. Combines the authenticity of the artisan process with the practicality the modern market demands.",
+      "descripcion": "Small round panela portions, perfect for individual consumption and precise dosing. Its compact format makes packaging and international distribution easy.",
       "caracteristicas": [
-        "Uniform and precise portions",
-        "Easy industrial dosing",
+        "Compact round shape",
+        "Practical single-serve portion",
         "No additives or preservatives",
-        "Packaging adaptable to your brand",
+        "Adaptable packaging for your brand",
         "100% natural cane juice",
         "Suitable for private label"
       ],
       "usos": [
-        "Food industry",
-        "Bakeries and pastry shops",
-        "Bulk export",
-        "Product formulation"
+        "Direct table use",
+        "Hot and cold beverages",
+        "Artisan baking",
+        "Retail distribution"
       ],
       "origen": "San Gil, Santander · Colombia"
     },
@@ -153,6 +156,60 @@
         "New applications",
         "Emerging markets",
         "To be defined"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaFraccionadaX2": {
+      "descripcion": "Double-sized version of the round fractioned panela: twice the content in the same package, ideal for households and businesses with higher consumption. Same artisan quality, greater quantity.",
+      "caracteristicas": [
+        "Double quantity per package",
+        "Compact round shape",
+        "No additives or preservatives",
+        "Better value per unit",
+        "100% natural cane juice",
+        "Ideal for volume purchases"
+      ],
+      "usos": [
+        "Higher-consumption households",
+        "Businesses and restaurants",
+        "Bulk export",
+        "Wholesale distribution"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaCuadrada": {
+      "descripcion": "Square-format panela block, designed for efficient storage and uniform presentation. Its regular shape facilitates packaging, stacking and international distribution.",
+      "caracteristicas": [
+        "Uniform square shape",
+        "Optimized for stacking and packaging",
+        "No refining or bleaching",
+        "Compact and firm texture",
+        "No artificial additives",
+        "Certified for export"
+      ],
+      "usos": [
+        "Panela water (aguapanela)",
+        "Artisan sweetener",
+        "Wholesale export",
+        "Food industry"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaCuadradaX2": {
+      "descripcion": "Double format of the square panela: more content per unit to meet the demand of distributors and wholesalers. The same artisan quality from Santander, optimized for volume trade.",
+      "caracteristicas": [
+        "Double content per unit",
+        "Standard square shape",
+        "No additives or preservatives",
+        "Better logistics efficiency",
+        "100% natural cane juice",
+        "Preferred by wholesalers"
+      ],
+      "usos": [
+        "Wholesale distribution",
+        "Volume export",
+        "Food industry",
+        "Supply chains"
       ],
       "origen": "San Gil, Santander · Colombia"
     }

@@ -108,13 +108,13 @@ export default function ExportCTA() {
 
             {/* ── Columna derecha — imagen ── */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[460px]">
+              <div className="relative w-full max-w-[560px]">
 
                 {/* Marco decorativo verde detrás de la imagen */}
                 <div className="absolute -top-4 -right-4 w-full h-full rounded-2xl bg-[#5D8B3F]/15 border border-[#5D8B3F]/25" />
 
                 {/* Imagen principal */}
-                <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5]">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                   <img
                     src="/SINR0002.jpg"
                     alt="Exportación Productos Bellavista"
