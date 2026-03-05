@@ -53,7 +53,10 @@
     "irAlSlide": "Ir al slide",
     "verDetalle": "Ver más",
     "noEncontrado": "Producto no encontrado.",
-    "volverInicio": "Volver al inicio"
+    "volverInicio": "Volver al inicio",
+    "panelaFraccionadaX2": "Panela Fraccionada x2",
+    "panelaCuadrada": "Panela Cuadrada",
+    "panelaCuadradaX2": "Panela Cuadrada x2"
   },
   "productoDetalle": {
     "ctaTitulo": "¿Interesado en este producto? Contáctanos para una cotización personalizada.",
@@ -121,20 +124,20 @@
       "origen": "San Gil, Santander · Colombia"
     },
     "panelaFraccionada": {
-      "descripcion": "Panela en porciones uniformes, diseñada para un fácil dosificado en aplicaciones industriales y de consumo masivo. Combina la autenticidad del proceso artesanal con la practicidad que exige el mercado moderno.",
+      "descripcion": "Panela redonda en porciones pequeñas, perfecta para el consumo individual y la dosificación precisa. Su formato compacto facilita el empaque y la distribución para el mercado internacional.",
       "caracteristicas": [
-        "Porciones uniformes y precisas",
-        "Fácil dosificado industrial",
+        "Forma redonda compacta",
+        "Porción individual práctica",
         "Sin aditivos ni conservantes",
         "Empaque adaptable a tu marca",
         "100% jugo de caña natural",
         "Apta para private label"
       ],
       "usos": [
-        "Industria de alimentos",
-        "Panaderías y reposterías",
-        "Exportación a granel",
-        "Formulación de productos"
+        "Consumo directo en mesa",
+        "Bebidas calientes y frías",
+        "Repostería artesanal",
+        "Distribución minorista"
       ],
       "origen": "San Gil, Santander · Colombia"
     },
@@ -153,6 +156,60 @@
         "Nuevas aplicaciones",
         "Mercados emergentes",
         "Próximamente definidos"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaFraccionadaX2": {
+      "descripcion": "Presentación doble de la panela fraccionada redonda: el doble de contenido en un mismo empaque, ideal para hogares y negocios con mayor consumo. La misma calidad artesanal en mayor cantidad.",
+      "caracteristicas": [
+        "Doble cantidad por empaque",
+        "Forma redonda compacta",
+        "Sin aditivos ni conservantes",
+        "Mayor rendimiento por unidad",
+        "100% jugo de caña natural",
+        "Ideal para volumen"
+      ],
+      "usos": [
+        "Hogares de mayor consumo",
+        "Negocios y restaurantes",
+        "Exportación a granel",
+        "Distribución mayorista"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaCuadrada": {
+      "descripcion": "Bloque de panela en formato cuadrado, diseñado para un almacenamiento eficiente y una presentación uniforme. Su forma regular facilita el empaque, el apilado y la distribución a nivel internacional.",
+      "caracteristicas": [
+        "Forma cuadrada uniforme",
+        "Óptima para apilado y empaque",
+        "Sin refinación ni blanqueo",
+        "Textura compacta y firme",
+        "Sin aditivos artificiales",
+        "Certificada para exportación"
+      ],
+      "usos": [
+        "Agua de panela (aguapanela)",
+        "Endulzante artesanal",
+        "Exportación mayorista",
+        "Industria alimentaria"
+      ],
+      "origen": "San Gil, Santander · Colombia"
+    },
+    "panelaCuadradaX2": {
+      "descripcion": "Formato doble de la panela cuadrada: mayor contenido por presentación para satisfacer la demanda de distribuidores y mayoristas. La misma calidad artesanal de Santander, optimizada para el comercio de volumen.",
+      "caracteristicas": [
+        "Doble contenido por unidad",
+        "Forma cuadrada estándar",
+        "Sin aditivos ni conservantes",
+        "Mayor rendimiento logístico",
+        "100% jugo de caña natural",
+        "Preferida por mayoristas"
+      ],
+      "usos": [
+        "Distribución mayorista",
+        "Exportación en volumen",
+        "Industria de alimentos",
+        "Cadenas de suministro"
       ],
       "origen": "San Gil, Santander · Colombia"
     }

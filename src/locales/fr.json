@@ -53,7 +53,10 @@
     "irAlSlide": "Aller à la diapositive",
     "verDetalle": "Voir plus",
     "noEncontrado": "Produit introuvable.",
-    "volverInicio": "Retour à l'accueil"
+    "volverInicio": "Retour à l'accueil",
+    "panelaFraccionadaX2": "Panela Fractionnée x2",
+    "panelaCuadrada": "Panela Carrée",
+    "panelaCuadradaX2": "Panela Carrée x2"
   },
   "productoDetalle": {
     "ctaTitulo": "Intéressé par ce produit ? Contactez-nous pour un devis personnalisé.",
@@ -121,20 +124,20 @@
       "origen": "San Gil, Santander · Colombie"
     },
     "panelaFraccionada": {
-      "descripcion": "Panela en portions uniformes, conçue pour un dosage facile dans les applications industrielles et de consommation de masse. Combine l'authenticité du processus artisanal avec la praticité qu'exige le marché moderne.",
+      "descripcion": "Petites portions rondes de panela, parfaites pour la consommation individuelle et un dosage précis. Son format compact facilite l'emballage et la distribution internationale.",
       "caracteristicas": [
-        "Portions uniformes et précises",
-        "Dosage industriel facile",
+        "Forme ronde compacte",
+        "Portion individuelle pratique",
         "Sans additifs ni conservateurs",
         "Emballage adaptable à votre marque",
         "100% jus de canne naturel",
-        "Adapté au marque blanche"
+        "Convient au private label"
       ],
       "usos": [
-        "Industrie alimentaire",
-        "Boulangeries et pâtisseries",
-        "Exportation en vrac",
-        "Formulation de produits"
+        "Consommation directe à table",
+        "Boissons chaudes et froides",
+        "Pâtisserie artisanale",
+        "Distribution au détail"
       ],
       "origen": "San Gil, Santander · Colombie"
     },
@@ -153,6 +156,60 @@
         "Nouvelles applications",
         "Marchés émergents",
         "À définir"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaFraccionadaX2": {
+      "descripcion": "Version double de la panela fractionnée ronde : deux fois plus de contenu dans le même emballage, idéal pour les ménages et les entreprises à forte consommation. Même qualité artisanale, plus grande quantité.",
+      "caracteristicas": [
+        "Double quantité par emballage",
+        "Forme ronde compacte",
+        "Sans additifs ni conservateurs",
+        "Meilleur rendement par unité",
+        "100% jus de canne naturel",
+        "Idéal pour les achats en volume"
+      ],
+      "usos": [
+        "Ménages grande consommation",
+        "Entreprises et restaurants",
+        "Exportation en vrac",
+        "Distribution en gros"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaCuadrada": {
+      "descripcion": "Bloc de panela au format carré, conçu pour un stockage efficace et une présentation uniforme. Sa forme régulière facilite l'emballage, l'empilage et la distribution internationale.",
+      "caracteristicas": [
+        "Forme carrée uniforme",
+        "Optimisé pour l'empilage",
+        "Sans raffinage ni blanchiment",
+        "Texture compacte et ferme",
+        "Sans additifs artificiels",
+        "Certifié pour l'exportation"
+      ],
+      "usos": [
+        "Eau de panela (aguapanela)",
+        "Édulcorant artisanal",
+        "Exportation en gros",
+        "Industrie alimentaire"
+      ],
+      "origen": "San Gil, Santander · Colombie"
+    },
+    "panelaCuadradaX2": {
+      "descripcion": "Format double de la panela carrée : plus de contenu par unité pour répondre à la demande des distributeurs et grossistes. La même qualité artisanale de Santander, optimisée pour le commerce en volume.",
+      "caracteristicas": [
+        "Double contenu par unité",
+        "Forme carrée standard",
+        "Sans additifs ni conservateurs",
+        "Meilleure efficacité logistique",
+        "100% jus de canne naturel",
+        "Préféré des grossistes"
+      ],
+      "usos": [
+        "Distribution en gros",
+        "Exportation en volume",
+        "Industrie alimentaire",
+        "Chaînes d'approvisionnement"
       ],
       "origen": "San Gil, Santander · Colombie"
     }
