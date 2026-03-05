@@ -82,6 +82,7 @@ export default function Hero() {
                       muted
                       loop
                       playsInline
+                      preload="metadata"
                       className="w-full h-full object-cover opacity-50"
                     />
                     <div className="absolute inset-0 bg-black/40" />

@@ -31,6 +31,7 @@ export default function Productos() {
             alt="Góndola Bellavista"
             className="absolute inset-0 w-full"
             style={{ height: '100%', objectFit: 'fill' }}
+            loading="lazy"
           />
 
           {/* Productos posicionados absolutamente */}
@@ -56,6 +57,7 @@ export default function Productos() {
                   src={prod.imagen}
                   alt={t(prod.nombreKey)}
                   className="object-contain transition-transform duration-300 group-hover:-translate-y-2"
+                  loading="lazy"
                   style={{
                     width: '3vw',
                     height: '3vw',
@@ -170,6 +172,7 @@ export default function Productos() {
                   src={prod.imagen}
                   alt={t(prod.nombreKey)}
                   className="object-contain"
+                  loading="lazy"
                   style={{ width: '100%', maxWidth: '120px', height: '120px' }}
                 />
               </div>

@@ -99,6 +99,7 @@ const ImageSection = () => {
             >
               <img
                 src="/banbu.png"
+                loading="lazy"
                 alt={t('imageSection.imgAlt')}
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center center' }}
@@ -132,6 +133,7 @@ const ImageSection = () => {
             >
               <img
                 src="/banbu.png"
+                loading="lazy"
                 alt={t('imageSection.imgAlt')}
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center center' }}
