@@ -57,13 +57,13 @@ const ImageSection = () => {
   const { t } = useTranslation();
 
   const leftAnnotations = [
-    { title: t('imageSection.izq1Titulo'), desc: t('imageSection.izq1Desc'), icon: '🌿' },
-    { title: t('imageSection.izq2Titulo'), desc: t('imageSection.izq2Desc'), icon: '✅' },
+    { title: t('imageSection.izq1Titulo'), desc: t('imageSection.izq1Desc'), icon: '' },
+    { title: t('imageSection.izq2Titulo'), desc: t('imageSection.izq2Desc'), icon: '' },
   ];
 
   const rightAnnotations = [
-    { title: t('imageSection.der1Titulo'), desc: t('imageSection.der1Desc'), icon: '🏭' },
-    { title: t('imageSection.der2Titulo'), desc: t('imageSection.der2Desc'), icon: '⚡' },
+    { title: t('imageSection.der1Titulo'), desc: t('imageSection.der1Desc'), icon: '' },
+    { title: t('imageSection.der2Titulo'), desc: t('imageSection.der2Desc'), icon: '' },
   ];
 
   return (
