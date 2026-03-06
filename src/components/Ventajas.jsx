@@ -1,5 +1,32 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+};
+
+const containerCards = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.14, delayChildren: 0.2 } }
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 50, scale: 0.92 },
+  visible: {
+    opacity: 1, y: 0, scale: 1,
+    transition: { type: 'spring', stiffness: 180, damping: 20 }
+  }
+};
+
+const iconVariant = {
+  hidden: { opacity: 0, scale: 0, rotate: -20 },
+  visible: {
+    opacity: 0.8, scale: 1, rotate: 0,
+    transition: { type: 'spring', stiffness: 250, damping: 16, delay: 0.15 }
+  }
+};
 
 const Features = () => {
   const { t } = useTranslation();
@@ -8,98 +35,125 @@ const Features = () => {
     {
       titleKey: "ventajas.enfoqueExportador.titulo",
       descKey: "ventajas.enfoqueExportador.descripcion",
-       icon: (
-  <img src="/1.svg" alt="icon" className="w-22 h-22" />
-),
+      icon: <img src="/1.svg" alt="icon" className="w-22 h-22" />,
     },
     {
       titleKey: "ventajas.calidadControlada.titulo",
       descKey: "ventajas.calidadControlada.descripcion",
-       icon: (
-  <img src="/2.svg" alt="icon" className="w-22 h-22" />
-),
+      icon: <img src="/2.svg" alt="icon" className="w-22 h-22" />,
     },
     {
       titleKey: "ventajas.capacidadSuministro.titulo",
       descKey: "ventajas.capacidadSuministro.descripcion",
-      icon: (
-  <img src="/11.svg" alt="icon" className="w-22 h-22" />
-),
+      icon: <img src="/11.svg" alt="icon" className="w-22 h-22" />,
     },
     {
       titleKey: "ventajas.privateLabel.titulo",
       descKey: "ventajas.privateLabel.descripcion",
-    icon: (
-  <img src="/111.svg" alt="icon" className="w-22 h-22" />
-),
+      icon: <img src="/111.svg" alt="icon" className="w-22 h-22" />,
     }
   ];
 
   return (
     <section className="relative bg-[#F7EAE4] py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden">
-      
+
       <div className="max-w-6xl mx-auto text-center relative z-10">
 
-
-        {/* TÍTULO PRINCIPAL - Schoolbell */}
-        <h2 className="text-[38px] md:text-[44px] text-[#2C1810] mb-3 font-['Schoolbell',_cursive] leading-tight tracking-wide">
+        {/* TÍTULO PRINCIPAL */}
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="text-[38px] md:text-[44px] text-[#2C1810] mb-3 font-['Schoolbell',_cursive] leading-tight tracking-wide"
+        >
           {t('ventajas.titulo')}
-        </h2>
+        </motion.h2>
 
-        {/* Decorador de línea después del título */}
-        <div className="flex justify-center mb-12">
-           <div className="w-16 h-[2px] bg-[#D4B57E]"></div>
-        </div>
+        {/* Línea decorativa animada */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+          className="flex justify-center mb-12"
+          style={{ transformOrigin: 'center' }}
+        >
+          <div className="w-16 h-[2px] bg-[#D4B57E]" />
+        </motion.div>
 
         {/* REJILLA DE TARJETAS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <motion.div
+          variants={containerCards}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+        >
           {features.map((item, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={cardVariant}
+              whileHover={{
+                y: -8,
+                boxShadow: '0 20px 40px rgba(44,24,16,0.14)',
+                transition: { type: 'spring', stiffness: 300 }
+              }}
               className="bg-[#FDF8F4] p-6 rounded-2xl shadow-md"
             >
-              {/* Icono - Estilo minimalista outline */}
-              <div className="text-[#3D3D3D] mb-6 flex justify-center opacity-80">
+              {/* Icono */}
+              <motion.div
+                variants={iconVariant}
+                className="text-[#3D3D3D] mb-6 flex justify-center opacity-80"
+              >
                 {item.icon}
-              </div>
+              </motion.div>
 
-              {/* Título de Tarjeta - Handlee */}
+              {/* Título de Tarjeta */}
               <h3 className="text-[19px] font-normal text-[#2C1810] mb-3 font-['Handlee',_cursive] leading-snug">
                 {t(item.titleKey)}
               </h3>
 
-              {/* Descripción - Kumbh Sans */}
+              {/* Descripción */}
               <p className="text-[#6B5E55] text-[13px] leading-relaxed font-['Kumbh_Sans',_sans-serif] font-normal">
                 {t(item.descKey)}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* SECCIÓN DE CIERRE */}
-        <div className="flex flex-col items-center gap-6">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="flex flex-col items-center gap-6"
+        >
           <h4 className="text-[22px] md:text-[26px] text-[#2C1810] font-['Handlee',_cursive] font-normal">
             {t('ventajas.ctaTitulo')}
           </h4>
 
-          <a
+          <motion.a
             href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
+            whileHover={{ scale: 1.06, boxShadow: '0 8px 25px rgba(93,139,63,0.4)' }}
+            whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 bg-[#6B9456] text-white px-8 py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-[15px] hover:bg-[#5A7F48] transition-all shadow-sm"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
             {t('ventajas.ctaBoton')}
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
 
-      {/* DECORADORES DE FONDO (Ondas) */}
+      {/* DECORADORES DE FONDO */}
       <div className="absolute bottom-0 left-0 w-full pointer-events-none z-0">
-        <img 
-          src="/porprodu.svg" 
-          alt="" 
-          className="w-full h-auto object-bottom" 
+        <img
+          src="/porprodu.svg"
+          alt=""
+          className="w-full h-auto object-bottom"
         />
       </div>
     </section>

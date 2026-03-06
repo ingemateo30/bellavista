@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 const steps = [
   {
@@ -70,18 +71,40 @@ const steps = [
   },
 ];
 
-function StepCard({ step, index, visible }) {
+const headerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
+
+const gridContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } }
+};
+
+const stepVariant = {
+  hidden: { opacity: 0, y: 35, scale: 0.94 },
+  visible: {
+    opacity: 1, y: 0, scale: 1,
+    transition: { type: 'spring', stiffness: 190, damping: 20 }
+  }
+};
+
+const iconVariant = {
+  hidden: { opacity: 0, scale: 0.5, rotate: -15 },
+  visible: {
+    opacity: 1, scale: 1, rotate: 0,
+    transition: { type: 'spring', stiffness: 260, damping: 18, delay: 0.1 }
+  }
+};
+
+function StepCard({ step, index }) {
   const { t } = useTranslation();
   const num = String(index + 1).padStart(2, '0');
 
   return (
-    <div
-      className="relative flex flex-col items-start gap-3 transition-all duration-700"
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(28px)',
-        transitionDelay: `${index * 100}ms`,
-      }}
+    <motion.div
+      variants={stepVariant}
+      className="relative flex flex-col items-start gap-3"
     >
       {/* Ghost number */}
       <span
@@ -92,11 +115,14 @@ function StepCard({ step, index, visible }) {
       </span>
 
       {/* Icon circle */}
-      <div className="relative z-10 w-14 h-14 rounded-2xl flex items-center justify-center text-white"
+      <motion.div
+        variants={iconVariant}
+        whileHover={{ scale: 1.15, rotate: 8, transition: { type: 'spring', stiffness: 300 } }}
+        className="relative z-10 w-14 h-14 rounded-2xl flex items-center justify-center text-white cursor-default"
         style={{ background: 'rgba(93,139,63,0.25)', border: '1.5px solid rgba(93,139,63,0.5)' }}
       >
         <div className="text-[#5D8B3F]">{step.icon}</div>
-      </div>
+      </motion.div>
 
       {/* Step number badge */}
       <span
@@ -121,27 +147,15 @@ function StepCard({ step, index, visible }) {
       >
         {t(`proceso.${step.key}.desc`)}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
 export default function ProcesoProduccion() {
   const { t } = useTranslation();
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
-      ref={ref}
       className="relative overflow-hidden"
       style={{ background: '#2C1810' }}
     >
@@ -167,17 +181,23 @@ export default function ProcesoProduccion() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-24">
 
         {/* Header */}
-        <div
-          className="text-center mb-14 transition-all duration-700"
-          style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(20px)' }}
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          className="text-center mb-14"
         >
-          {/* Eyebrow */}
-          <span
-            className="text-[11px] font-['Kumbh_Sans',_sans-serif] font-bold tracking-[0.25em] uppercase block mb-3"
+          <motion.span
+            initial={{ opacity: 0, letterSpacing: '0.1em' }}
+            whileInView={{ opacity: 1, letterSpacing: '0.25em' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="text-[11px] font-['Kumbh_Sans',_sans-serif] font-bold uppercase block mb-3"
             style={{ color: '#D4B57E' }}
           >
             {t('proceso.eyebrow')}
-          </span>
+          </motion.span>
 
           <h2
             className="text-[38px] md:text-[46px] leading-tight mb-4"
@@ -186,9 +206,16 @@ export default function ProcesoProduccion() {
             {t('proceso.titulo')}
           </h2>
 
-          <div className="flex justify-center mb-5">
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+            className="flex justify-center mb-5"
+            style={{ transformOrigin: 'center' }}
+          >
             <div className="w-16 h-[2px] rounded-full" style={{ background: '#D4B57E' }} />
-          </div>
+          </motion.div>
 
           <p
             className="text-[14px] font-['Kumbh_Sans',_sans-serif] max-w-xl mx-auto leading-relaxed"
@@ -196,34 +223,40 @@ export default function ProcesoProduccion() {
           >
             {t('proceso.subtitulo')}
           </p>
-        </div>
+        </motion.div>
 
         {/* Steps grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <motion.div
+          variants={gridContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+        >
           {steps.map((step, i) => (
-            <StepCard key={step.key} step={step} index={i} visible={visible} />
+            <StepCard key={step.key} step={step} index={i} />
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA inferior */}
-        <div
-          className="mt-16 text-center transition-all duration-700"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(16px)',
-            transitionDelay: '700ms',
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16 text-center"
         >
-          <div
-            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[12px] font-['Kumbh_Sans',_sans-serif] font-semibold tracking-wide"
+          <motion.div
+            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(93,139,63,0.3)' }}
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[12px] font-['Kumbh_Sans',_sans-serif] font-semibold tracking-wide cursor-default"
             style={{ background: 'rgba(93,139,63,0.2)', border: '1px solid rgba(93,139,63,0.4)', color: '#5D8B3F' }}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
             </svg>
             {t('proceso.badge')}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
       </div>
     </section>

@@ -45,3 +45,88 @@ body {
   clip-path: path("M0,45.31V162.5c94-28.83,250.64-2.43,350,10.17c62.33,5.49,99.18,8.47,177.36,4.99  c119.02-6.52,259.64-22,316.64-27c0,0-165.81-46.94-222-45c-60,2.07-156,32-245,40C279.83,154.4,154.59,117.1,0,45.31z");
 }
 
+/* ── NUEVAS ANIMACIONES ───────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-8px) rotate(1deg); }
+  66%       { transform: translateY(-4px) rotate(-1deg); }
+}
+
+@keyframes shimmer-gold {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes draw-line {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(93, 139, 63, 0.3); }
+  50%       { box-shadow: 0 0 0 12px rgba(93, 139, 63, 0); }
+}
+
+@keyframes bounce-in {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.08); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #D4B57E 0%, #F4C430 40%, #D4B57E 60%, #C4A56E 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-gold 3s linear infinite;
+}
+
+.line-draw {
+  transform-origin: left center;
+  animation: draw-line 0.8s ease-out forwards;
+}
+
+/* Transición de sección — gradiente animado */
+.section-divider-animated {
+  background: linear-gradient(270deg, #D4B57E, #F4C430, #D4B57E, #C4A56E);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+  height: 2px;
+  border: none;
+}
+
