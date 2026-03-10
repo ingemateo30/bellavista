@@ -90,7 +90,7 @@ export default function Hero() {
                       loop
                       playsInline
                       preload="metadata"
-                      className="w-full h-full object-cover opacity-50"
+                      className="w-full h-full object-cover "
                     />
                     <div className="absolute inset-0 bg-black/40" />
                   </>
