@@ -9,6 +9,11 @@
   },
   "hero": {
     "productos": "PRODUCTS",
+    "eyebrow": "Productos Bellavista · Colombia · Export",
+    "subtitulo": "Panela, coffee and natural beverages from the heart of Colombia. Artisanal tradition with international standards for wholesale markets worldwide.",
+    "catPanela": "Panela & Derivatives",
+    "catCafe": "Origin Coffee",
+    "catBebidas": "Natural Beverages",
     "slide1": "Production and export of panela, piloncillo, coffee and other agricultural products, with constant supply capacity and quality standards.",
     "slide2": "We connect our production with international markets in Spain, United States, Aruba and Canada.",
     "slide3": "Discover the soul of Productos Bellavista: tradition, Colombian countryside and quality that crosses borders.",
@@ -16,8 +21,33 @@
     "verProductos": "View Products",
     "goToSlide": "Go to slide"
   },
+  "categorias": {
+    "eyebrow": "Our Portfolio",
+    "titulo": "Beyond panela",
+    "subtitulo": "A universe of Colombian flavors: from artisanal panela that gave us our origin, to high-altitude coffee and new natural beverages.",
+    "panela": {
+      "titulo": "Panela & Derivatives",
+      "descripcion": "The ancestral sweetener of Colombia. Artisanally crafted in Santander, our panela preserves every mineral and flavor of unrefined cane juice.",
+      "tag": "Star Product"
+    },
+    "cafe": {
+      "titulo": "Origin Coffee",
+      "descripcion": "Selected beans from Colombian mountains. A coffee with history, unique terroir and unmatched flavor, ready to conquer premium markets.",
+      "tag": "Coming Soon"
+    },
+    "bebidas": {
+      "titulo": "Natural Beverages",
+      "descripcion": "New explorations into artisanal beverages that capture the best of our Colombian land. Authentic flavors for the world.",
+      "tag": "New Horizons"
+    }
+  },
   "ventajas": {
+    "eyebrow": "Our Advantages",
     "titulo": "Why choose Productos Bellavista?",
+    "stat1": "Export countries",
+    "stat2": "Natural & artisanal",
+    "stat3": "Years of tradition",
+    "stat4": "kg annual capacity",
     "enfoqueExportador": {
       "titulo": "Export Focus",
       "descripcion": "Food products prepared for international markets and wholesale buyers."
@@ -253,8 +283,9 @@
     }
   },
   "nosotros": {
-    "titulo": "Purchase Process",
-    "subtitulo": "This is how working with Productos Bellavista works:",
+    "eyebrow": "Purchase Process",
+    "titulo": "Working with Bellavista is easy",
+    "subtitulo": "Simple, efficient and focused on your needs as an importer or wholesaler.",
     "subtitulo2": "simple, efficient and focused on your wholesale needs.",
     "paso1": {
       "titulo": "Contact Us",
@@ -334,10 +365,14 @@
   },
   "footer": {
     "nosotros": "About Us",
-    "tagline": "Colombian Quality for the World Market",
-    "descripcion1": "We are experts in exporting artisanal products from our agriculture.",
-    "descripcion2": "With Bellavista products, your wholesale company or private food brand relies on continuous and quality supply.",
-    "ubicacion": "Mogotes, Colombia"
+    "tagline": "Colombian Quality for the World",
+    "descripcion1": "We are experts in exporting Colombian artisanal products: panela, coffee and natural beverages.",
+    "descripcion2": "With Bellavista, your wholesale company relies on continuous supply, certified quality and real commitment.",
+    "ubicacion": "Mogotes, Santander · Colombia",
+    "contactoTitulo": "Contact",
+    "redesTitulo": "Follow Us",
+    "categoriasTitulo": "Categories",
+    "derechos": "All rights reserved."
   },
   "proceso": {
     "eyebrow": "Artisan Production",

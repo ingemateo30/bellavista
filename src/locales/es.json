@@ -9,6 +9,11 @@
   },
   "hero": {
     "productos": "PRODUCTOS",
+    "eyebrow": "Productos Bellavista · Colombia · Exportación",
+    "subtitulo": "Panela, café y bebidas naturales del corazón de Colombia. Tradición artesanal con estándares internacionales para mercados mayoristas en todo el mundo.",
+    "catPanela": "Panela & Derivados",
+    "catCafe": "Café de Origen",
+    "catBebidas": "Bebidas Naturales",
     "slide1": "Producción y exportación de panela, piloncillo, café y otros productos agrícolas, con capacidad de suministro constante y estándares de calidad.",
     "slide2": "Conectamos nuestra producción con mercados internacionales en España, Estados Unidos, Aruba y Canadá.",
     "slide3": "Descubre el alma de Productos Bellavista: tradición, campo colombiano y calidad que cruza fronteras.",
@@ -16,8 +21,33 @@
     "verProductos": "Ver Productos",
     "goToSlide": "Ir a slide"
   },
+  "categorias": {
+    "eyebrow": "Nuestro Portafolio",
+    "titulo": "Más allá de la panela",
+    "subtitulo": "Un universo de sabores colombianos: desde la panela artesanal que nos dio origen, hasta el café de altura y nuevas bebidas naturales.",
+    "panela": {
+      "titulo": "Panela & Derivados",
+      "descripcion": "El dulce ancestral de Colombia. Producida artesanalmente en Santander, nuestra panela preserva cada mineral y cada sabor del jugo de caña sin refinar.",
+      "tag": "Producto Estrella"
+    },
+    "cafe": {
+      "titulo": "Café de Origen",
+      "descripcion": "Granos seleccionados de las montañas colombianas. Un café con historia, terroir único y sabor inigualable, listo para conquistar mercados premium.",
+      "tag": "Próximamente"
+    },
+    "bebidas": {
+      "titulo": "Bebidas Naturales",
+      "descripcion": "Nuevas exploraciones hacia bebidas artesanales que capturan lo mejor de nuestra tierra colombiana. Sabores auténticos para el mundo.",
+      "tag": "Nuevos Horizontes"
+    }
+  },
   "ventajas": {
+    "eyebrow": "Nuestras Ventajas",
     "titulo": "¿Por qué elegir Productos Bellavista?",
+    "stat1": "Países de exportación",
+    "stat2": "Natural & artesanal",
+    "stat3": "Años de tradición",
+    "stat4": "kg capacidad anual",
     "enfoqueExportador": {
       "titulo": "Enfoque Exportador",
       "descripcion": "Productos alimenticios preparados para mercados internacionales y compradores mayoristas."
@@ -253,8 +283,9 @@
     }
   },
   "nosotros": {
-    "titulo": "Proceso de Compra",
-    "subtitulo": "Así es trabajar con Productos Bellavista:",
+    "eyebrow": "Proceso de Compra",
+    "titulo": "Trabajar con Bellavista es fácil",
+    "subtitulo": "Simple, eficiente y enfocado en tus necesidades como importador o mayorista.",
     "subtitulo2": "simple, eficiente y enfocado en tus necesidades mayoristas.",
     "paso1": {
       "titulo": "Contáctanos",
@@ -334,10 +365,14 @@
   },
   "footer": {
     "nosotros": "Nosotros",
-    "tagline": "Calidad Colombiana para el mercado Mundial",
-    "descripcion1": "Somos expertos en exportación de productos artesanales de nuestro agro.",
-    "descripcion2": "Con productos Bellavista, tu empresa mayorista o marca privada de alimentos confía en un abastecimiento continuo y de calidad.",
-    "ubicacion": "Mogotes, Colombia"
+    "tagline": "Calidad Colombiana para el Mundo",
+    "descripcion1": "Somos expertos en exportación de productos artesanales colombianos: panela, café y bebidas naturales.",
+    "descripcion2": "Con Bellavista, tu empresa mayorista confía en abastecimiento continuo, calidad certificada y compromiso real.",
+    "ubicacion": "Mogotes, Santander · Colombia",
+    "contactoTitulo": "Contacto",
+    "redesTitulo": "Síguenos",
+    "categoriasTitulo": "Categorías",
+    "derechos": "Todos los derechos reservados."
   },
   "proceso": {
     "eyebrow": "Producción Artesanal",

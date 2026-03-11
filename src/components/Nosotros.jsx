@@ -3,151 +3,214 @@ import { motion } from 'framer-motion';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } }
 };
 
-const containerCards = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
-};
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 55, scale: 0.9 },
-  visible: {
-    opacity: 1, y: 0, scale: 1,
-    transition: { type: 'spring', stiffness: 200, damping: 22 }
-  }
-};
-
-const arrowVariant = {
-  hidden: { opacity: 0, scaleX: 0 },
-  visible: { opacity: 0.4, scaleX: 1, transition: { duration: 0.4, delay: 0.5 } }
-};
+const pasos = [
+  {
+    icon: `<img src="/41.svg" alt="" style="width:60px;height:60px;filter:brightness(0) invert(1);opacity:0.9;" />`,
+    num: '01',
+    titleKey: 'nosotros.paso1.titulo',
+    descKey: 'nosotros.paso1.descripcion',
+    accent: '#F4E800',
+  },
+  {
+    icon: `<img src="/I3.svg" alt="" style="width:60px;height:60px;filter:brightness(0) invert(1);opacity:0.9;" />`,
+    num: '02',
+    titleKey: 'nosotros.paso2.titulo',
+    descKey: 'nosotros.paso2.descripcion',
+    accent: '#8BC420',
+  },
+  {
+    icon: `<img src="/I4.svg" alt="" style="width:60px;height:60px;filter:brightness(0) invert(1);opacity:0.9;" />`,
+    num: '03',
+    titleKey: 'nosotros.paso3.titulo',
+    descKey: 'nosotros.paso3.descripcion',
+    accent: '#F4E800',
+  },
+  {
+    icon: `<img src="/I2.svg" alt="" style="width:60px;height:60px;filter:brightness(0) invert(1);opacity:0.9;" />`,
+    num: '04',
+    titleKey: 'nosotros.paso4.titulo',
+    descKey: 'nosotros.paso4.descripcion',
+    accent: '#E8173A',
+  },
+];
 
 export default function Nosotros() {
   const { t } = useTranslation();
 
-  const pasos = [
-    {
-      icon: `<img src="/41.svg" alt="icon" class="w-28 h-28" />`,
-      titleKey: 'nosotros.paso1.titulo',
-      descKey: 'nosotros.paso1.descripcion'
-    },
-    {
-      icon: `<img src="/I3.svg" alt="icon" class="w-28 h-28" />`,
-      titleKey: 'nosotros.paso2.titulo',
-      descKey: 'nosotros.paso2.descripcion'
-    },
-    {
-      icon: `<img src="/I4.svg" alt="icon" class="w-28 h-28" />`,
-      titleKey: 'nosotros.paso3.titulo',
-      descKey: 'nosotros.paso3.descripcion'
-    },
-    {
-      icon: `<img src="/I2.svg" alt="icon" class="w-32 h-32" />`,
-      titleKey: 'nosotros.paso4.titulo',
-      descKey: 'nosotros.paso4.descripcion'
-    }
-  ];
-
   return (
-    <section id="exportacion" className="relative py-16 bg-[#F7EAE4] overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      id="nosotros"
+      style={{ backgroundColor: '#0D1F08', overflow: 'hidden', position: 'relative' }}
+    >
+      <div style={{ height: '4px', background: 'linear-gradient(90deg, #E8173A, #F4E800, #1B7A2F)' }} />
 
-        {/* Título */}
+      <div className="max-w-6xl mx-auto px-6 py-20 sm:py-28">
+
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          className="text-center mb-12"
+          viewport={{ once: true, amount: 0.4 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-[38px] md:text-[44px] text-[#2C1810] mb-2 font-['Schoolbell',_cursive] leading-tight">
+          <p
+            style={{
+              fontFamily: 'Kumbh Sans, sans-serif',
+              color: '#F4E800',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              letterSpacing: '0.35em',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+            }}
+          >
+            {t('nosotros.eyebrow')}
+          </p>
+          <h2
+            style={{
+              fontFamily: 'Schoolbell, cursive',
+              color: '#fff',
+              fontSize: 'clamp(36px, 6vw, 68px)',
+              lineHeight: 1.05,
+              margin: '0 auto 16px',
+              maxWidth: '700px',
+            }}
+          >
             {t('nosotros.titulo')}
           </h2>
-          <p className="text-[15px] text-[#2C1810] leading-relaxed font-['Kumbh_Sans',_sans-serif] max-w-2xl mx-auto">
-            {t('nosotros.subtitulo')}<br/>
-            {t('nosotros.subtitulo2')}
+          <p
+            style={{
+              fontFamily: 'Kumbh Sans, sans-serif',
+              color: 'rgba(255,255,255,0.65)',
+              fontSize: 'clamp(14px, 1.6vw, 16px)',
+              maxWidth: '540px',
+              margin: '0 auto',
+              lineHeight: 1.7,
+            }}
+          >
+            {t('nosotros.subtitulo')}
           </p>
         </motion.div>
 
-        {/* Tarjetas de proceso */}
-        <motion.div
-          variants={containerCards}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {pasos.map((paso, i) => (
-            <motion.div key={i} variants={cardVariant} className="relative">
-              <motion.div
-                whileHover={{
-                  y: -8,
-                  boxShadow: '0 18px 38px rgba(44,24,16,0.13)',
-                  transition: { type: 'spring', stiffness: 280 }
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: 'easeOut' }}
+              style={{
+                padding: '40px 28px',
+                borderRight: i < pasos.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                position: 'relative',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '20px',
+                  fontFamily: 'Schoolbell, cursive',
+                  color: 'rgba(255,255,255,0.05)',
+                  fontSize: '72px',
+                  lineHeight: 1,
+                  userSelect: 'none',
                 }}
-                className="bg-[#FDF8F4] rounded-2xl p-6 shadow-sm"
               >
-                {/* Número de paso */}
-                <div className="absolute -top-3 -left-3 w-7 h-7 bg-[#5D8B3F] text-white rounded-full flex items-center justify-center text-[12px] font-bold font-['Kumbh_Sans',_sans-serif] shadow-md">
-                  {i + 1}
-                </div>
-                <div
-                  className="w-20 h-20 mx-auto mb-4 text-[#3D3D3D] opacity-80"
-                  dangerouslySetInnerHTML={{ __html: paso.icon }}
-                />
-                <h3 className="text-[18px] text-[#2C1810] mb-2 text-center font-['Handlee',_cursive] leading-snug">
-                  {t(paso.titleKey)}
-                </h3>
-                <p className="text-[#6B5E55] text-[13px] text-center leading-relaxed font-['Kumbh_Sans',_sans-serif]">
-                  {t(paso.descKey)}
-                </p>
-              </motion.div>
-              {/* Flecha entre tarjetas */}
-              {i < 3 && (
-                <motion.div
-                  variants={arrowVariant}
-                  style={{ transformOrigin: 'left center' }}
-                  className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-3xl text-[#3D3D3D]"
-                >
-                  →
-                </motion.div>
-              )}
+                {paso.num}
+              </div>
+
+              <div
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '50%',
+                  backgroundColor: paso.accent,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '20px',
+                }}
+              >
+                <span style={{
+                  fontFamily: 'Kumbh Sans, sans-serif',
+                  color: paso.accent === '#F4E800' || paso.accent === '#8BC420' ? '#1B3A0E' : '#fff',
+                  fontWeight: 800,
+                  fontSize: '12px',
+                }}>
+                  {paso.num}
+                </span>
+              </div>
+
+              <div className="mb-5" dangerouslySetInnerHTML={{ __html: paso.icon }} />
+
+              <h3 style={{
+                fontFamily: 'Schoolbell, cursive',
+                color: '#fff',
+                fontSize: '22px',
+                lineHeight: 1.25,
+                marginBottom: '10px',
+              }}>
+                {t(paso.titleKey)}
+              </h3>
+
+              <p style={{
+                fontFamily: 'Kumbh Sans, sans-serif',
+                color: 'rgba(255,255,255,0.6)',
+                fontSize: '13px',
+                lineHeight: 1.75,
+              }}>
+                {t(paso.descKey)}
+              </p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* CTA Final */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          className="bg-[#F7EAE4] rounded-2xl p-8 text-center shadow-sm max-w-3xl mx-auto"
+          viewport={{ once: true }}
+          className="text-center mt-16"
         >
-          <h3 className="text-[26px] md:text-[30px] text-[#2C1810] mb-3 font-['Handlee',_cursive] leading-snug">
+          <p style={{
+            fontFamily: 'Schoolbell, cursive',
+            color: 'rgba(255,255,255,0.7)',
+            fontSize: 'clamp(20px, 2.5vw, 28px)',
+            marginBottom: '20px',
+          }}>
             {t('nosotros.ctaTitulo')}
-          </h3>
-
+          </p>
           <motion.a
             href="#contacto"
-            whileHover={{ scale: 1.06, boxShadow: '0 8px 25px rgba(107,78,61,0.35)' }}
+            whileHover={{ scale: 1.05, y: -3, boxShadow: '0 14px 32px rgba(244,232,0,0.3)' }}
             whileTap={{ scale: 0.97 }}
-            className="inline-block bg-[#6B4E3D] text-white px-10 py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-[15px] hover:bg-[#5A3F2F] transition-all shadow-sm"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#F4E800',
+              color: '#1B3A0E',
+              fontFamily: 'Kumbh Sans, sans-serif',
+              fontWeight: 800,
+              fontSize: '0.82rem',
+              padding: '14px 32px',
+              borderRadius: '6px',
+              textDecoration: 'none',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+            }}
           >
             {t('nosotros.ctaBoton')}
+            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </motion.a>
         </motion.div>
-      </div>
-
-      {/* Ondas del final */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-        <img
-          src="/54.svg"
-          alt=""
-          className="w-full h-auto object-bottom"
-        />
       </div>
     </section>
   );
