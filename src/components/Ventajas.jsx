@@ -1,17 +1,22 @@
 import { useTranslation } from 'react-i18next';
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
-/* Contador animado */
+/* Contador animado — usa useState para evitar MotionValue como hijo de React */
 function Counter({ target, suffix = '' }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const val = useMotionValue(0);
-  const rounded = useTransform(val, v => Math.round(v));
+  const [display, setDisplay] = useState(0);
   useEffect(() => {
-    if (inView) { const c = animate(val, target, { duration: 1.8, ease: 'easeOut' }); return c.stop; }
-  }, [inView, val, target]);
-  return <motion.span ref={ref}>{rounded}{suffix}</motion.span>;
+    if (!inView) return;
+    const controls = animate(0, target, {
+      duration: 1.8,
+      ease: 'easeOut',
+      onUpdate: v => setDisplay(Math.round(v)),
+    });
+    return controls.stop;
+  }, [inView, target]);
+  return <span ref={ref}>{display}{suffix}</span>;
 }
 
 const fadeUp = {
