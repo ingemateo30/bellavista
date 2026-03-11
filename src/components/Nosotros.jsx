@@ -1,177 +1,157 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
+/*
+  NOSOTROS — Split layout estilo editorial
+  ─────────────────────────────────────────
+  • Verde (#009245) fondo a la izquierda con imagen
+  • Blanco a la derecha con la historia
+  • Minimal, mucho espacio en blanco
+*/
+
+const PASOS = [
+  { num: '01', key: 'nosotros.paso1' },
+  { num: '02', key: 'nosotros.paso2' },
+  { num: '03', key: 'nosotros.paso3' },
+  { num: '04', key: 'nosotros.paso4' },
+];
+
 export default function Nosotros() {
   const { t } = useTranslation();
-  const pasos = [
-    { num: '01', titleKey: 'nosotros.paso1.titulo', descKey: 'nosotros.paso1.descripcion', accent: '#FFFF00' },
-    { num: '02', titleKey: 'nosotros.paso2.titulo', descKey: 'nosotros.paso2.descripcion', accent: '#B8EC3F' },
-    { num: '03', titleKey: 'nosotros.paso3.titulo', descKey: 'nosotros.paso3.descripcion', accent: '#FFFF00' },
-    { num: '04', titleKey: 'nosotros.paso4.titulo', descKey: 'nosotros.paso4.descripcion', accent: '#F15A24' },
-  ];
 
   return (
-    <section id="nosotros" style={{ overflow: 'hidden' }}>
-
-      {/* Ola de entrada (blanco → verde) */}
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', height: '80px', backgroundColor: '#009245' }}>
-        <path d="M0,80 Q360,0 720,40 Q1080,80 1440,0 L1440,80 Z" fill="#fff" />
-      </svg>
-
-      {/* Bloque principal — verde */}
-      <div style={{ backgroundColor: '#009245', padding: '64px 24px 80px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-
-          {/* Eyebrow */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+    <section id="nosotros" style={{ backgroundColor: '#fff', overflow: 'hidden' }}>
+      <div
+        style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '640px' }}
+        className="nosotros-grid"
+      >
+        {/* PANEL IZQUIERDO — Imagen sobre fondo verde */}
+        <div
+          style={{
+            position: 'relative',
+            backgroundColor: '#009245',
+            overflow: 'hidden',
+            minHeight: '500px',
+          }}
+        >
+          <img
+            src="/banner1.png"
+            alt="BellaVista campo"
             style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover', objectPosition: 'center',
+              display: 'block', opacity: 0.55,
+            }}
+          />
+          {/* Badge encima de imagen */}
+          <div style={{
+            position: 'absolute', bottom: '40px', left: '40px',
+            backgroundColor: '#FFFF00',
+            padding: '14px 20px',
+          }}>
+            <p style={{
               fontFamily: 'Kumbh Sans, sans-serif',
-              color: '#FFFF00',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.35em',
-              textTransform: 'uppercase',
-              textAlign: 'center',
-              marginBottom: '12px',
-            }}
-          >
+              color: '#1A1A1A', fontSize: '11px', fontWeight: 700,
+              letterSpacing: '0.2em', textTransform: 'uppercase',
+              margin: 0,
+            }}>
+              {t('nosotros.badge')}
+            </p>
+          </div>
+        </div>
+
+        {/* PANEL DERECHO — Texto */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
+          style={{
+            padding: 'clamp(48px, 6vw, 80px) clamp(32px, 5vw, 72px)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          {/* Eyebrow */}
+          <p style={{
+            fontFamily: 'Kumbh Sans, sans-serif',
+            color: '#009245', fontSize: '11px', fontWeight: 700,
+            letterSpacing: '0.35em', textTransform: 'uppercase',
+            marginBottom: '16px',
+            display: 'flex', alignItems: 'center', gap: '10px',
+          }}>
+            <span style={{ display: 'inline-block', width: '24px', height: '2px', backgroundColor: '#009245', flexShrink: 0 }} />
             {t('nosotros.eyebrow')}
-          </motion.p>
+          </p>
 
-          {/* Título grande */}
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            style={{
-              fontFamily: 'Schoolbell, cursive',
-              color: '#fff',
-              fontSize: 'clamp(36px, 6vw, 72px)',
-              lineHeight: 1,
-              textAlign: 'center',
-              marginBottom: '56px',
-            }}
-          >
+          {/* Título */}
+          <h2 style={{
+            fontFamily: 'Schoolbell, cursive',
+            color: '#1A1A1A',
+            fontSize: 'clamp(36px, 4vw, 56px)',
+            lineHeight: 1.0, marginBottom: '24px',
+          }}>
             {t('nosotros.titulo')}
-          </motion.h2>
+          </h2>
 
-          {/* Pasos */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }} className="steps-grid">
-            {pasos.map((paso, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
-                style={{
-                  padding: '0 28px 0',
-                  borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.15)' : 'none',
-                  position: 'relative',
-                }}
-              >
-                {/* Número */}
-                <div
-                  style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '50%',
-                    backgroundColor: paso.accent,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '20px',
-                  }}
-                >
-                  <span style={{
-                    fontFamily: 'Kumbh Sans, sans-serif',
-                    color: '#603813',
-                    fontWeight: 800,
-                    fontSize: '14px',
-                  }}>
-                    {paso.num}
-                  </span>
-                </div>
+          {/* Línea roja */}
+          <div style={{ height: '3px', width: '48px', backgroundColor: '#D11335', marginBottom: '24px' }} />
 
-                {/* Título del paso */}
-                <h3 style={{
+          {/* Descripción */}
+          <p style={{
+            fontFamily: 'Kumbh Sans, sans-serif',
+            color: '#444', fontSize: '15px', lineHeight: 1.75,
+            marginBottom: '40px',
+          }}>
+            {t('nosotros.subtitulo')}
+          </p>
+
+          {/* 4 pasos rápidos */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '40px' }}>
+            {PASOS.map((p, i) => (
+              <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <span style={{
                   fontFamily: 'Schoolbell, cursive',
-                  color: '#fff',
-                  fontSize: '26px',
-                  lineHeight: 1.15,
-                  marginBottom: '12px',
+                  color: '#D11335', fontSize: '20px',
+                  lineHeight: 1, flexShrink: 0, marginTop: '2px',
                 }}>
-                  {t(paso.titleKey)}
-                </h3>
-
-                {/* Descripción */}
-                <p style={{
+                  {p.num}
+                </span>
+                <span style={{
                   fontFamily: 'Kumbh Sans, sans-serif',
-                  color: 'rgba(255,255,255,0.7)',
-                  fontSize: '13px',
-                  lineHeight: 1.7,
+                  color: '#333', fontSize: '13px', lineHeight: 1.5, fontWeight: 500,
                 }}>
-                  {t(paso.descKey)}
-                </p>
-
-                {/* Línea de acento inferior */}
-                <div style={{
-                  marginTop: '24px',
-                  height: '3px',
-                  width: '36px',
-                  backgroundColor: paso.accent,
-                  borderRadius: '2px',
-                }} />
-              </motion.div>
+                  {t(p.key)}
+                </span>
+              </div>
             ))}
           </div>
 
           {/* CTA */}
-          <div style={{ textAlign: 'center', marginTop: '60px' }}>
-            <motion.a
-              href="#contacto"
-              whileHover={{ scale: 1.05, y: -2, boxShadow: '0 12px 28px rgba(0,0,0,0.2)' }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                backgroundColor: '#FFFF00',
-                color: '#603813',
-                fontFamily: 'Kumbh Sans, sans-serif',
-                fontWeight: 800,
-                fontSize: '12px',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                padding: '14px 36px',
-                borderRadius: '3px',
-                textDecoration: 'none',
-              }}
-            >
-              {t('nosotros.ctaBoton')}
-              <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </motion.a>
-          </div>
-        </div>
+          <a
+            href="/#contacto"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              backgroundColor: '#009245', color: '#fff',
+              fontFamily: 'Kumbh Sans, sans-serif',
+              fontWeight: 700, fontSize: '12px',
+              letterSpacing: '0.08em', textTransform: 'uppercase',
+              padding: '14px 28px', borderRadius: '2px',
+              textDecoration: 'none', alignSelf: 'flex-start',
+            }}
+          >
+            {t('nosotros.cta')}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </motion.div>
       </div>
-
-      {/* Ola de salida (verde → blanco) */}
-      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', height: '80px', backgroundColor: '#fff' }}>
-        <path d="M0,0 Q360,80 720,40 Q1080,0 1440,80 L1440,0 Z" fill="#009245" />
-      </svg>
 
       <style>{`
         @media (max-width: 768px) {
-          .steps-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
-        }
-        @media (max-width: 480px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
+          .nosotros-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

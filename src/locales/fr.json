@@ -5,7 +5,8 @@
     "exportacion": "Exportation",
     "contacto": "Contact",
     "nosotros": "À Propos",
-    "cotizar": "Demander un Devis"
+    "cotizar": "Demander un Devis",
+    "cta": "Devis"
   },
   "hero": {
     "productos": "PRODUITS",
@@ -20,7 +21,11 @@
     "cotizarWhatsapp": "Devis par WhatsApp",
     "verProductos": "Voir les Produits",
     "goToSlide": "Aller 00e0 la diapositive",
-    "badgeTexto": "Colombie 00b7 Exportation"
+    "badgeTexto": "Colombie 00b7 Exportation",
+    "titulo1": "Saveur",
+    "titulo2": "de Colombie",
+    "ctaPrimario": "Demander un devis",
+    "ctaSecundario": "Voir les produits"
   },
   "categorias": {
     "eyebrow": "Notre Portefeuille",
@@ -29,17 +34,20 @@
     "panela": {
       "titulo": "Panela & Dérivés",
       "descripcion": "Le sucrant ancestral de Colombie. Fabriquée artisanalement à Santander, notre panela préserve chaque minéral et chaque saveur du jus de canne non raffiné.",
-      "tag": "Produit Vedette"
+      "tag": "Produit Vedette",
+      "desc": "Panela artisanale 100% naturelle, directement du trapiche. Idéale pour l'export en gros."
     },
     "cafe": {
       "titulo": "Café d'Origine",
       "descripcion": "Grains sélectionnés des montagnes colombiennes. Un café avec de l'histoire, un terroir unique et une saveur incomparable, prêt à conquérir les marchés premium.",
-      "tag": "Prochainement"
+      "tag": "Prochainement",
+      "desc": "Café d'origine colombienne, cultivé dans les montagnes de Santander avec traçabilité complète."
     },
     "bebidas": {
       "titulo": "Boissons Naturelles",
       "descripcion": "Nouvelles explorations vers des boissons artisanales qui capturent le meilleur de notre terre colombienne. Des saveurs authentiques pour le monde.",
-      "tag": "Nouveaux Horizons"
+      "tag": "Nouveaux Horizons",
+      "desc": "Boissons naturelles à base de panela et de fruits tropicaux. Prochaine ligne de produits."
     }
   },
   "ventajas": {
@@ -284,7 +292,7 @@
     }
   },
   "nosotros": {
-    "eyebrow": "Processus d'Achat",
+    "eyebrow": "Notre Histoire",
     "titulo": "Travailler avec Bellavista est simple",
     "subtitulo": "Simple, efficace et axé sur vos besoins en tant qu'importateur ou grossiste.",
     "subtitulo2": "simple, efficace et axé sur vos besoins en gros.",
@@ -305,7 +313,9 @@
       "descripcion": "Nous gérons l'ensemble du processus logistique et documentaire pour une exportation sûre et opportune."
     },
     "ctaTitulo": "Prêt à commencer ?",
-    "ctaBoton": "Demander un Devis"
+    "ctaBoton": "Demander un Devis",
+    "badge": "Depuis 2002 · San Gil, Colombie",
+    "cta": "Nous contacter"
   },
   "contacto": {
     "titulo": "Prêt à importer d'authentiques produits agricoles colombiens ?",
@@ -313,10 +323,12 @@
     "cotizarWhatsapp": "Devis par WhatsApp",
     "o": "ou",
     "contactoEmail": "Contact par Email",
-    "solicitarCotizacion": "Demander un Devis"
+    "solicitarCotizacion": "Demander un Devis",
+    "eyebrow": "Écrivez-nous",
+    "email": "E-mail"
   },
   "exportcta": {
-    "eyebrow": "Exportations Colombiennes",
+    "eyebrow": "Export B2B",
     "titulo": "Nous apportons les saveurs de Colombie au monde",
     "subtitulo": "Nous sommes un pont entre l'agriculture colombienne et les marchés internationaux. Produits naturels, processus certifiés et engagement réel envers chaque partenaire commercial.",
     "stat1Numero": "4+",
@@ -344,10 +356,15 @@
       "Pour exporter",
       "Qualité certifiée",
       "Panela pure"
-    ]
+    ],
+    "cta": "Parler à un conseiller",
+    "stat1": "Pays d'exportation",
+    "stat2": "kg capacité annuelle",
+    "stat3": "Naturel & artisanal",
+    "stat4": "Ans de tradition"
   },
   "galeria": {
-    "eyebrow": "Notre Entreprise",
+    "eyebrow": "Galerie",
     "titulo": "Bellavista de l'intérieur",
     "subtitulo": "Découvrez les installations, le processus et les produits qui font de Bellavista une référence de qualité artisanale colombienne."
   },
@@ -373,36 +390,37 @@
     "contactoTitulo": "Contact",
     "redesTitulo": "Suivez-nous",
     "categoriasTitulo": "Catégories",
-    "derechos": "Tous droits réservés."
+    "derechos": "Tous droits réservés.",
+    "navTitulo": "Navigation"
   },
   "proceso": {
-    "eyebrow": "Production Artisanale",
-    "titulo": "Du Champ au Produit",
+    "eyebrow": "Processus Artisanal",
+    "titulo": "De la canne à votre table",
     "subtitulo": "Chaque bloc de panela parcourt un chemin de tradition, de soin et de travail paysan avant d'atteindre votre marché.",
     "badge": "Processus artisanal 100% certifié",
     "cultivo": {
-      "titulo": "Culture de la Canne",
-      "desc": "Plantée dans les montagnes de Santander à plus de 1 200 m.s.n.m., la canne pousse sans agrochimiques dans des sols riches en minéraux."
+      "titulo": "Culture",
+      "descripcion": "Sélection des champs de canne aux altitudes optimales de Santander."
     },
     "cosecha": {
-      "titulo": "Récolte Manuelle",
-      "desc": "La coupe est effectuée à la main au point optimal de maturité, en ne sélectionnant que les cannes de la meilleure qualité."
+      "titulo": "Récolte",
+      "descripcion": "Coupe manuelle au point exact de maturité."
     },
     "extraccion": {
-      "titulo": "Extraction du Jus",
-      "desc": "Les cannes sont broyées dans le moulin pour extraire le jus frais, dense et chargé de nutriments naturels."
+      "titulo": "Extraction",
+      "descripcion": "Broyage au trapiche traditionnel, sans additifs."
     },
     "coccion": {
       "titulo": "Cuisson Artisanale",
       "desc": "Le jus est cuit dans des chaudrons à feu direct, éliminant les impuretés et concentrant les sucres sans perdre les minéraux."
     },
     "moldeo": {
-      "titulo": "Brassage et Moulage",
-      "desc": "La mélasse chaude est brassée et versée dans des moules, prenant sa forme finale : blocs, morceaux ou poudre fine."
+      "titulo": "Moulage",
+      "descripcion": "Point de panela et moulage en formes artisanales."
     },
     "empaque": {
-      "titulo": "Emballage et Exportation",
-      "desc": "Chaque lot passe par un contrôle qualité avant d'être emballé selon les normes internationales et expédié à nos partenaires dans le monde."
+      "titulo": "Emballage",
+      "descripcion": "Emballage aux normes d'exportation internationale."
     }
   }
 }
