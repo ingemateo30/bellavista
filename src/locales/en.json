@@ -5,7 +5,8 @@
     "exportacion": "Export",
     "contacto": "Contact",
     "nosotros": "About Us",
-    "cotizar": "Get Quote"
+    "cotizar": "Get Quote",
+    "cta": "Quote"
   },
   "hero": {
     "productos": "PRODUCTS",
@@ -20,7 +21,11 @@
     "cotizarWhatsapp": "Get Quote via WhatsApp",
     "verProductos": "View Products",
     "goToSlide": "Go to slide",
-    "badgeTexto": "Colombia 00b7 Export"
+    "badgeTexto": "Colombia 00b7 Export",
+    "titulo1": "Flavor",
+    "titulo2": "from Colombia",
+    "ctaPrimario": "Get a quote",
+    "ctaSecundario": "See products"
   },
   "categorias": {
     "eyebrow": "Our Portfolio",
@@ -29,17 +34,20 @@
     "panela": {
       "titulo": "Panela & Derivatives",
       "descripcion": "The ancestral sweetener of Colombia. Artisanally crafted in Santander, our panela preserves every mineral and flavor of unrefined cane juice.",
-      "tag": "Star Product"
+      "tag": "Star Product",
+      "desc": "100% natural artisan panela, direct from the trapiche. Ideal for wholesale export."
     },
     "cafe": {
       "titulo": "Origin Coffee",
       "descripcion": "Selected beans from Colombian mountains. A coffee with history, unique terroir and unmatched flavor, ready to conquer premium markets.",
-      "tag": "Coming Soon"
+      "tag": "Coming Soon",
+      "desc": "Single-origin Colombian coffee, grown in the Santander mountains with full traceability."
     },
     "bebidas": {
       "titulo": "Natural Beverages",
       "descripcion": "New explorations into artisanal beverages that capture the best of our Colombian land. Authentic flavors for the world.",
-      "tag": "New Horizons"
+      "tag": "New Horizons",
+      "desc": "Natural beverages made from panela and tropical fruits. Coming soon product line."
     }
   },
   "ventajas": {
@@ -284,7 +292,7 @@
     }
   },
   "nosotros": {
-    "eyebrow": "Purchase Process",
+    "eyebrow": "Our Story",
     "titulo": "Working with Bellavista is easy",
     "subtitulo": "Simple, efficient and focused on your needs as an importer or wholesaler.",
     "subtitulo2": "simple, efficient and focused on your wholesale needs.",
@@ -305,7 +313,9 @@
       "descripcion": "We manage the entire logistics and documentation process for a safe and timely export."
     },
     "ctaTitulo": "Ready to get started?",
-    "ctaBoton": "Request Quote"
+    "ctaBoton": "Request Quote",
+    "badge": "Since 2002 · San Gil, Colombia",
+    "cta": "Contact us"
   },
   "contacto": {
     "titulo": "Ready to import authentic Colombian agricultural products?",
@@ -313,10 +323,12 @@
     "cotizarWhatsapp": "Get Quote via WhatsApp",
     "o": "or",
     "contactoEmail": "Contact by Email",
-    "solicitarCotizacion": "Request Quote"
+    "solicitarCotizacion": "Request Quote",
+    "eyebrow": "Contact us",
+    "email": "Email"
   },
   "exportcta": {
-    "eyebrow": "Colombian Exports",
+    "eyebrow": "B2B Export",
     "titulo": "We bring the flavors of Colombia to the world",
     "subtitulo": "We are a bridge between Colombian agriculture and international markets. Natural products, certified processes and real commitment to every business partner.",
     "stat1Numero": "4+",
@@ -344,10 +356,15 @@
       "Export ready",
       "Certified quality",
       "Pure panela"
-    ]
+    ],
+    "cta": "Talk to an advisor",
+    "stat1": "Export countries",
+    "stat2": "kg annual capacity",
+    "stat3": "Natural & artisanal",
+    "stat4": "Years of tradition"
   },
   "galeria": {
-    "eyebrow": "Our Company",
+    "eyebrow": "Gallery",
     "titulo": "Inside Bellavista",
     "subtitulo": "Discover the facilities, process and products that make Bellavista a benchmark of Colombian artisan quality."
   },
@@ -373,36 +390,37 @@
     "contactoTitulo": "Contact",
     "redesTitulo": "Follow Us",
     "categoriasTitulo": "Categories",
-    "derechos": "All rights reserved."
+    "derechos": "All rights reserved.",
+    "navTitulo": "Navigation"
   },
   "proceso": {
-    "eyebrow": "Artisan Production",
-    "titulo": "From Field to Product",
+    "eyebrow": "Artisan Process",
+    "titulo": "From cane to your table",
     "subtitulo": "Every block of panela travels a path of tradition, care, and craftsmanship before reaching your market.",
     "badge": "100% certified artisan process",
     "cultivo": {
-      "titulo": "Cane Cultivation",
-      "desc": "Grown in the mountains of Santander at over 1,200 m.a.s.l., the cane thrives without agrochemicals in mineral-rich soils."
+      "titulo": "Cultivation",
+      "descripcion": "Selection of cane fields at optimal Santander altitudes."
     },
     "cosecha": {
-      "titulo": "Manual Harvest",
-      "desc": "Cutting is done by hand at the optimal maturity point, selecting only the finest quality cane stalks."
+      "titulo": "Harvest",
+      "descripcion": "Manual cutting at the exact point of ripeness."
     },
     "extraccion": {
-      "titulo": "Juice Extraction",
-      "desc": "The cane is milled in the trapiche to extract fresh, dense juice loaded with natural nutrients."
+      "titulo": "Extraction",
+      "descripcion": "Milling in traditional trapiche, no additives."
     },
     "coccion": {
       "titulo": "Artisan Cooking",
       "desc": "The juice is cooked in open pans over direct fire, removing impurities and concentrating sugars without losing minerals."
     },
     "moldeo": {
-      "titulo": "Beating and Molding",
-      "desc": "The hot molasses is beaten and poured into molds, taking its final form: blocks, broken pieces, or fine powder."
+      "titulo": "Molding",
+      "descripcion": "Panela point and molding in artisan shapes."
     },
     "empaque": {
-      "titulo": "Packaging and Export",
-      "desc": "Every batch undergoes quality control before being packaged to international standards and shipped to our partners worldwide."
+      "titulo": "Packaging",
+      "descripcion": "Packaging to international export standards."
     }
   }
 }

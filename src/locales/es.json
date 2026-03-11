@@ -5,7 +5,8 @@
     "exportacion": "Exportación",
     "contacto": "Contacto",
     "nosotros": "Nosotros",
-    "cotizar": "Cotizar"
+    "cotizar": "Cotizar",
+    "cta": "Cotizar"
   },
   "hero": {
     "productos": "PRODUCTOS",
@@ -20,7 +21,11 @@
     "cotizarWhatsapp": "Cotizar por WhatsApp",
     "verProductos": "Ver Productos",
     "goToSlide": "Ir a slide",
-    "badgeTexto": "Colombia · Exportación"
+    "badgeTexto": "Colombia · Exportación",
+    "titulo1": "Sabor",
+    "titulo2": "de Colombia",
+    "ctaPrimario": "Cotizar ahora",
+    "ctaSecundario": "Ver productos"
   },
   "categorias": {
     "eyebrow": "Nuestro Portafolio",
@@ -29,17 +34,20 @@
     "panela": {
       "titulo": "Panela & Derivados",
       "descripcion": "El dulce ancestral de Colombia. Producida artesanalmente en Santander, nuestra panela preserva cada mineral y cada sabor del jugo de caña sin refinar.",
-      "tag": "Producto Estrella"
+      "tag": "Producto Estrella",
+      "desc": "Panela artesanal 100% natural, directa del trapiche. Ideal para exportación mayorista."
     },
     "cafe": {
       "titulo": "Café de Origen",
       "descripcion": "Granos seleccionados de las montañas colombianas. Un café con historia, terroir único y sabor inigualable, listo para conquistar mercados premium.",
-      "tag": "Próximamente"
+      "tag": "Próximamente",
+      "desc": "Café de origen colombiano, cultivado en las montañas de Santander con trazabilidad completa."
     },
     "bebidas": {
       "titulo": "Bebidas Naturales",
       "descripcion": "Nuevas exploraciones hacia bebidas artesanales que capturan lo mejor de nuestra tierra colombiana. Sabores auténticos para el mundo.",
-      "tag": "Nuevos Horizontes"
+      "tag": "Nuevos Horizontes",
+      "desc": "Bebidas naturales a base de panela y frutas tropicales. Próxima línea de producto."
     }
   },
   "ventajas": {
@@ -284,7 +292,7 @@
     }
   },
   "nosotros": {
-    "eyebrow": "Proceso de Compra",
+    "eyebrow": "Nuestra Historia",
     "titulo": "Trabajar con Bellavista es fácil",
     "subtitulo": "Simple, eficiente y enfocado en tus necesidades como importador o mayorista.",
     "subtitulo2": "simple, eficiente y enfocado en tus necesidades mayoristas.",
@@ -305,7 +313,9 @@
       "descripcion": "Gestionamos todo el proceso logístico y documental para una exportación segura y oportuna."
     },
     "ctaTitulo": "¿Listo para comenzar?",
-    "ctaBoton": "Solicitar Cotización"
+    "ctaBoton": "Solicitar Cotización",
+    "badge": "Desde 2002 · San Gil, Colombia",
+    "cta": "Contáctanos"
   },
   "contacto": {
     "titulo": "¿Listo para importar Auténticos productos agrícolas Colombianos?",
@@ -313,10 +323,12 @@
     "cotizarWhatsapp": "Cotizar por Whatsapp",
     "o": "o",
     "contactoEmail": "Contacto por Email",
-    "solicitarCotizacion": "Solicitar Cotización"
+    "solicitarCotizacion": "Solicitar Cotización",
+    "eyebrow": "Escríbenos",
+    "email": "Correo"
   },
   "exportcta": {
-    "eyebrow": "Exportación Colombiana",
+    "eyebrow": "Exportación B2B",
     "titulo": "Llevamos el sabor de Colombia al mundo",
     "subtitulo": "Somos un puente entre el agro colombiano y los mercados internacionales. Productos naturales, procesos certificados y compromiso real con cada socio comercial.",
     "stat1Numero": "4+",
@@ -344,10 +356,15 @@
       "Para exportar",
       "Calidad certificada",
       "Panela pura"
-    ]
+    ],
+    "cta": "Hablar con un asesor",
+    "stat1": "Países de exportación",
+    "stat2": "kg capacidad anual",
+    "stat3": "Natural & artesanal",
+    "stat4": "Años de tradición"
   },
   "galeria": {
-    "eyebrow": "Nuestra Empresa",
+    "eyebrow": "Galería",
     "titulo": "Bellavista por dentro",
     "subtitulo": "Conoce las instalaciones, el proceso y los productos que hacen de Bellavista un referente de calidad artesanal colombiana."
   },
@@ -373,36 +390,37 @@
     "contactoTitulo": "Contacto",
     "redesTitulo": "Síguenos",
     "categoriasTitulo": "Categorías",
-    "derechos": "Todos los derechos reservados."
+    "derechos": "Todos los derechos reservados.",
+    "navTitulo": "Navegación"
   },
   "proceso": {
-    "eyebrow": "Producción Artesanal",
-    "titulo": "Del Campo al Producto",
+    "eyebrow": "Proceso Artesanal",
+    "titulo": "De la caña a tu mesa",
     "subtitulo": "Cada bloque de panela recorre un camino de tradición, cuidado y trabajo campesino antes de llegar a tu mercado.",
     "badge": "Proceso 100% artesanal certificado",
     "cultivo": {
-      "titulo": "Cultivo de la Caña",
-      "desc": "Sembrada en las montañas de Santander a más de 1.200 m.s.n.m., la caña crece sin agroquímicos en suelos ricos en minerales."
+      "titulo": "Cultivo",
+      "descripcion": "Selección de cañaverales en altitudes óptimas de Santander."
     },
     "cosecha": {
-      "titulo": "Cosecha Manual",
-      "desc": "El corte se realiza a mano en el punto óptimo de madurez, seleccionando únicamente cañas de la mejor calidad."
+      "titulo": "Cosecha",
+      "descripcion": "Corte manual en el punto exacto de madurez."
     },
     "extraccion": {
-      "titulo": "Extracción del Jugo",
-      "desc": "Las cañas son molidas en el trapiche para extraer el jugo fresco, denso y cargado de nutrientes naturales."
+      "titulo": "Extracción",
+      "descripcion": "Molienda en trapiche tradicional, sin aditivos."
     },
     "coccion": {
       "titulo": "Cocción Artesanal",
       "desc": "El jugo se cocina en pailas a fuego directo, eliminando impurezas y concentrando los azúcares sin perder los minerales."
     },
     "moldeo": {
-      "titulo": "Batido y Moldeo",
-      "desc": "La meladura caliente se bate y vierte en moldes, tomando su forma final: bloques, panela partida o polvo fino."
+      "titulo": "Moldeo",
+      "descripcion": "Punto de panela y moldeo en formas artesanales."
     },
     "empaque": {
-      "titulo": "Empaque y Exportación",
-      "desc": "Cada lote pasa por control de calidad antes de ser empacado bajo normas internacionales y enviado a nuestros socios en el mundo."
+      "titulo": "Empaque",
+      "descripcion": "Empaque con estándares de exportación internacional."
     }
   }
 }

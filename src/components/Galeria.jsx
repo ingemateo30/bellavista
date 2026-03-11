@@ -3,193 +3,157 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const imagenes = [
-  { src: '/SINR0002.jpg', alt: 'Instalaciones Bellavista' },
-  { src: '/SINR0004.jpg', alt: 'Proceso de producción' },
-  { src: '/_DSC0035.jpg', alt: 'Productos Bellavista' },
-  { src: '/_DSC0042(1).jpg', alt: 'Panela artesanal' },
-  { src: '/_DSC0048.jpg', alt: 'Exportación' },
-  { src: '/_DSC0058(1).jpg', alt: 'Calidad certificada' },
-  { src: '/_DSC0063.jpg', alt: 'Producto natural' },
+  { src: '/SINR0002.jpg',       alt: 'Instalaciones Bellavista' },
+  { src: '/SINR0004.jpg',       alt: 'Proceso de producción' },
+  { src: '/_DSC0035.jpg',       alt: 'Productos Bellavista' },
+  { src: '/_DSC0042(1).jpg',    alt: 'Panela artesanal' },
+  { src: '/_DSC0048.jpg',       alt: 'Exportación' },
+  { src: '/_DSC0058(1).jpg',    alt: 'Calidad certificada' },
+  { src: '/_DSC0063.jpg',       alt: 'Producto natural' },
 ];
-
-const headerVariants = {
-  hidden: { opacity: 0, y: 35 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } }
-};
-
-const gridContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } }
-};
-
-const gridItem = {
-  hidden: { opacity: 0, scale: 0.84, y: 30 },
-  visible: {
-    opacity: 1, scale: 1, y: 0,
-    transition: { type: 'spring', stiffness: 200, damping: 22 }
-  }
-};
 
 export default function Galeria() {
   const { t } = useTranslation();
-  const [lightbox, setLightbox] = useState(null);
-
-  const abrirLightbox = (index) => setLightbox(index);
-  const cerrarLightbox = () => setLightbox(null);
-  const anterior = () => setLightbox((prev) => (prev - 1 + imagenes.length) % imagenes.length);
-  const siguiente = () => setLightbox((prev) => (prev + 1) % imagenes.length);
+  const [selected, setSelected] = useState(null);
 
   return (
-    <section id="galeria" style={{ backgroundColor: '#fff', padding: '80px 0 0', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+    <section style={{ backgroundColor: '#fff', padding: '96px 0 80px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
 
-        {/* Encabezado */}
+        {/* Header */}
         <motion.div
-          variants={headerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          style={{ textAlign: 'center', marginBottom: '48px' }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ marginBottom: '56px' }}
         >
-          <p style={{ fontFamily: 'Kumbh Sans, sans-serif', color: '#D11335', fontSize: '11px', fontWeight: 700, letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: '10px' }}>
+          <p style={{
+            fontFamily: 'Kumbh Sans, sans-serif',
+            color: '#D11335', fontSize: '11px', fontWeight: 700,
+            letterSpacing: '0.35em', textTransform: 'uppercase',
+            marginBottom: '12px',
+          }}>
             {t('galeria.eyebrow')}
           </p>
-          <h2 style={{ fontFamily: 'Schoolbell, cursive', color: '#603813', fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.05, marginBottom: '12px' }}>
+          <h2 style={{
+            fontFamily: 'Schoolbell, cursive',
+            color: '#1A1A1A',
+            fontSize: 'clamp(36px, 5vw, 60px)',
+            lineHeight: 1, margin: 0,
+          }}>
             {t('galeria.titulo')}
           </h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            style={{ height: '3px', width: '80px', background: 'linear-gradient(90deg, #D11335, #FFFF00)', margin: '0 auto 12px', transformOrigin: 'center', borderRadius: '2px' }}
-          />
-          <p style={{ fontFamily: 'Kumbh Sans, sans-serif', color: '#603813', fontSize: '15px', lineHeight: 1.65, maxWidth: '500px', margin: '0 auto', opacity: 0.7 }}>
-            {t('galeria.subtitulo')}
-          </p>
         </motion.div>
 
-        {/* Grid de galería */}
+        {/* Grid de imágenes */}
         <motion.div
-          variants={gridContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[200px]"
-          style={{ marginBottom: '0' }}
+          transition={{ staggerChildren: 0.07 }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gridTemplateRows: 'auto auto',
+            gap: '12px',
+          }}
+          className="gallery-grid"
         >
-          {imagenes.map((img, i) => {
-            const isWide = i === 0 || i === 5;
-            const isTall = i === 2 || i === 7;
-
-            return (
-              <motion.div
-                key={i}
-                variants={gridItem}
-                onClick={() => abrirLightbox(i)}
-                whileHover={{ scale: 1.03, zIndex: 10, transition: { duration: 0.22 } }}
-                className={`group relative overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300 ${
-                  isWide ? 'col-span-2' : ''
-                } ${isTall ? 'row-span-2' : ''}`}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                {/* Overlay al hacer hover */}
-                <div className="absolute inset-0 bg-[#603813]/0 group-hover:bg-[#603813]/50 transition-all duration-300 flex items-end p-4">
-                  <span className="text-white text-sm font-['Kumbh_Sans',_sans-serif] opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-                    {img.alt}
-                  </span>
-                </div>
-                {/* Ícono de zoom */}
-                <div className="absolute top-3 right-3 w-8 h-8 bg-white/0 group-hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                  </svg>
-                </div>
-              </motion.div>
-            );
-          })}
+          {imagenes.map((img, i) => (
+            <motion.div
+              key={i}
+              variants={{
+                hidden: { opacity: 0, scale: 0.95 },
+                visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+              }}
+              onClick={() => setSelected(img)}
+              style={{
+                overflow: 'hidden',
+                cursor: 'pointer',
+                backgroundColor: '#f5f5f5',
+                gridColumn: i === 0 ? 'span 2' : 'span 1',
+                gridRow: i === 0 ? 'span 2' : 'span 1',
+                position: 'relative',
+                aspectRatio: i === 0 ? 'auto' : '4/3',
+              }}
+              className="gallery-item"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                style={{
+                  width: '100%', height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                  transition: 'transform 0.5s ease',
+                  minHeight: i === 0 ? '400px' : '180px',
+                }}
+                className="gallery-img"
+              />
+              <div style={{
+                position: 'absolute', inset: 0,
+                backgroundColor: '#D11335',
+                opacity: 0,
+                transition: 'opacity 0.3s',
+              }} className="gallery-overlay" />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
 
-      {/* Lightbox con AnimatePresence */}
+      {/* Lightbox */}
       <AnimatePresence>
-        {lightbox !== null && (
+        {selected && (
           <motion.div
-            key="lightbox"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-            onClick={cerrarLightbox}
+            onClick={() => setSelected(null)}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 9999,
+              backgroundColor: 'rgba(0,0,0,0.92)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '24px',
+            }}
           >
-            <motion.div
-              initial={{ scale: 0.88, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.88, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-              className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+            <motion.img
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              src={selected.src}
+              alt={selected.alt}
+              style={{
+                maxWidth: '90vw', maxHeight: '85vh',
+                objectFit: 'contain',
+                boxShadow: '0 24px 80px rgba(0,0,0,0.6)',
+              }}
+              onClick={e => e.stopPropagation()}
+            />
+            <button
+              onClick={() => setSelected(null)}
+              style={{
+                position: 'fixed', top: '20px', right: '20px',
+                background: '#D11335', border: 'none',
+                color: '#fff', width: '40px', height: '40px',
+                cursor: 'pointer', fontSize: '20px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                borderRadius: '2px',
+              }}
             >
-              <img
-                src={imagenes[lightbox].src}
-                alt={imagenes[lightbox].alt}
-                className="max-w-full max-h-[80vh] object-contain rounded-xl shadow-2xl"
-              />
-
-              {/* Cerrar */}
-              <button
-                onClick={cerrarLightbox}
-                className="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors"
-                aria-label="Cerrar"
-              >
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {/* Anterior */}
-              <button
-                onClick={anterior}
-                className="absolute left-0 sm:-left-14 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
-                aria-label="Imagen anterior"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              {/* Siguiente */}
-              <button
-                onClick={siguiente}
-                className="absolute right-0 sm:-right-14 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
-                aria-label="Siguiente imagen"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Contador */}
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white/60 text-sm font-['Kumbh_Sans',_sans-serif]">
-                {lightbox + 1} / {imagenes.length}
-              </div>
-            </motion.div>
+              ×
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Franja de colores al final */}
-      <div style={{ display: 'flex', height: '6px', marginTop: '48px' }}>
-        {['#D11335', '#F15A24', '#FFFF00', '#B8EC3F', '#009245', '#603813'].map((c, i) => (
-          <div key={i} style={{ flex: 1, backgroundColor: c }} />
-        ))}
-      </div>
+      <style>{`
+        .gallery-item:hover .gallery-img { transform: scale(1.06) !important; }
+        .gallery-item:hover .gallery-overlay { opacity: 0.20 !important; }
+        @media (max-width: 768px) {
+          .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .gallery-grid > div { grid-column: span 1 !important; grid-row: span 1 !important; }
+        }
+      `}</style>
     </section>
   );
 }
