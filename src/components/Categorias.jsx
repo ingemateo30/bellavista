@@ -2,67 +2,61 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 /*
-  Sección "Nuestro Universo"
-  Tres paneles inmersivos que muestran las categorías de productos:
-  Panela & Derivados · Café de Origen · Bebidas Naturales
+  CATEGORIAS — Tres universos de producto
+  ─────────────────────────────────────────
+  3 paneles de alto impacto visual, mínimo texto,
+  cada uno en un color institucional diferente.
 */
-
-const paneles = [
-  {
-    tituloKey: 'categorias.panela.titulo',
-    descKey: 'categorias.panela.descripcion',
-    tagKey: 'categorias.panela.tag',
-    image: '/_DSC0033.jpg',
-    overlayColor: 'rgba(92,45,10,0.72)',
-    accentColor: '#F4E800',
-    textColor: '#fff',
-    tagBg: '#F4E800',
-    tagText: '#1B3A0E',
-    numero: '01',
-  },
-  {
-    tituloKey: 'categorias.cafe.titulo',
-    descKey: 'categorias.cafe.descripcion',
-    tagKey: 'categorias.cafe.tag',
-    image: '/_DSC0063.jpg',
-    overlayColor: 'rgba(27,62,14,0.78)',
-    accentColor: '#F4E800',
-    textColor: '#fff',
-    tagBg: '#E8173A',
-    tagText: '#fff',
-    numero: '02',
-  },
-  {
-    tituloKey: 'categorias.bebidas.titulo',
-    descKey: 'categorias.bebidas.descripcion',
-    tagKey: 'categorias.bebidas.tag',
-    image: '/_DSC0042(1).jpg',
-    overlayColor: 'rgba(10,30,60,0.78)',
-    accentColor: '#F4E800',
-    textColor: '#fff',
-    tagBg: '#8BC420',
-    tagText: '#fff',
-    numero: '03',
-  },
-];
 
 export default function Categorias() {
   const { t } = useTranslation();
 
-  return (
-    <section id="universo" className="relative overflow-hidden">
+  const paneles = [
+    {
+      bgColor: '#D11335',
+      accentColor: '#FFFF00',
+      image: '/_DSC0033.jpg',
+      tituloKey: 'categorias.panela.titulo',
+      tagKey: 'categorias.panela.tag',
+      num: '01',
+    },
+    {
+      bgColor: '#009245',
+      accentColor: '#B8EC3F',
+      image: '/_DSC0063.jpg',
+      tituloKey: 'categorias.cafe.titulo',
+      tagKey: 'categorias.cafe.tag',
+      num: '02',
+    },
+    {
+      bgColor: '#F15A24',
+      accentColor: '#FFFF00',
+      image: '/_DSC0042(1).jpg',
+      tituloKey: 'categorias.bebidas.titulo',
+      tagKey: 'categorias.bebidas.tag',
+      num: '03',
+    },
+  ];
 
-      {/* Header flotante */}
-      <div className="bg-white py-16 text-center relative z-10">
+  return (
+    <section id="categorias" style={{ overflow: 'hidden' }}>
+
+      {/* Header — muy compacto, solo eyebrow + título */}
+      <div
+        style={{
+          backgroundColor: '#603813',
+          padding: '48px 24px',
+          textAlign: 'center',
+        }}
+      >
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           style={{
             fontFamily: 'Kumbh Sans, sans-serif',
-            color: '#E8173A',
-            fontSize: '0.7rem',
+            color: '#FFFF00',
+            fontSize: '11px',
             fontWeight: 700,
             letterSpacing: '0.35em',
             textTransform: 'uppercase',
@@ -72,195 +66,176 @@ export default function Categorias() {
           {t('categorias.eyebrow')}
         </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ delay: 0.1 }}
           style={{
             fontFamily: 'Schoolbell, cursive',
-            color: '#1B3A0E',
+            color: '#fff',
             fontSize: 'clamp(36px, 6vw, 72px)',
-            lineHeight: 1.05,
-            margin: '0 auto 16px',
-            maxWidth: '800px',
-            padding: '0 24px',
+            lineHeight: 1,
+            margin: 0,
           }}
         >
           {t('categorias.titulo')}
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          style={{
-            fontFamily: 'Kumbh Sans, sans-serif',
-            color: '#6B5E55',
-            fontSize: 'clamp(14px, 1.6vw, 17px)',
-            maxWidth: '600px',
-            margin: '0 auto',
-            lineHeight: 1.7,
-            padding: '0 24px',
-          }}
-        >
-          {t('categorias.subtitulo')}
-        </motion.p>
-
-        {/* Línea decorativa */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          style={{
-            height: '3px',
-            background: 'linear-gradient(90deg, #F4E800, #E8173A, #1B7A2F)',
-            maxWidth: '120px',
-            margin: '24px auto 0',
-            transformOrigin: 'center',
-            borderRadius: '2px',
-          }}
-        />
       </div>
 
-      {/* Paneles de categorías */}
+      {/* 3 paneles de color */}
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          minHeight: '580px',
         }}
-        className="grid-cols-1 sm:grid-cols-3"
+        className="cat-grid"
       >
-        {paneles.map((panel, i) => (
+        {paneles.map((p, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, delay: i * 0.15 }}
-            className="group relative overflow-hidden cursor-pointer"
-            style={{ minHeight: '500px' }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, delay: i * 0.12 }}
+            style={{
+              position: 'relative',
+              overflow: 'hidden',
+              minHeight: '520px',
+              cursor: 'pointer',
+            }}
+            className="group cat-panel"
           >
             {/* Imagen de fondo */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-108"
               style={{
-                backgroundImage: `url('${panel.image}')`,
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url('${p.image}')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 transform: 'scale(1)',
+                transition: 'transform 0.7s ease',
               }}
+              className="cat-img"
             />
+
+            {/* Overlay de color sólido */}
             <div
-              className="absolute inset-0 transition-opacity duration-500"
               style={{
-                background: `${panel.overlayColor}`,
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: p.bgColor,
+                opacity: 0.82,
+                transition: 'opacity 0.5s ease',
               }}
-            />
-            {/* Hover overlay más oscuro */}
-            <div
-              className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500"
+              className="cat-overlay"
             />
 
             {/* Número decorativo */}
             <div
-              className="absolute top-6 right-6"
               style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
                 fontFamily: 'Schoolbell, cursive',
-                color: 'rgba(255,255,255,0.15)',
-                fontSize: '80px',
+                color: 'rgba(255,255,255,0.12)',
+                fontSize: '96px',
                 lineHeight: 1,
                 userSelect: 'none',
+                pointerEvents: 'none',
               }}
             >
-              {panel.numero}
+              {p.num}
             </div>
 
             {/* Contenido */}
-            <div className="relative z-10 h-full flex flex-col justify-end p-8 sm:p-10" style={{ minHeight: '500px' }}>
-
+            <div
+              style={{
+                position: 'relative',
+                zIndex: 2,
+                height: '100%',
+                minHeight: '520px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end',
+                padding: '36px 32px',
+              }}
+            >
               {/* Tag */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.15 }}
-                className="mb-4"
+              <div
+                style={{
+                  display: 'inline-block',
+                  backgroundColor: p.accentColor,
+                  color: '#603813',
+                  fontFamily: 'Kumbh Sans, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '10px',
+                  letterSpacing: '0.25em',
+                  textTransform: 'uppercase',
+                  padding: '5px 12px',
+                  borderRadius: '2px',
+                  marginBottom: '16px',
+                  alignSelf: 'flex-start',
+                }}
               >
-                <span
-                  style={{
-                    backgroundColor: panel.tagBg,
-                    color: panel.tagText,
-                    fontFamily: 'Kumbh Sans, sans-serif',
-                    fontWeight: 700,
-                    fontSize: '0.62rem',
-                    letterSpacing: '0.25em',
-                    textTransform: 'uppercase',
-                    padding: '5px 12px',
-                    borderRadius: '3px',
-                    display: 'inline-block',
-                  }}
-                >
-                  {t(panel.tagKey)}
-                </span>
-              </motion.div>
+                {t(p.tagKey)}
+              </div>
 
               {/* Título */}
               <h3
                 style={{
                   fontFamily: 'Schoolbell, cursive',
                   color: '#fff',
-                  fontSize: 'clamp(28px, 3.5vw, 44px)',
-                  lineHeight: 1.1,
-                  marginBottom: '12px',
-                }}
-              >
-                {t(panel.tituloKey)}
-              </h3>
-
-              {/* Descripción — aparece en hover en desktop */}
-              <p
-                className="max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-500"
-                style={{
-                  fontFamily: 'Kumbh Sans, sans-serif',
-                  color: 'rgba(255,255,255,0.85)',
-                  fontSize: '13.5px',
-                  lineHeight: 1.7,
+                  fontSize: 'clamp(32px, 3.5vw, 52px)',
+                  lineHeight: 1.05,
                   marginBottom: '20px',
                 }}
               >
-                {t(panel.descKey)}
-              </p>
+                {t(p.tituloKey)}
+              </h3>
 
-              {/* Línea separadora animada */}
+              {/* Línea decorativa de color */}
               <div
-                className="w-12 h-0.5 mb-0 group-hover:w-20 transition-all duration-500"
-                style={{ backgroundColor: panel.accentColor }}
+                style={{
+                  height: '3px',
+                  width: '48px',
+                  backgroundColor: p.accentColor,
+                  transition: 'width 0.4s ease',
+                }}
+                className="cat-line"
               />
             </div>
 
-            {/* Borde inferior de color */}
+            {/* Borde superior de color */}
             <div
-              className="absolute bottom-0 left-0 right-0 h-1"
-              style={{ backgroundColor: panel.accentColor }}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                backgroundColor: p.accentColor,
+              }}
             />
           </motion.div>
         ))}
       </div>
 
+      {/* Franja de colores institucionales */}
+      <div style={{ display: 'flex', height: '8px' }}>
+        {['#D11335', '#F15A24', '#FFFF00', '#B8EC3F', '#009245', '#603813'].map((c, i) => (
+          <div key={i} style={{ flex: 1, backgroundColor: c }} />
+        ))}
+      </div>
+
       <style>{`
-        @media (max-width: 640px) {
-          #universo > div:last-child {
-            grid-template-columns: 1fr !important;
-          }
+        @media (max-width: 768px) {
+          .cat-grid { grid-template-columns: 1fr !important; }
+          .cat-panel { min-height: 380px !important; }
         }
-        @media (min-width: 641px) and (max-width: 900px) {
-          #universo > div:last-child {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        .group:hover .bg-cover {
-          transform: scale(1.08);
-        }
+        .group:hover .cat-img { transform: scale(1.08) !important; }
+        .group:hover .cat-overlay { opacity: 0.65 !important; }
+        .group:hover .cat-line { width: 80px !important; }
       `}</style>
     </section>
   );

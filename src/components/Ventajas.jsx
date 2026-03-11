@@ -2,211 +2,210 @@ import { useTranslation } from 'react-i18next';
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-/* ── Contador animado ──────────────────────── */
-function AnimCounter({ target, suffix = '' }) {
+/* Contador animado */
+function Counter({ target, suffix = '' }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, v => Math.round(v));
-
+  const val = useMotionValue(0);
+  const rounded = useTransform(val, v => Math.round(v));
   useEffect(() => {
-    if (inView) {
-      const ctrl = animate(count, target, { duration: 1.8, ease: 'easeOut' });
-      return ctrl.stop;
-    }
-  }, [inView, count, target]);
-
-  return (
-    <span ref={ref} style={{ fontFamily: 'Schoolbell, cursive', display: 'inline-block' }}>
-      <motion.span>{rounded}</motion.span>{suffix}
-    </span>
-  );
+    if (inView) { const c = animate(val, target, { duration: 1.8, ease: 'easeOut' }); return c.stop; }
+  }, [inView, val, target]);
+  return <motion.span ref={ref}>{rounded}{suffix}</motion.span>;
 }
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
-
-const features = [
-  { svgSrc: '/1.svg',   titleKey: 'ventajas.enfoqueExportador.titulo', descKey: 'ventajas.enfoqueExportador.descripcion', accent: '#E8173A' },
-  { svgSrc: '/2.svg',   titleKey: 'ventajas.calidadControlada.titulo', descKey: 'ventajas.calidadControlada.descripcion', accent: '#1B7A2F' },
-  { svgSrc: '/11.svg',  titleKey: 'ventajas.capacidadSuministro.titulo', descKey: 'ventajas.capacidadSuministro.descripcion', accent: '#F4E800' },
-  { svgSrc: '/111.svg', titleKey: 'ventajas.privateLabel.titulo', descKey: 'ventajas.privateLabel.descripcion', accent: '#5C2D0A' },
-];
-
-const stats = [
-  { target: 4, suffix: '+', labelKey: 'ventajas.stat1', color: '#E8173A' },
-  { target: 100, suffix: '%', labelKey: 'ventajas.stat2', color: '#1B7A2F' },
-  { target: 15, suffix: '+', labelKey: 'ventajas.stat3', color: '#5C2D0A' },
-  { target: 20, suffix: 'k+', labelKey: 'ventajas.stat4', color: '#E8173A' },
-];
 
 export default function Ventajas() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative overflow-hidden">
+    <section style={{ overflow: 'hidden' }}>
 
-      {/* ── Bloque de estadísticas — fondo amarillo ─── */}
-      <div style={{ backgroundColor: '#F4E800', paddingTop: '64px', paddingBottom: '64px' }}>
-        <div className="max-w-6xl mx-auto px-6">
+      {/* ── BLOQUE DE ESTADÍSTICAS — AMARILLO ───────────── */}
+      <div style={{ backgroundColor: '#FFFF00', padding: '72px 24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+
+          {/* Label superior */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            style={{
+              fontFamily: 'Kumbh Sans, sans-serif',
+              color: '#603813',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.35em',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              marginBottom: '40px',
+            }}
+          >
+            {t('ventajas.eyebrow')}
+          </motion.p>
+
+          {/* Cuatro estadísticas gigantes */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ staggerChildren: 0.12 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 0,
+            }}
+            className="stats-grid"
           >
-            {stats.map((stat, i) => (
+            {[
+              { target: 4,   suffix: '+',  labelKey: 'ventajas.stat1', accent: '#D11335' },
+              { target: 100, suffix: '%',  labelKey: 'ventajas.stat2', accent: '#009245' },
+              { target: 15,  suffix: '+',  labelKey: 'ventajas.stat3', accent: '#F15A24' },
+              { target: 20,  suffix: 'k+', labelKey: 'ventajas.stat4', accent: '#D11335' },
+            ].map((stat, i) => (
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="text-center px-4 relative"
+                style={{
+                  textAlign: 'center',
+                  padding: '0 24px 24px',
+                  borderLeft: i > 0 ? '1px solid rgba(96,56,19,0.15)' : 'none',
+                  position: 'relative',
+                }}
               >
-                {/* Separador vertical (menos en el último) */}
-                {i < stats.length - 1 && (
-                  <div
-                    className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-16 w-px"
-                    style={{ backgroundColor: 'rgba(27,58,14,0.2)' }}
-                  />
-                )}
+                {/* Número gigante */}
                 <div
                   style={{
                     fontFamily: 'Schoolbell, cursive',
-                    fontSize: 'clamp(48px, 7vw, 80px)',
+                    color: '#603813',
+                    fontSize: 'clamp(64px, 9vw, 108px)',
                     lineHeight: 1,
-                    color: '#1B3A0E',
                     marginBottom: '8px',
                   }}
                 >
-                  <AnimCounter target={stat.target} suffix={stat.suffix} />
+                  <Counter target={stat.target} suffix={stat.suffix} />
                 </div>
+                {/* Label */}
                 <p
                   style={{
                     fontFamily: 'Kumbh Sans, sans-serif',
-                    color: 'rgba(27,58,14,0.75)',
-                    fontSize: '0.72rem',
+                    color: 'rgba(96,56,19,0.75)',
+                    fontSize: '11px',
                     fontWeight: 700,
-                    letterSpacing: '0.2em',
+                    letterSpacing: '0.18em',
                     textTransform: 'uppercase',
                   }}
                 >
                   {t(stat.labelKey)}
                 </p>
+                {/* Dot de color */}
+                <div
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: stat.accent,
+                    margin: '12px auto 0',
+                  }}
+                />
               </motion.div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* ── Título por qué elegirnos ─────────────────── */}
-      <div style={{ backgroundColor: '#fff', paddingTop: '80px', paddingBottom: '0' }}>
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            style={{
-              fontFamily: 'Kumbh Sans, sans-serif',
-              color: '#E8173A',
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              letterSpacing: '0.35em',
-              textTransform: 'uppercase',
-              marginBottom: '12px',
-            }}
-          >
-            {t('ventajas.eyebrow')}
-          </motion.p>
+      {/* Franja de transición */}
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style={{ display: 'block', height: '60px', backgroundColor: '#fff' }}>
+        <path d="M0,0 L1440,0 L1440,60 Q720,0 0,60 Z" fill="#FFFF00" />
+      </svg>
+
+      {/* ── CARACTERÍSTICAS — FONDO BLANCO ──────────── */}
+      <div style={{ backgroundColor: '#fff', padding: '16px 24px 80px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+
+          {/* Título */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
             style={{
               fontFamily: 'Schoolbell, cursive',
-              color: '#1B3A0E',
+              color: '#603813',
               fontSize: 'clamp(32px, 5vw, 60px)',
-              lineHeight: 1.1,
+              lineHeight: 1.05,
+              textAlign: 'center',
+              marginBottom: '52px',
               maxWidth: '700px',
-              margin: '0 auto 40px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
             }}
           >
             {t('ventajas.titulo')}
           </motion.h2>
-        </div>
-      </div>
 
-      {/* ── Tarjetas de características ──────────────── */}
-      <div style={{ backgroundColor: '#fff', paddingBottom: '80px', paddingTop: '16px' }}>
-        <div className="max-w-6xl mx-auto px-6">
+          {/* 4 tarjetas de características */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ staggerChildren: 0.13, delayChildren: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            transition={{ staggerChildren: 0.1 }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '20px',
+            }}
+            className="features-grid"
           >
-            {features.map((feat, i) => (
+            {[
+              { imgSrc: '/1.svg',   titleKey: 'ventajas.enfoqueExportador.titulo', descKey: 'ventajas.enfoqueExportador.descripcion', top: '#D11335' },
+              { imgSrc: '/2.svg',   titleKey: 'ventajas.calidadControlada.titulo', descKey: 'ventajas.calidadControlada.descripcion', top: '#009245' },
+              { imgSrc: '/11.svg',  titleKey: 'ventajas.capacidadSuministro.titulo', descKey: 'ventajas.capacidadSuministro.descripcion', top: '#FFFF00' },
+              { imgSrc: '/111.svg', titleKey: 'ventajas.privateLabel.titulo', descKey: 'ventajas.privateLabel.descripcion', top: '#F15A24' },
+            ].map((feat, i) => (
               <motion.div
                 key={i}
                 variants={{
                   hidden: { opacity: 0, y: 50 },
-                  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 180, damping: 20 } }
+                  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 160, damping: 20 } },
                 }}
-                whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(27,58,14,0.1)', transition: { type: 'spring', stiffness: 300 } }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(96,56,19,0.12)' }}
                 style={{
-                  backgroundColor: '#FAFAFA',
-                  border: '1px solid #F0EDE8',
-                  borderRadius: '16px',
+                  backgroundColor: '#fff',
+                  border: '1.5px solid rgba(96,56,19,0.1)',
+                  borderTop: `4px solid ${feat.top}`,
+                  borderRadius: '4px',
                   padding: '32px 24px',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
               >
-                {/* Acento de color superior */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '3px',
-                    backgroundColor: feat.accent,
-                  }}
-                />
-
-                {/* Icono */}
-                <div className="mb-6 flex justify-center">
-                  <img src={feat.svgSrc} alt="" style={{ width: '64px', height: '64px', opacity: 0.85 }} />
+                {/* Ícono */}
+                <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center' }}>
+                  <img src={feat.imgSrc} alt="" style={{ width: '56px', height: '56px' }} />
                 </div>
-
                 {/* Título */}
-                <h3
-                  style={{
-                    fontFamily: 'Schoolbell, cursive',
-                    color: '#1B3A0E',
-                    fontSize: '22px',
-                    lineHeight: 1.2,
-                    marginBottom: '10px',
-                    textAlign: 'center',
-                  }}
-                >
+                <h3 style={{
+                  fontFamily: 'Schoolbell, cursive',
+                  color: '#603813',
+                  fontSize: '22px',
+                  textAlign: 'center',
+                  marginBottom: '10px',
+                  lineHeight: 1.2,
+                }}>
                   {t(feat.titleKey)}
                 </h3>
-
                 {/* Descripción */}
-                <p
-                  style={{
-                    fontFamily: 'Kumbh Sans, sans-serif',
-                    color: '#6B5E55',
-                    fontSize: '13px',
-                    lineHeight: 1.7,
-                    textAlign: 'center',
-                  }}
-                >
+                <p style={{
+                  fontFamily: 'Kumbh Sans, sans-serif',
+                  color: 'rgba(96,56,19,0.7)',
+                  fontSize: '13px',
+                  lineHeight: 1.7,
+                  textAlign: 'center',
+                }}>
                   {t(feat.descKey)}
                 </p>
               </motion.div>
@@ -214,53 +213,61 @@ export default function Ventajas() {
           </motion.div>
 
           {/* CTA */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mt-14 flex flex-col items-center gap-4"
-          >
-            <p
+          <div style={{ textAlign: 'center', marginTop: '52px' }}>
+            <motion.h3
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               style={{
                 fontFamily: 'Schoolbell, cursive',
-                color: '#1B3A0E',
-                fontSize: 'clamp(20px, 3vw, 30px)',
+                color: '#603813',
+                fontSize: 'clamp(22px, 3vw, 34px)',
+                marginBottom: '20px',
               }}
             >
               {t('ventajas.ctaTitulo')}
-            </p>
+            </motion.h3>
             <motion.a
-              href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
+              href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista."
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -3, boxShadow: '0 14px 32px rgba(232,23,58,0.35)' }}
+              whileHover={{ scale: 1.04, y: -2, boxShadow: '0 12px 28px rgba(209,19,53,0.35)' }}
               whileTap={{ scale: 0.97 }}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: '#E8173A',
+                backgroundColor: '#D11335',
                 color: '#fff',
                 fontFamily: 'Kumbh Sans, sans-serif',
                 fontWeight: 700,
-                fontSize: '0.85rem',
-                padding: '14px 32px',
-                borderRadius: '6px',
-                textDecoration: 'none',
-                letterSpacing: '0.05em',
+                fontSize: '12px',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
+                padding: '14px 32px',
+                borderRadius: '3px',
+                textDecoration: 'none',
               }}
             >
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.051 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.535 5.877L0 24l6.293-1.516A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
               </svg>
               {t('ventajas.ctaBoton')}
             </motion.a>
-          </motion.div>
+          </div>
         </div>
       </div>
 
+      <style>{`
+        @media (max-width: 900px) {
+          .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 500px) {
+          .stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .features-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }

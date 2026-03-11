@@ -40,8 +40,8 @@ export default function Galeria() {
   const siguiente = () => setLightbox((prev) => (prev + 1) % imagenes.length);
 
   return (
-    <section id="galeria" className="py-16 sm:py-20 bg-[#F2E8DF]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="galeria" style={{ backgroundColor: '#fff', padding: '80px 0 0', overflow: 'hidden' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
         {/* Encabezado */}
         <motion.div
@@ -49,25 +49,22 @@ export default function Galeria() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
-          className="text-center mb-12"
+          style={{ textAlign: 'center', marginBottom: '48px' }}
         >
-          <p className="text-[#6B4423] text-xs font-bold tracking-[0.3em] uppercase mb-3 font-['Kumbh_Sans',_sans-serif]">
+          <p style={{ fontFamily: 'Kumbh Sans, sans-serif', color: '#D11335', fontSize: '11px', fontWeight: 700, letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: '10px' }}>
             {t('galeria.eyebrow')}
           </p>
-          <h2 className="text-[38px] md:text-[44px] text-[#2C1810] mb-3 font-['Schoolbell',_cursive] leading-tight">
+          <h2 style={{ fontFamily: 'Schoolbell, cursive', color: '#603813', fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.05, marginBottom: '12px' }}>
             {t('galeria.titulo')}
           </h2>
           <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-            className="flex justify-center mb-4"
-            style={{ transformOrigin: 'center' }}
-          >
-            <div className="w-16 h-[2px] bg-[#D4B57E]" />
-          </motion.div>
-          <p className="text-[15px] text-[#6B5E55] leading-relaxed font-['Kumbh_Sans',_sans-serif] max-w-xl mx-auto">
+            transition={{ duration: 0.7, delay: 0.3 }}
+            style={{ height: '3px', width: '80px', background: 'linear-gradient(90deg, #D11335, #FFFF00)', margin: '0 auto 12px', transformOrigin: 'center', borderRadius: '2px' }}
+          />
+          <p style={{ fontFamily: 'Kumbh Sans, sans-serif', color: '#603813', fontSize: '15px', lineHeight: 1.65, maxWidth: '500px', margin: '0 auto', opacity: 0.7 }}>
             {t('galeria.subtitulo')}
           </p>
         </motion.div>
@@ -79,6 +76,7 @@ export default function Galeria() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[200px]"
+          style={{ marginBottom: '0' }}
         >
           {imagenes.map((img, i) => {
             const isWide = i === 0 || i === 5;
@@ -90,7 +88,7 @@ export default function Galeria() {
                 variants={gridItem}
                 onClick={() => abrirLightbox(i)}
                 whileHover={{ scale: 1.03, zIndex: 10, transition: { duration: 0.22 } }}
-                className={`group relative overflow-hidden rounded-2xl cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300 ${
+                className={`group relative overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300 ${
                   isWide ? 'col-span-2' : ''
                 } ${isTall ? 'row-span-2' : ''}`}
               >
@@ -101,7 +99,7 @@ export default function Galeria() {
                   loading="lazy"
                 />
                 {/* Overlay al hacer hover */}
-                <div className="absolute inset-0 bg-[#2C1810]/0 group-hover:bg-[#2C1810]/40 transition-all duration-300 flex items-end p-4">
+                <div className="absolute inset-0 bg-[#603813]/0 group-hover:bg-[#603813]/50 transition-all duration-300 flex items-end p-4">
                   <span className="text-white text-sm font-['Kumbh_Sans',_sans-serif] opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
                     {img.alt}
                   </span>
@@ -185,6 +183,13 @@ export default function Galeria() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Franja de colores al final */}
+      <div style={{ display: 'flex', height: '6px', marginTop: '48px' }}>
+        {['#D11335', '#F15A24', '#FFFF00', '#B8EC3F', '#009245', '#603813'].map((c, i) => (
+          <div key={i} style={{ flex: 1, backgroundColor: c }} />
+        ))}
+      </div>
     </section>
   );
 }
