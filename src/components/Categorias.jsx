@@ -2,35 +2,65 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 /*
-  CATEGORIAS — Estilo Nela: limpio, blanco, premium
-  ──────────────────────────────────────────────────
-  • Fondo blanco
-  • Header centrado: eyebrow + título grande
-  • 3 tarjetas de imagen con hover elegante
-  • Línea de color institucional debajo de cada imagen
+  CATEGORIAS — "NUESTRO UNIVERSO"
+  ──────────────────────────────────
+  • 3 tall color panels side by side (expandable on hover)
+  • Full-bleed photography with dark gradient overlay
+  • White text reveals from bottom on hover
+  • Bold Schoolbell headlines
 */
 
-const PANELES = [
+const PANELS = [
   {
-    image: '/_DSC0033.jpg',
-    accent: '#D11335',
-    tituloKey: 'categorias.panela.titulo',
-    tagKey: 'categorias.panela.tag',
-    descKey: 'categorias.panela.desc',
+    bg: '#2D1608',
+    accentColor: '#D11335',
+    tag: 'categorias.panela.tag',
+    titulo: 'categorias.panela.titulo',
+    desc: 'categorias.panela.desc',
+    image: '/banner1.png',
+    imagePos: 'center 40%',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" width="28" height="28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M24 8c-8 0-14 5-14 10s6 8 14 8 14-3 14-8-6-10-14-10z"/>
+        <path d="M10 18c0 5 6 10 14 12 8-2 14-7 14-12"/>
+        <path d="M10 24c0 5 6 10 14 12 8-2 14-7 14-12"/>
+        <path d="M10 30c0 5 6 8 14 10 8-2 14-5 14-10"/>
+      </svg>
+    ),
   },
   {
-    image: '/_DSC0063.jpg',
-    accent: '#009245',
-    tituloKey: 'categorias.cafe.titulo',
-    tagKey: 'categorias.cafe.tag',
-    descKey: 'categorias.cafe.desc',
+    bg: '#002916',
+    accentColor: '#009245',
+    tag: 'categorias.cafe.tag',
+    titulo: 'categorias.cafe.titulo',
+    desc: 'categorias.cafe.desc',
+    image: '/SINR0002.jpg',
+    imagePos: 'center 60%',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" width="28" height="28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 22h24v4a12 12 0 01-12 12A12 12 0 018 26v-4z"/>
+        <path d="M32 24h4a4 4 0 000-8h-4"/>
+        <path d="M16 10c0-3 4-5 4-8"/>
+        <path d="M22 10c0-3 4-5 4-8"/>
+      </svg>
+    ),
   },
   {
-    image: '/_DSC0042(1).jpg',
-    accent: '#F15A24',
-    tituloKey: 'categorias.bebidas.titulo',
-    tagKey: 'categorias.bebidas.tag',
-    descKey: 'categorias.bebidas.desc',
+    bg: '#3D1200',
+    accentColor: '#F15A24',
+    tag: 'categorias.bebidas.tag',
+    titulo: 'categorias.bebidas.titulo',
+    desc: 'categorias.bebidas.desc',
+    image: '/SINR0004.jpg',
+    imagePos: 'center 30%',
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" width="28" height="28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 8h16l-2 28H18L16 8z"/>
+        <path d="M13 16h22"/>
+        <path d="M20 8V4h8v4"/>
+        <path d="M22 20c0 3 4 3 4 6s-4 3-4 6"/>
+      </svg>
+    ),
   },
 ];
 
@@ -38,117 +68,189 @@ export default function Categorias() {
   const { t } = useTranslation();
 
   return (
-    <section id="categorias" style={{ backgroundColor: '#FAFAFA', padding: '96px 0 80px' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+    <section
+      style={{
+        backgroundColor: '#0D0806',
+        padding: '80px 0 0',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Section header */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        style={{
+          textAlign: 'center',
+          padding: '0 32px 56px',
+        }}
+      >
+        <p style={{
+          fontFamily: 'Kumbh Sans, sans-serif',
+          color: 'rgba(255,255,255,0.35)',
+          fontSize: '11px', fontWeight: 700,
+          letterSpacing: '0.4em', textTransform: 'uppercase',
+          marginBottom: '16px',
+        }}>
+          {t('categorias.eyebrow')}
+        </p>
+        <h2 style={{
+          fontFamily: 'Schoolbell, cursive',
+          color: '#fff',
+          fontSize: 'clamp(40px, 6vw, 72px)',
+          lineHeight: 0.95,
+        }}>
+          {t('categorias.titulo')}{' '}
+          <span style={{ color: '#FFFF00' }}>—</span>
+        </h2>
+      </motion.div>
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '64px' }}
-        >
-          <p style={{
-            fontFamily: 'Kumbh Sans, sans-serif',
-            color: '#D11335', fontSize: '11px', fontWeight: 700,
-            letterSpacing: '0.35em', textTransform: 'uppercase',
-            marginBottom: '12px',
-          }}>
-            {t('categorias.eyebrow')}
-          </p>
-          <h2 style={{
-            fontFamily: 'Schoolbell, cursive',
-            color: '#1A1A1A',
-            fontSize: 'clamp(40px, 6vw, 72px)',
-            lineHeight: 1, margin: 0,
-          }}>
-            {t('categorias.titulo')}
-          </h2>
-        </motion.div>
-
-        {/* 3 tarjetas */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '28px',
-          }}
-          className="cat-cards"
-        >
-          {PANELES.map((p, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
+      {/* Panels row */}
+      <div
+        style={{
+          display: 'flex',
+          minHeight: '520px',
+        }}
+        className="cat-panels-row"
+      >
+        {PANELS.map((panel, i) => (
+          <div
+            key={i}
+            className="cat-panel"
+            style={{
+              flex: 1,
+              position: 'relative',
+              overflow: 'hidden',
+              backgroundColor: panel.bg,
+              cursor: 'default',
+              minHeight: '480px',
+            }}
+          >
+            {/* Background image */}
+            <img
+              src={panel.image}
+              alt={t(panel.titulo)}
               style={{
-                backgroundColor: '#fff',
-                overflow: 'hidden',
-                boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-                transition: 'box-shadow 0.3s ease, transform 0.3s ease',
-                cursor: 'pointer',
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                objectFit: 'cover',
+                objectPosition: panel.imagePos,
+                opacity: 0.3,
               }}
-              className="cat-card"
+            />
+
+            {/* Gradient overlay */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: `linear-gradient(to top, ${panel.bg} 0%, ${panel.bg}99 40%, transparent 100%)`,
+              zIndex: 1,
+            }} />
+
+            {/* Accent color line at top */}
+            <div style={{
+              position: 'absolute', top: 0, left: 0, right: 0,
+              height: '4px',
+              backgroundColor: panel.accentColor,
+              zIndex: 3,
+            }} />
+
+            {/* Content */}
+            <div
+              className="cat-panel-content"
+              style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0,
+                zIndex: 2,
+                padding: '32px 28px',
+              }}
             >
-              {/* Imagen */}
-              <div style={{ overflow: 'hidden', height: '320px', position: 'relative' }}>
-                <div
-                  style={{
-                    width: '100%', height: '100%',
-                    backgroundImage: `url('${p.image}')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    transition: 'transform 0.6s ease',
-                  }}
-                  className="cat-card-img"
-                />
-              </div>
-
-              {/* Línea de color */}
-              <div style={{ height: '4px', backgroundColor: p.accent }} />
-
-              {/* Texto */}
-              <div style={{ padding: '24px 28px 28px' }}>
-                {/* Tag */}
+              {/* Tag */}
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                marginBottom: '16px',
+              }}>
                 <span style={{
+                  backgroundColor: panel.accentColor,
+                  color: '#fff',
                   fontFamily: 'Kumbh Sans, sans-serif',
-                  color: p.accent,
-                  fontSize: '10px', fontWeight: 700,
-                  letterSpacing: '0.25em', textTransform: 'uppercase',
-                  display: 'block', marginBottom: '8px',
+                  fontSize: '9px', fontWeight: 700,
+                  letterSpacing: '0.2em', textTransform: 'uppercase',
+                  padding: '4px 10px',
                 }}>
-                  {t(p.tagKey)}
+                  {t(panel.tag)}
                 </span>
-                {/* Título */}
-                <h3 style={{
-                  fontFamily: 'Schoolbell, cursive',
-                  color: '#1A1A1A',
-                  fontSize: 'clamp(26px, 2.5vw, 34px)',
-                  lineHeight: 1.1, marginBottom: '10px',
-                }}>
-                  {t(p.tituloKey)}
-                </h3>
-                {/* Descripción breve */}
-                <p style={{
-                  fontFamily: 'Kumbh Sans, sans-serif',
-                  color: '#666', fontSize: '13px', lineHeight: 1.65,
-                }}>
-                  {t(p.descKey)}
-                </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              {/* Icon */}
+              <div style={{
+                color: panel.accentColor,
+                marginBottom: '12px',
+              }}>
+                {panel.icon}
+              </div>
+
+              {/* Title */}
+              <h3 style={{
+                fontFamily: 'Schoolbell, cursive',
+                color: '#fff',
+                fontSize: 'clamp(26px, 3vw, 36px)',
+                lineHeight: 1.0,
+                marginBottom: '12px',
+              }}>
+                {t(panel.titulo)}
+              </h3>
+
+              {/* Description */}
+              <p style={{
+                fontFamily: 'Kumbh Sans, sans-serif',
+                color: 'rgba(255,255,255,0.55)',
+                fontSize: '13px', lineHeight: 1.6,
+                marginBottom: '20px',
+              }}>
+                {t(panel.desc)}
+              </p>
+
+              {/* Link */}
+              <a
+                href="/#productos"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  color: panel.accentColor,
+                  fontFamily: 'Kumbh Sans, sans-serif',
+                  fontWeight: 700, fontSize: '11px',
+                  letterSpacing: '0.15em', textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  transition: 'gap 0.2s',
+                }}
+                className="cat-link"
+              >
+                Ver productos
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+
+            {/* Index number watermark */}
+            <div style={{
+              position: 'absolute', top: '24px', right: '24px',
+              fontFamily: 'Schoolbell, cursive',
+              color: 'rgba(255,255,255,0.08)',
+              fontSize: '80px', lineHeight: 1,
+              userSelect: 'none', zIndex: 1,
+              pointerEvents: 'none',
+            }}>
+              {String(i + 1).padStart(2, '0')}
+            </div>
+          </div>
+        ))}
       </div>
 
       <style>{`
-        .cat-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.12) !important; transform: translateY(-4px) !important; }
-        .cat-card:hover .cat-card-img { transform: scale(1.06) !important; }
-        @media (max-width: 860px) { .cat-cards { grid-template-columns: 1fr !important; } }
-        @media (max-width: 1100px) { .cat-cards { grid-template-columns: repeat(2, 1fr) !important; } }
-        @media (max-width: 700px) { .cat-cards { grid-template-columns: 1fr !important; } }
+        @media (max-width: 768px) {
+          .cat-panels-row { flex-direction: column !important; }
+          .cat-panel { flex: none !important; min-height: 360px !important; }
+        }
+        .cat-link:hover { gap: 14px !important; }
       `}</style>
     </section>
   );
