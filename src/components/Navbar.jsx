@@ -1,216 +1,202 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import LanguageSwitcher from './LanguageSwitcher';
 
 /*
-  PALETA — Manual de Identidad Panela BellaVista
-  ─────────────────────────────────────────────
-  Amarillo principal : #F4E800
-  Rojo               : #E8173A
-  Verde oscuro       : #1B7A2F
-  Verde limón        : #8BC420
-  Marrón             : #5C2D0A
-  Blanco             : #FFFFFF
-
-  TIPOGRAFÍA
-  ──────────
-  Schoolbell Regular → títulos / logo (Google Fonts)
-  Kumbh Sans         → texto corrido / links
+  COLORES EXACTOS — Manual de Identidad BellaVista
+  Rojo   : #D11335  Verde  : #009245  Marrón : #603813
+  Amarillo: #FFFF00  Lima   : #B8EC3F  Naranja: #F15A24
 */
 
+const links = [
+  { key: 'navbar.inicio',    href: '/#inicio'    },
+  { key: 'navbar.productos', href: '/#productos' },
+  { key: 'navbar.exportacion', href: '/#exportar' },
+  { key: 'navbar.nosotros',  href: '/#nosotros'  },
+  { key: 'navbar.contacto',  href: '/#contacto'  },
+];
+
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
-  const location = useLocation();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
-  const isHome = location.pathname === '/';
-  const navHref = (hash) => (isHome ? hash : `/${hash}`);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  const linkStyle = {
-    fontFamily: 'Kumbh Sans, sans-serif',
-    color: '#5C2D0A',
-    fontWeight: '600',
-    fontSize: '0.95rem',
-    letterSpacing: '0.02em',
-    textDecoration: 'none',
-    transition: 'color 0.2s',
-    padding: '4px 0',
-    borderBottom: '2px solid transparent',
-  };
+  const isHome = pathname === '/';
 
   return (
     <>
-      {/* Google Fonts import */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Schoolbell&family=Kumbh+Sans:wght@400;600;700&display=swap');
+      {/* Franja de colores institucionales */}
+      <div className="brand-stripe fixed top-0 left-0 right-0 z-50" />
 
-        .bv-link:hover {
-          color: #E8173A !important;
-          border-bottom-color: #E8173A !important;
-        }
-        .bv-link-mobile:hover {
-          background-color: #E8173A !important;
-          color: #F4E800 !important;
-        }
-        .bv-cta:hover {
-          background-color: #1B7A2F !important;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 16px rgba(27,122,47,0.45) !important;
-        }
-        .bv-logo:hover {
-          transform: scale(1.08);
-        }
-        .bv-logo {
-          transition: transform 0.25s ease;
-        }
-      `}</style>
+      {/* Barra de navegación */}
+      <header
+        style={{
+          position: 'fixed',
+          top: '5px',
+          left: 0,
+          right: 0,
+          zIndex: 40,
+          backgroundColor: scrolled ? 'rgba(255,255,255,0.98)' : '#fff',
+          borderBottom: scrolled ? '1px solid rgba(96,56,19,0.12)' : '1px solid transparent',
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
+          boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none',
+          transition: 'all 0.3s ease',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '1280px',
+            margin: '0 auto',
+            padding: '0 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            height: '68px',
+          }}
+        >
+          {/* Logo */}
+          <a href="/#inicio" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <img
+              src="/VERSIONES LOGO-02.png"
+              alt="Productos BellaVista"
+              style={{ height: '44px', width: 'auto' }}
+            />
+          </a>
 
-      {/* Franja superior — verde oscuro */}
-      <div style={{ position: 'fixed', top: 0, width: '100%', height: '6px', backgroundColor: '#1B7A2F', zIndex: 50 }} />
-
-      <nav style={{
-        position: 'fixed',
-        top: '6px',
-        width: '100%',
-        backgroundColor: '#F4E800',
-        borderBottom: '4px solid #E8173A',
-        zIndex: 50,
-        boxShadow: '0 3px 14px rgba(92,45,10,0.18)',
-      }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '88px' }}>
-
-            {/* Logo */}
-            <a href={navHref('#inicio')} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img
-                src="/VERSIONES LOGO-02.png"
-                alt="Panela BellaVista"
-                className="bv-logo"
-                style={{ height: '142px', width: 'auto' }}
-              />
-            </a>
-
-            {/* Links desktop */}
-            <div className="bv-desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '2rem', flex: 1, justifyContent: 'center' }}>
-              {[
-                { key: 'navbar.inicio',      hash: '#inicio' },
-                { key: 'navbar.productos',   hash: '#productos' },
-                { key: 'navbar.exportacion', hash: '#exportacion' },
-                { key: 'navbar.nosotros',    hash: '#nosotros' },
-                { key: 'navbar.contacto',    hash: '#contacto' },
-              ].map(({ key, hash }) => (
-                <a
-                  key={key}
-                  href={navHref(hash)}
-                  className="bv-link"
-                  style={linkStyle}
-                >
-                  {t(key)}
-                </a>
-              ))}
-            </div>
-
-            {/* CTA + idioma — desktop */}
-            <div className="bv-desktop-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <LanguageSwitcher />
+          {/* Links desktop */}
+          <nav className="hidden md:flex items-center gap-1">
+            {links.map(link => (
               <a
-                href={navHref('#contacto')}
-                className="bv-cta"
+                key={link.key}
+                href={link.href}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  backgroundColor: '#E8173A',
-                  color: '#ffffff',
                   fontFamily: 'Kumbh Sans, sans-serif',
-                  fontWeight: '700',
-                  fontSize: '0.9rem',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
+                  fontWeight: 600,
+                  fontSize: '13px',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase',
+                  color: '#603813',
                   textDecoration: 'none',
+                  padding: '8px 14px',
+                  borderRadius: '4px',
                   transition: 'all 0.2s',
-                  boxShadow: '0 2px 8px rgba(232,23,58,0.3)',
-                  whiteSpace: 'nowrap',
+                  position: 'relative',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = '#D11335';
+                  e.currentTarget.style.backgroundColor = 'rgba(209,19,53,0.06)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = '#603813';
+                  e.currentTarget.style.backgroundColor = 'transparent';
                 }}
               >
-                <svg style={{ width: '18px', height: '18px' }} fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                {t('navbar.cotizar')}
+                {t(link.key)}
               </a>
-            </div>
+            ))}
+          </nav>
 
-            {/* Botón hamburguesa — mobile */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="bv-hamburger"
+          {/* Derecha: idioma + CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
+            <a
+              href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista."
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
-                display: 'none',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                color: '#5C2D0A',
-                padding: '4px',
+                fontFamily: 'Kumbh Sans, sans-serif',
+                fontWeight: 700,
+                fontSize: '12px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                backgroundColor: '#D11335',
+                color: '#fff',
+                textDecoration: 'none',
+                padding: '10px 22px',
+                borderRadius: '4px',
+                transition: 'background 0.2s',
+                whiteSpace: 'nowrap',
               }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#603813'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#D11335'; }}
             >
-              {isOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
+              {t('navbar.cotizar')}
+            </a>
           </div>
+
+          {/* Hamburger */}
+          <button
+            className="md:hidden"
+            onClick={() => setOpen(o => !o)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: '#603813',
+              padding: '4px',
+            }}
+            aria-label="Menu"
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
 
-        {/* Menú mobile */}
-        {isOpen && (
-          <div style={{
-            backgroundColor: '#F4E800',
-            borderTop: '2px solid #E8173A',
-          }}>
-            <div style={{ padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
-                <LanguageSwitcher />
-              </div>
-              {[
-                { key: 'navbar.inicio',      hash: '#inicio' },
-                { key: 'navbar.productos',   hash: '#productos' },
-                { key: 'navbar.exportacion', hash: '#exportacion' },
-                { key: 'navbar.nosotros',    hash: '#nosotros' },
-                { key: 'navbar.contacto',    hash: '#contacto' },
-              ].map(({ key, hash }) => (
-                <a
-                  key={key}
-                  href={navHref(hash)}
-                  className="bv-link-mobile"
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    fontFamily: 'Kumbh Sans, sans-serif',
-                    fontWeight: '600',
-                    color: '#5C2D0A',
-                    padding: '10px 12px',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    transition: 'background 0.15s',
-                  }}
-                >
-                  {t(key)}
-                </a>
-              ))}
+        {/* Menu móvil */}
+        {open && (
+          <div
+            style={{
+              backgroundColor: '#fff',
+              borderTop: '3px solid #D11335',
+              padding: '16px 24px 24px',
+            }}
+          >
+            {links.map(link => (
               <a
-                href={navHref('#contacto')}
-                onClick={() => setIsOpen(false)}
+                key={link.key}
+                href={link.href}
+                onClick={() => setOpen(false)}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  marginTop: '8px',
-                  backgroundColor: '#E8173A',
-                  color: '#FFFFFF',
+                  display: 'block',
                   fontFamily: 'Kumbh Sans, sans-serif',
-                  fontWeight: '700',
-                  padding: '12px',
-                  borderRadius: '8px',
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  color: '#603813',
                   textDecoration: 'none',
+                  padding: '12px 0',
+                  borderBottom: '1px solid rgba(96,56,19,0.1)',
+                }}
+              >
+                {t(link.key)}
+              </a>
+            ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '20px' }}>
+              <LanguageSwitcher />
+              <a
+                href="https://wa.me/573184550936"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: 'Kumbh Sans, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  backgroundColor: '#D11335',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  padding: '10px 20px',
+                  borderRadius: '4px',
                 }}
               >
                 {t('navbar.cotizar')}
@@ -218,19 +204,10 @@ export default function Navbar() {
             </div>
           </div>
         )}
-
-        {/* Responsive styles via <style> */}
-        <style>{`
-          @media (max-width: 768px) {
-            .bv-desktop-menu,
-            .bv-desktop-actions { display: none !important; }
-            .bv-hamburger { display: block !important; }
-          }
-        `}</style>
-      </nav>
+      </header>
 
       {/* Espaciador */}
-      <div style={{ height: '94px' }} />
+      <div style={{ height: '73px' }} />
     </>
   );
 }

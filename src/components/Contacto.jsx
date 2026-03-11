@@ -1,145 +1,159 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 35 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-
-const containerBtns = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.13, delayChildren: 0.2 } }
-};
-
-const btnVariant = {
-  hidden: { opacity: 0, y: 25, scale: 0.9 },
-  visible: {
-    opacity: 1, y: 0, scale: 1,
-    transition: { type: 'spring', stiffness: 220, damping: 18 }
-  }
-};
-
 export default function Contacto() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    empresa: '',
-    mensaje: ''
-  });
-
   return (
-    <section id="contacto" className="relative py-12 sm:py-16 bg-[#F7EAE4] overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <section id="contacto" style={{ overflow: 'hidden' }}>
 
-        {/* Título principal */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          className="text-center mb-8"
-        >
-          <h2 className="text-[34px] md:text-[40px] text-[#2C1810] mb-4 font-['Schoolbell',_cursive] leading-tight">
-            {t('contacto.titulo')}
-          </h2>
+      {/* Ola de entrada */}
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', height: '80px', backgroundColor: '#B8EC3F' }}>
+        <path d="M0,80 Q360,0 720,40 Q1080,80 1440,0 L1440,80 Z" fill="#fff" />
+      </svg>
 
-          {/* Línea decorativa animada */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
+      {/* Bloque principal — lima */}
+      <div style={{ backgroundColor: '#B8EC3F', padding: '60px 24px 80px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+
+          {/* Eyebrow */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
-            className="flex justify-center mb-6"
-            style={{ transformOrigin: 'center' }}
+            style={{
+              fontFamily: 'Kumbh Sans, sans-serif',
+              color: '#603813',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.35em',
+              textTransform: 'uppercase',
+              marginBottom: '12px',
+            }}
           >
-            <div className="w-16 h-[2px] bg-[#D4B57E]" />
-          </motion.div>
+            {t('contacto.eyebrow', 'COLOMBIA · EXPORTACIÓN · B2B')}
+          </motion.p>
+
+          {/* Título */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            style={{
+              fontFamily: 'Schoolbell, cursive',
+              color: '#603813',
+              fontSize: 'clamp(34px, 6vw, 68px)',
+              lineHeight: 1.05,
+              marginBottom: '20px',
+            }}
+          >
+            {t('contacto.titulo')}
+          </motion.h2>
+
+          {/* Línea */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            style={{
+              height: '3px',
+              width: '80px',
+              backgroundColor: '#D11335',
+              margin: '0 auto 28px',
+              transformOrigin: 'center',
+            }}
+          />
 
           <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="text-[15px] text-[#2C1810] leading-relaxed font-['Kumbh_Sans',_sans-serif] mb-8"
+            transition={{ delay: 0.3 }}
+            style={{
+              fontFamily: 'Kumbh Sans, sans-serif',
+              color: 'rgba(96,56,19,0.8)',
+              fontSize: '16px',
+              lineHeight: 1.65,
+              marginBottom: '40px',
+              maxWidth: '520px',
+              margin: '0 auto 40px',
+            }}
           >
             {t('contacto.subtitulo')}
           </motion.p>
-        </motion.div>
 
-        {/* Botones de contacto */}
-        <motion.div
-          variants={containerBtns}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8"
-        >
-          <motion.a
-            variants={btnVariant}
-            href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista.%20%C2%BFMe%20pueden%20ayudar%3F"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.06, boxShadow: '0 10px 25px rgba(107,148,86,0.4)', y: -3 }}
-            whileTap={{ scale: 0.97 }}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#6B9456] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-sm sm:text-[15px] hover:bg-[#5A7F48] transition-colors shadow-sm"
+          {/* Botones grandes */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}
           >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            {t('contacto.cotizarWhatsapp')}
-          </motion.a>
+            {/* WhatsApp */}
+            <motion.a
+              href="https://wa.me/573184550936?text=Hola%2C%20me%20interesa%20cotizar%20productos%20Bellavista."
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -3, boxShadow: '0 16px 32px rgba(209,19,53,0.3)' }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                backgroundColor: '#D11335',
+                color: '#fff',
+                fontFamily: 'Kumbh Sans, sans-serif',
+                fontWeight: 700,
+                fontSize: '13px',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                padding: '16px 36px',
+                borderRadius: '3px',
+                textDecoration: 'none',
+              }}
+            >
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12 0C5.373 0 0 5.373 0 12c0 2.138.563 4.14 1.535 5.877L0 24l6.293-1.516A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+              </svg>
+              {t('contacto.cotizarWhatsapp')}
+            </motion.a>
 
-          <motion.span
-            variants={btnVariant}
-            className="text-base sm:text-[18px] text-[#2C1810] font-['Handlee',_cursive]"
-          >
-            {t('contacto.o')}
-          </motion.span>
-
-          <motion.a
-            variants={btnVariant}
-            href="#contacto"
-            whileHover={{ scale: 1.06, boxShadow: '0 8px 20px rgba(44,24,16,0.12)', y: -3 }}
-            whileTap={{ scale: 0.97 }}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#FDF8F4] text-[#2C1810] px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg border-2 border-[#E8DCCF] font-['Kumbh_Sans',_sans-serif] font-semibold text-sm sm:text-[15px] hover:bg-white transition-colors shadow-sm"
-          >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            {t('contacto.contactoEmail')}
-          </motion.a>
-        </motion.div>
-
-        {/* Botón Solicitar Cotización */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.35 }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <motion.button
-            whileHover={{ scale: 1.06, boxShadow: '0 10px 28px rgba(107,78,61,0.4)', y: -3 }}
-            whileTap={{ scale: 0.97 }}
-            className="w-full sm:w-auto bg-[#6B4E3D] text-white px-8 sm:px-10 py-2.5 sm:py-3 rounded-lg font-['Kumbh_Sans',_sans-serif] font-semibold text-sm sm:text-[15px] hover:bg-[#5A3F2F] transition-colors shadow-sm"
-          >
-            {t('contacto.solicitarCotizacion')}
-          </motion.button>
-        </motion.div>
+            {/* Email */}
+            <motion.a
+              href="mailto:contactenos@panelabellavista.com"
+              whileHover={{ scale: 1.05, y: -3, boxShadow: '0 16px 32px rgba(96,56,19,0.2)' }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '10px',
+                backgroundColor: '#603813',
+                color: '#FFFF00',
+                fontFamily: 'Kumbh Sans, sans-serif',
+                fontWeight: 700,
+                fontSize: '13px',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                padding: '16px 36px',
+                borderRadius: '3px',
+                textDecoration: 'none',
+              }}
+            >
+              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              {t('contacto.contactoEmail')}
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Ondas del final */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-        <img
-          src="/12.svg"
-          alt=""
-          className="w-full h-auto object-bottom"
-        />
-      </div>
+      {/* Ola de salida */}
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', height: '80px', backgroundColor: '#603813' }}>
+        <path d="M0,0 Q360,80 720,40 Q1080,0 1440,80 L1440,0 Z" fill="#B8EC3F" />
+      </svg>
     </section>
   );
 }

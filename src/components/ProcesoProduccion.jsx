@@ -119,15 +119,15 @@ function StepCard({ step, index }) {
         variants={iconVariant}
         whileHover={{ scale: 1.15, rotate: 8, transition: { type: 'spring', stiffness: 300 } }}
         className="relative z-10 w-14 h-14 rounded-2xl flex items-center justify-center text-white cursor-default"
-        style={{ background: 'rgba(93,139,63,0.25)', border: '1.5px solid rgba(93,139,63,0.5)' }}
+        style={{ background: 'rgba(0,146,69,0.25)', border: '1.5px solid rgba(184,236,63,0.6)' }}
       >
-        <div className="text-[#5D8B3F]">{step.icon}</div>
+        <div className="text-[#B8EC3F]">{step.icon}</div>
       </motion.div>
 
       {/* Step number badge */}
       <span
         className="text-[11px] font-['Kumbh_Sans',_sans-serif] font-bold tracking-[0.15em] uppercase"
-        style={{ color: '#D4B57E' }}
+        style={{ color: '#FFFF00' }}
       >
         {num}
       </span>
@@ -135,7 +135,7 @@ function StepCard({ step, index }) {
       {/* Title */}
       <h3
         className="text-[19px] leading-snug"
-        style={{ fontFamily: "'Handlee', cursive", color: '#F2E8DF' }}
+        style={{ fontFamily: "'Schoolbell', cursive", color: '#fff' }}
       >
         {t(`proceso.${step.key}.titulo`)}
       </h3>
@@ -143,7 +143,7 @@ function StepCard({ step, index }) {
       {/* Description */}
       <p
         className="text-[13px] leading-relaxed font-['Kumbh_Sans',_sans-serif]"
-        style={{ color: 'rgba(242,232,223,0.65)' }}
+        style={{ color: 'rgba(255,255,255,0.65)' }}
       >
         {t(`proceso.${step.key}.desc`)}
       </p>
@@ -157,19 +157,19 @@ export default function ProcesoProduccion() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: '#2C1810' }}
+      style={{ background: '#603813' }}
     >
       {/* Corte superior - onda de entrada */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none" style={{ height: '60px' }}>
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,0 C360,60 1080,0 1440,50 L1440,0 Z" fill="#F7EAE4" />
+          <path d="M0,0 C360,60 1080,0 1440,50 L1440,0 Z" fill="#fff" />
         </svg>
       </div>
 
       {/* Corte inferior - onda de salida */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style={{ height: '60px' }}>
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,60 C480,0 960,60 1440,10 L1440,60 Z" fill="#F7EAE4" />
+          <path d="M0,60 C480,0 960,60 1440,10 L1440,60 Z" fill="#B8EC3F" />
         </svg>
       </div>
 
@@ -194,14 +194,14 @@ export default function ProcesoProduccion() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="text-[11px] font-['Kumbh_Sans',_sans-serif] font-bold uppercase block mb-3"
-            style={{ color: '#D4B57E' }}
+            style={{ color: '#FFFF00' }}
           >
             {t('proceso.eyebrow')}
           </motion.span>
 
           <h2
             className="text-[38px] md:text-[46px] leading-tight mb-4"
-            style={{ fontFamily: "'Schoolbell', cursive", color: '#F2E8DF' }}
+            style={{ fontFamily: "'Schoolbell', cursive", color: '#FFFF00' }}
           >
             {t('proceso.titulo')}
           </h2>
@@ -214,12 +214,12 @@ export default function ProcesoProduccion() {
             className="flex justify-center mb-5"
             style={{ transformOrigin: 'center' }}
           >
-            <div className="w-16 h-[2px] rounded-full" style={{ background: '#D4B57E' }} />
+            <div className="w-16 h-[2px] rounded-full" style={{ background: 'linear-gradient(90deg, #D11335, #FFFF00)' }} />
           </motion.div>
 
           <p
             className="text-[14px] font-['Kumbh_Sans',_sans-serif] max-w-xl mx-auto leading-relaxed"
-            style={{ color: 'rgba(242,232,223,0.6)' }}
+            style={{ color: 'rgba(255,255,255,0.65)' }}
           >
             {t('proceso.subtitulo')}
           </p>
