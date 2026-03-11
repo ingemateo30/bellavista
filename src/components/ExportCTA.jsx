@@ -1,16 +1,21 @@
 import { useTranslation } from 'react-i18next';
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 function Counter({ target, suffix = '' }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
-  const val = useMotionValue(0);
-  const rounded = useTransform(val, v => Math.round(v));
+  const [display, setDisplay] = useState(0);
   useEffect(() => {
-    if (inView) { const c = animate(val, target, { duration: 1.6, ease: 'easeOut' }); return c.stop; }
-  }, [inView, val, target]);
-  return <span ref={ref} style={{ fontFamily: 'Schoolbell, cursive' }}><motion.span>{rounded}</motion.span>{suffix}</span>;
+    if (!inView) return;
+    const controls = animate(0, target, {
+      duration: 1.6,
+      ease: 'easeOut',
+      onUpdate: v => setDisplay(Math.round(v)),
+    });
+    return controls.stop;
+  }, [inView, target]);
+  return <span ref={ref} style={{ fontFamily: 'Schoolbell, cursive' }}>{display}{suffix}</span>;
 }
 
 export default function ExportCTA() {
