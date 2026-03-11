@@ -1,259 +1,132 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-
-/*
-  NOSOTROS — Full bleed editorial with asymmetric split
-  ──────────────────────────────────────────────────────
-  • Left: Full-height atmospheric photography
-  • Right: Dark panel with editorial text + timeline
-  • Diagonal split accent
-  • Large year watermark
-*/
-
-const MILESTONES = [
-  { year: '2002', keyText: 'nosotros.paso1' },
-  { year: '2010', keyText: 'nosotros.paso2' },
-  { year: '2018', keyText: 'nosotros.paso3' },
-  { year: '2024', keyText: 'nosotros.paso4' },
-];
-
-const HIGHLIGHTS = [
-  { value: '100%', label: 'Natural & Artesanal', color: '#009245' },
-  { value: '20K',  label: 'kg capacidad anual',  color: '#FFFF00' },
-  { value: '4+',   label: 'Países exportando',   color: '#D11335' },
-];
+import WaveDivider from './WaveDivider';
 
 export default function Nosotros() {
   const { t } = useTranslation();
-
   return (
-    <section
-      id="nosotros"
-      style={{ overflow: 'hidden', backgroundColor: '#0D0806' }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '50% 50%',
-          minHeight: '720px',
-        }}
-        className="nosotros-grid"
-      >
-        {/* LEFT — Photography */}
-        <div style={{ position: 'relative', overflow: 'hidden', minHeight: '500px' }}>
-          {/* Main image */}
-          <img
-            src="/banner1.png"
-            alt="Finca BellaVista"
-            style={{
-              width: '100%', height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              display: 'block',
-              position: 'absolute', inset: 0,
-            }}
-          />
+    <section id="nosotros" style={{ backgroundColor: '#F4E800', paddingTop: '0' }}>
+      {/* DEL CAMPO A TU MESA — heading strip */}
+      <div style={{ backgroundColor: '#1B7A2F', padding: '28px 32px', textAlign: 'center' }}>
+        <h2 style={{
+          fontFamily: 'Schoolbell, cursive',
+          color: '#F4E800',
+          fontSize: 'clamp(28px, 5vw, 52px)',
+          lineHeight: 1, margin: 0, letterSpacing: '0.02em',
+        }}>
+          {t('nosotros.titulo') || 'Del Campo a Tu Mesa'}
+        </h2>
+      </div>
 
-          {/* Gradient overlay */}
-          <div style={{
+      {/* Main content */}
+      <div style={{
+        backgroundColor: '#F4E800',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        maxWidth: '1360px', margin: '0 auto',
+        gap: '0',
+      }} className="nosotros-bv-grid">
+        {/* Photo */}
+        <div style={{ position: 'relative', minHeight: '480px', overflow: 'hidden' }}>
+          <img src="/SINR0002.jpg" alt="BellaVista" style={{
+            width: '100%', height: '100%', objectFit: 'cover',
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(135deg, rgba(13,8,6,0.7) 0%, rgba(13,8,6,0.3) 60%, rgba(13,8,6,0.6) 100%)',
-            zIndex: 1,
-          }} />
-
-          {/* Floating highlights */}
-          <div style={{
-            position: 'absolute', bottom: '40px', left: '40px',
-            zIndex: 2,
-            display: 'flex', flexDirection: 'column', gap: '12px',
-          }}>
-            {HIGHLIGHTS.map((h, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.1 }}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '14px',
-                  backgroundColor: 'rgba(13,8,6,0.75)',
-                  backdropFilter: 'blur(8px)',
-                  padding: '12px 20px',
-                  borderLeft: `3px solid ${h.color}`,
-                }}
-              >
-                <span style={{
-                  fontFamily: 'Schoolbell, cursive',
-                  color: h.color,
-                  fontSize: '28px', lineHeight: 1,
-                }}>
-                  {h.value}
-                </span>
-                <span style={{
-                  fontFamily: 'Kumbh Sans',
-                  color: 'rgba(255,255,255,0.7)',
-                  fontSize: '11px', fontWeight: 700,
-                  letterSpacing: '0.15em', textTransform: 'uppercase',
-                }}>
-                  {h.label}
-                </span>
-              </motion.div>
-            ))}
+          }}/>
+          {/* Mountain overlay at bottom */}
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, lineHeight: 0 }}>
+            <svg viewBox="0 0 600 80" preserveAspectRatio="none" style={{ width: '100%', height: '80px' }}>
+              <path d="M0,40 C100,15 200,55 300,35 C400,15 500,55 600,30 L600,80 L0,80 Z" fill="rgba(27,122,47,0.7)"/>
+              <path d="M0,52 C150,30 300,60 450,45 C550,35 580,55 600,48 L600,80 L0,80 Z" fill="rgba(244,232,0,0.85)"/>
+              <path d="M0,65 C200,50 400,70 600,58 L600,80 L0,80 Z" fill="rgba(92,45,10,0.75)"/>
+            </svg>
           </div>
-
-          {/* Year watermark */}
+          {/* Year badge */}
           <div style={{
-            position: 'absolute', top: '-30px', right: '-20px', zIndex: 1,
-            fontFamily: 'Schoolbell, cursive',
-            color: 'rgba(255,255,255,0.05)',
-            fontSize: '180px', lineHeight: 1,
-            userSelect: 'none', pointerEvents: 'none',
+            position: 'absolute', top: '24px', left: '24px',
+            backgroundColor: '#E8173A', borderRadius: '50%',
+            width: '80px', height: '80px',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
           }}>
-            2002
+            <span style={{ fontFamily: 'Kumbh Sans', color: '#fff', fontSize: '9px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Desde</span>
+            <span style={{ fontFamily: 'Schoolbell, cursive', color: '#F4E800', fontSize: '22px', lineHeight: 1 }}>2002</span>
           </div>
         </div>
 
-        {/* RIGHT — Text content */}
+        {/* Text content */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: [0.16,1,0.3,1] }}
-          style={{
-            backgroundColor: '#0D0806',
-            padding: 'clamp(60px, 8vw, 96px) clamp(32px, 5vw, 72px)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
+          transition={{ duration: 0.7, ease: [0.16,1,0.3,1] }}
+          style={{ padding: 'clamp(40px, 6vw, 72px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
         >
-          {/* Eyebrow */}
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: '12px',
-            marginBottom: '32px',
-          }}>
-            <div style={{ height: '2px', width: '32px', backgroundColor: '#009245' }} />
-            <span style={{
-              fontFamily: 'Kumbh Sans',
-              color: '#009245',
-              fontSize: '11px', fontWeight: 700,
-              letterSpacing: '0.35em', textTransform: 'uppercase',
-            }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ height: '3px', width: '32px', backgroundColor: '#E8173A' }} />
+            <span style={{ fontFamily: 'Kumbh Sans', color: '#E8173A', fontSize: '11px', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase' }}>
               {t('nosotros.eyebrow')}
             </span>
           </div>
 
-          {/* Headline */}
-          <h2 style={{
-            fontFamily: 'Schoolbell, cursive',
-            color: '#fff',
-            fontSize: 'clamp(38px, 5vw, 60px)',
-            lineHeight: 0.95, marginBottom: '24px',
-          }}>
-            {t('nosotros.titulo')}
-          </h2>
-
-          {/* Red accent line */}
-          <div style={{ height: '3px', width: '56px', backgroundColor: '#D11335', marginBottom: '28px' }} />
-
-          {/* Description */}
           <p style={{
-            fontFamily: 'Kumbh Sans',
-            color: 'rgba(255,255,255,0.55)',
-            fontSize: '15px', lineHeight: 1.8,
-            marginBottom: '48px',
-            maxWidth: '420px',
+            fontFamily: 'Kumbh Sans, sans-serif', color: '#5C2D0A',
+            fontSize: '15px', lineHeight: 1.8, marginBottom: '32px', opacity: 0.85,
           }}>
             {t('nosotros.subtitulo')}
           </p>
 
-          {/* Timeline */}
-          <div style={{
-            display: 'flex', flexDirection: 'column', gap: '0',
-            marginBottom: '48px',
-            position: 'relative',
-          }}>
-            {/* Vertical line */}
-            <div style={{
-              position: 'absolute', left: '20px', top: '12px', bottom: '12px',
-              width: '1px', backgroundColor: 'rgba(255,255,255,0.08)',
-            }} />
-
-            {MILESTONES.map((m, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -16 }}
+          {/* 4 milestones */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '36px' }}>
+            {[
+              { year: '2002', key: 'nosotros.paso1', color: '#E8173A' },
+              { year: '2010', key: 'nosotros.paso2', color: '#1B7A2F' },
+              { year: '2018', key: 'nosotros.paso3', color: '#8BC420' },
+              { year: '2024', key: 'nosotros.paso4', color: '#5C2D0A' },
+            ].map((m, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.08 }}
-                style={{
-                  display: 'flex', gap: '24px', alignItems: 'flex-start',
-                  padding: '16px 0',
-                }}
+                transition={{ delay: 0.1 + i * 0.07 }}
+                style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}
               >
-                {/* Year dot */}
-                <div style={{ flexShrink: 0, width: '40px', paddingTop: '4px', textAlign: 'center' }}>
-                  <div style={{
-                    width: '10px', height: '10px',
-                    border: `2px solid ${i === 0 ? '#D11335' : i === MILESTONES.length - 1 ? '#FFFF00' : 'rgba(255,255,255,0.3)'}`,
-                    borderRadius: '50%',
-                    backgroundColor: i === 0 ? '#D11335' : 'transparent',
-                    margin: '0 auto',
-                  }} />
+                <div style={{
+                  flexShrink: 0, width: '44px', height: '28px',
+                  backgroundColor: m.color, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  borderRadius: '3px',
+                }}>
+                  <span style={{ fontFamily: 'Schoolbell, cursive', color: '#fff', fontSize: '13px' }}>{m.year}</span>
                 </div>
-
-                <div style={{ flex: 1 }}>
-                  <span style={{
-                    fontFamily: 'Schoolbell, cursive',
-                    color: i === 0 ? '#D11335' : i === MILESTONES.length - 1 ? '#FFFF00' : 'rgba(255,255,255,0.3)',
-                    fontSize: '13px',
-                    display: 'block',
-                    marginBottom: '4px',
-                  }}>
-                    {m.year}
-                  </span>
-                  <span style={{
-                    fontFamily: 'Kumbh Sans',
-                    color: 'rgba(255,255,255,0.5)',
-                    fontSize: '13px', lineHeight: 1.5,
-                  }}>
-                    {t(m.keyText)}
-                  </span>
-                </div>
+                <span style={{ fontFamily: 'Kumbh Sans', color: '#5C2D0A', fontSize: '13px', lineHeight: 1.55, paddingTop: '4px', opacity: 0.8 }}>
+                  {t(m.key)}
+                </span>
               </motion.div>
             ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href="/#contacto"
+          <a href="/#contacto"
+            className="btn-green-bv"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: '10px',
-              backgroundColor: '#009245', color: '#fff',
-              fontFamily: 'Kumbh Sans',
-              fontWeight: 800, fontSize: '12px',
+              display: 'inline-flex', alignItems: 'center', gap: '8px', alignSelf: 'flex-start',
+              backgroundColor: '#1B7A2F', color: '#fff',
+              fontFamily: 'Kumbh Sans', fontWeight: 700, fontSize: '12px',
               letterSpacing: '0.1em', textTransform: 'uppercase',
-              padding: '16px 28px',
-              textDecoration: 'none',
-              alignSelf: 'flex-start',
-              transition: 'background 0.2s',
-            }}
-            className="nosotros-cta"
-          >
+              padding: '14px 24px', textDecoration: 'none', borderRadius: '3px',
+            }}>
             {t('nosotros.cta')}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
         </motion.div>
       </div>
 
+      <WaveDivider fromColor="#F4E800" toColor="#F4E800" height={72} />
+
       <style>{`
         @media (max-width: 860px) {
-          .nosotros-grid { grid-template-columns: 1fr !important; }
-          .nosotros-grid > div:first-child { min-height: 400px !important; }
+          .nosotros-bv-grid { grid-template-columns: 1fr !important; }
+          .nosotros-bv-grid > div:first-child { min-height: 320px !important; }
         }
-        .nosotros-cta:hover { background: #007a38 !important; }
       `}</style>
     </section>
   );

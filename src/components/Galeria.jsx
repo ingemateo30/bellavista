@@ -1,125 +1,103 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
+import WaveDivider from './WaveDivider';
 
-/*
-  GALERIA — Magazine-style asymmetric mosaic
-  ────────────────────────────────────────────
-  • Light warm background
-  • Asymmetric grid: first image large (spans 2), rest fill around
-  • Red overlay on hover
-  • Lightbox on click
-*/
-
-const IMAGES = [
-  { src: '/SINR0002.jpg',       alt: 'Instalaciones Bellavista', span: true },
-  { src: '/SINR0004.jpg',       alt: 'Proceso de producción' },
-  { src: '/_DSC0035.jpg',       alt: 'Productos Bellavista' },
-  { src: '/_DSC0042(1).jpg',    alt: 'Panela artesanal' },
-  { src: '/_DSC0048.jpg',       alt: 'Exportación' },
-  { src: '/_DSC0058(1).jpg',    alt: 'Calidad certificada' },
-  { src: '/_DSC0063.jpg',       alt: 'Producto natural' },
+const PHOTOS = [
+  { src: '/banner1.png',   alt: 'galeria.foto1', span: 'wide' },
+  { src: '/_DSC0033.png',  alt: 'galeria.foto2', span: 'normal' },
+  { src: '/SINR0002.jpg',  alt: 'galeria.foto3', span: 'normal' },
+  { src: '/_DSC0058.png',  alt: 'galeria.foto4', span: 'wide' },
+  { src: '/banner2.png',   alt: 'galeria.foto5', span: 'normal' },
+  { src: '/_DSC0033.png',  alt: 'galeria.foto6', span: 'normal' },
 ];
 
 export default function Galeria() {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState(null);
+  const [lightbox, setLightbox] = useState(null);
 
   return (
-    <section
-      style={{
-        backgroundColor: '#F5E6D3',
-        padding: '96px 0',
-      }}
-    >
-      <div style={{ maxWidth: '1360px', margin: '0 auto', padding: '0 40px' }}>
+    <section style={{ backgroundColor: '#F4E800', paddingTop: '0' }}>
+      {/* Heading strip */}
+      <div style={{ backgroundColor: '#8BC420', padding: '28px 32px', textAlign: 'center' }}>
+        <h2 style={{
+          fontFamily: 'Schoolbell, cursive',
+          color: '#5C2D0A',
+          fontSize: 'clamp(28px, 5vw, 52px)',
+          lineHeight: 1, margin: 0,
+        }}>
+          {t('galeria.titulo') || 'Nuestra Galería'}
+        </h2>
+      </div>
 
-        {/* Header */}
+      <div style={{ padding: '72px 32px 64px', maxWidth: '1360px', margin: '0 auto' }}>
+        {/* Eyebrow */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{
-            display: 'flex', justifyContent: 'space-between',
-            alignItems: 'flex-end', marginBottom: '56px', gap: '24px',
-            flexWrap: 'wrap',
-          }}
+          style={{ textAlign: 'center', marginBottom: '48px' }}
         >
-          <div>
-            <p style={{
-              fontFamily: 'Kumbh Sans, sans-serif',
-              color: 'rgba(96,56,19,0.5)',
-              fontSize: '11px', fontWeight: 700,
-              letterSpacing: '0.4em', textTransform: 'uppercase',
-              marginBottom: '10px',
-            }}>
-              {t('galeria.eyebrow')}
-            </p>
-            <h2 style={{
-              fontFamily: 'Schoolbell, cursive',
-              color: '#0D0806',
-              fontSize: 'clamp(36px, 5vw, 60px)',
-              lineHeight: 0.95, margin: 0,
-            }}>
-              {t('galeria.titulo')}
-            </h2>
-          </div>
           <p style={{
             fontFamily: 'Kumbh Sans, sans-serif',
-            color: 'rgba(96,56,19,0.5)',
-            fontSize: '13px',
-            maxWidth: '280px',
-            lineHeight: 1.6,
+            color: '#5C2D0A', opacity: 0.6,
+            fontSize: '11px', fontWeight: 700,
+            letterSpacing: '0.4em', textTransform: 'uppercase',
           }}>
-            Producción artesanal desde las montañas de Santander, Colombia
+            {t('galeria.eyebrow') || 'Del campo colombiano · Artesanal · Natural'}
           </p>
         </motion.div>
 
-        {/* Mosaic Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: 'repeat(2, 240px)',
-            gap: '8px',
-          }}
-          className="gallery-mosaic"
-        >
-          {IMAGES.map((img, i) => (
+        {/* Mosaic grid */}
+        <div className="galeria-bv-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateRows: 'auto',
+          gap: '12px',
+        }}>
+          {PHOTOS.map((photo, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ delay: i * 0.06, duration: 0.5 }}
-              onClick={() => setSelected(img)}
-              className="gallery-item-new"
+              transition={{ delay: i * 0.07, duration: 0.5, ease: [0.16,1,0.3,1] }}
+              className={`gallery-item-bv ${photo.span === 'wide' ? 'galeria-wide' : ''}`}
               style={{
-                gridColumn: i === 0 ? 'span 2' : 'span 1',
-                gridRow: i === 0 ? 'span 2' : 'span 1',
-                cursor: 'pointer',
-                backgroundColor: '#e0cdbA',
+                position: 'relative', overflow: 'hidden',
+                borderRadius: '6px', cursor: 'pointer',
+                paddingBottom: photo.span === 'wide' ? '45%' : '70%',
+                border: '2px solid rgba(92,45,10,0.12)',
+                gridColumn: photo.span === 'wide' ? 'span 2' : 'span 1',
               }}
+              onClick={() => setLightbox(photo.src)}
             >
-              <img src={img.src} alt={img.alt} />
-              <div className="gallery-overlay-new" />
-
-              {/* Hover label */}
-              <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0,
-                padding: '16px',
-                background: 'linear-gradient(to top, rgba(13,8,6,0.8), transparent)',
-                opacity: 0,
-                transition: 'opacity 0.3s',
-              }} className="gallery-label">
-                <p style={{
-                  fontFamily: 'Kumbh Sans, sans-serif',
-                  color: '#fff', fontSize: '11px', fontWeight: 600,
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                  margin: 0,
-                }}>
-                  {img.alt}
-                </p>
+              <img src={photo.src} alt={t(photo.alt) || photo.alt}
+                style={{
+                  position: 'absolute', inset: 0,
+                  width: '100%', height: '100%', objectFit: 'cover',
+                  transition: 'transform 0.5s ease',
+                }}
+                className="gallery-img-bv"
+              />
+              {/* Hover overlay */}
+              <div className="gallery-overlay-bv" style={{
+                position: 'absolute', inset: 0,
+                backgroundColor: 'rgba(27,122,47,0.0)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.3s',
+              }}>
+                <div style={{
+                  opacity: 0, transform: 'scale(0.8)',
+                  transition: 'all 0.3s',
+                  backgroundColor: '#F4E800',
+                  borderRadius: '50%', width: '48px', height: '48px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }} className="gallery-zoom-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C2D0A" strokeWidth="2.5">
+                    <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/>
+                  </svg>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -128,66 +106,57 @@ export default function Galeria() {
 
       {/* Lightbox */}
       <AnimatePresence>
-        {selected && (
+        {lightbox && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelected(null)}
+            onClick={() => setLightbox(null)}
             style={{
-              position: 'fixed', inset: 0, zIndex: 9999,
-              backgroundColor: 'rgba(13,8,6,0.95)',
+              position: 'fixed', inset: 0, zIndex: 1000,
+              backgroundColor: 'rgba(92,45,10,0.92)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               padding: '24px',
             }}
           >
             <motion.img
-              initial={{ scale: 0.88, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.88, opacity: 0 }}
-              transition={{ type: 'spring', damping: 20 }}
-              src={selected.src}
-              alt={selected.alt}
+              src={lightbox}
+              initial={{ scale: 0.85 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.85 }}
               style={{
-                maxWidth: '90vw', maxHeight: '85vh',
-                objectFit: 'contain',
-                boxShadow: '0 32px 100px rgba(0,0,0,0.8)',
+                maxWidth: '90vw', maxHeight: '88vh', objectFit: 'contain',
+                borderRadius: '6px', border: '4px solid #F4E800',
               }}
-              onClick={e => e.stopPropagation()}
             />
-            <button
-              onClick={() => setSelected(null)}
-              style={{
-                position: 'fixed', top: '24px', right: '24px',
-                background: '#D11335', border: 'none',
-                color: '#fff', width: '44px', height: '44px',
-                cursor: 'pointer', fontSize: '20px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}
-            >
-              ×
+            <button onClick={() => setLightbox(null)} style={{
+              position: 'absolute', top: '20px', right: '20px',
+              backgroundColor: '#E8173A', border: 'none', cursor: 'pointer',
+              borderRadius: '50%', width: '40px', height: '40px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
+      <WaveDivider fromColor="#F4E800" toColor="#F4E800" height={72} />
+
       <style>{`
-        .gallery-item-new:hover .gallery-overlay-new { opacity: 0.4 !important; }
-        .gallery-item-new:hover .gallery-label { opacity: 1 !important; }
+        .gallery-img-bv { transition: transform 0.5s ease; }
+        .gallery-item-bv:hover .gallery-img-bv { transform: scale(1.05); }
+        .gallery-item-bv:hover .gallery-overlay-bv { background-color: rgba(27,122,47,0.35) !important; }
+        .gallery-item-bv:hover .gallery-zoom-icon { opacity: 1 !important; transform: scale(1) !important; }
         @media (max-width: 768px) {
-          .gallery-mosaic {
-            grid-template-columns: repeat(2, 1fr) !important;
-            grid-template-rows: auto !important;
-          }
-          .gallery-mosaic > div {
-            grid-column: span 1 !important;
-            grid-row: span 1 !important;
-            height: 200px !important;
-          }
+          .galeria-bv-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .galeria-wide { grid-column: span 2 !important; }
         }
         @media (max-width: 480px) {
-          .gallery-mosaic { grid-template-columns: 1fr !important; }
-          .gallery-mosaic > div { height: 220px !important; }
+          .galeria-bv-grid { grid-template-columns: 1fr !important; }
+          .galeria-wide { grid-column: span 1 !important; }
         }
       `}</style>
     </section>
