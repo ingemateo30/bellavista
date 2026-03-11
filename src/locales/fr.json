@@ -9,6 +9,11 @@
   },
   "hero": {
     "productos": "PRODUITS",
+    "eyebrow": "Productos Bellavista · Colombie · Exportation",
+    "subtitulo": "Panela, café et boissons naturelles du cœur de la Colombie. Tradition artisanale avec des normes internationales pour les marchés de gros du monde entier.",
+    "catPanela": "Panela & Dérivés",
+    "catCafe": "Café d'Origine",
+    "catBebidas": "Boissons Naturelles",
     "slide1": "Production et exportation de panela, piloncillo, café et autres produits agricoles, avec capacité d'approvisionnement constant et normes de qualité.",
     "slide2": "Nous connectons notre production avec des marchés internationaux en Espagne, États-Unis, Aruba et Canada.",
     "slide3": "Découvrez l'âme de Productos Bellavista : tradition, campagne colombienne et qualité qui traverse les frontières.",
@@ -16,8 +21,33 @@
     "verProductos": "Voir les Produits",
     "goToSlide": "Aller à la diapositive"
   },
+  "categorias": {
+    "eyebrow": "Notre Portefeuille",
+    "titulo": "Au-delà de la panela",
+    "subtitulo": "Un univers de saveurs colombiennes : de la panela artisanale qui nous a donné notre origine, jusqu'au café d'altitude et aux nouvelles boissons naturelles.",
+    "panela": {
+      "titulo": "Panela & Dérivés",
+      "descripcion": "Le sucrant ancestral de Colombie. Fabriquée artisanalement à Santander, notre panela préserve chaque minéral et chaque saveur du jus de canne non raffiné.",
+      "tag": "Produit Vedette"
+    },
+    "cafe": {
+      "titulo": "Café d'Origine",
+      "descripcion": "Grains sélectionnés des montagnes colombiennes. Un café avec de l'histoire, un terroir unique et une saveur incomparable, prêt à conquérir les marchés premium.",
+      "tag": "Prochainement"
+    },
+    "bebidas": {
+      "titulo": "Boissons Naturelles",
+      "descripcion": "Nouvelles explorations vers des boissons artisanales qui capturent le meilleur de notre terre colombienne. Des saveurs authentiques pour le monde.",
+      "tag": "Nouveaux Horizons"
+    }
+  },
   "ventajas": {
+    "eyebrow": "Nos Avantages",
     "titulo": "Pourquoi choisir Productos Bellavista ?",
+    "stat1": "Pays d'exportation",
+    "stat2": "Naturel & artisanal",
+    "stat3": "Ans de tradition",
+    "stat4": "kg capacité annuelle",
     "enfoqueExportador": {
       "titulo": "Orientation Exportation",
       "descripcion": "Produits alimentaires préparés pour les marchés internationaux et les acheteurs en gros."
@@ -253,8 +283,9 @@
     }
   },
   "nosotros": {
-    "titulo": "Processus d'Achat",
-    "subtitulo": "Voici comment travailler avec Productos Bellavista fonctionne :",
+    "eyebrow": "Processus d'Achat",
+    "titulo": "Travailler avec Bellavista est simple",
+    "subtitulo": "Simple, efficace et axé sur vos besoins en tant qu'importateur ou grossiste.",
     "subtitulo2": "simple, efficace et axé sur vos besoins en gros.",
     "paso1": {
       "titulo": "Contactez-nous",
@@ -334,10 +365,14 @@
   },
   "footer": {
     "nosotros": "À Propos",
-    "tagline": "Qualité Colombienne pour le Marché Mondial",
-    "descripcion1": "Nous sommes experts en exportation de produits artisanaux de notre agriculture.",
-    "descripcion2": "Avec les produits Bellavista, votre entreprise de gros ou votre marque alimentaire privée compte sur un approvisionnement continu et de qualité.",
-    "ubicacion": "Mogotes, Colombie"
+    "tagline": "Qualité Colombienne pour le Monde",
+    "descripcion1": "Nous sommes experts en exportation de produits artisanaux colombiens : panela, café et boissons naturelles.",
+    "descripcion2": "Avec Bellavista, votre entreprise de gros compte sur un approvisionnement continu, une qualité certifiée et un engagement réel.",
+    "ubicacion": "Mogotes, Santander · Colombie",
+    "contactoTitulo": "Contact",
+    "redesTitulo": "Suivez-nous",
+    "categoriasTitulo": "Catégories",
+    "derechos": "Tous droits réservés."
   },
   "proceso": {
     "eyebrow": "Production Artisanale",

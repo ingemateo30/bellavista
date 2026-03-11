@@ -2,6 +2,7 @@ import './i18n';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Categorias from './components/Categorias';
 import Ventajas from './components/Ventajas';
 import Productos from './components/Productos';
 import Nosotros from './components/Nosotros';
@@ -9,8 +10,6 @@ import ExportCTA from './components/ExportCTA';
 import Galeria from './components/Galeria';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
-import Logo from './components/logo';
-import ImageSection from './components/ImageSection';
 import ProductoDetalle from './components/ProductoDetalle';
 import ProcesoProduccion from './components/ProcesoProduccion';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -22,15 +21,13 @@ function PaginaPrincipal() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <Logo />
-      <ImageSection />
-      <div className="-mt-12">
-        <Ventajas />
-      </div>
+      <Categorias />
+      <Ventajas />
       <Productos />
       <Nosotros />
       <ExportCTA />
       <Galeria />
+      <ProcesoProduccion />
       <Contacto />
       <Footer />
 
