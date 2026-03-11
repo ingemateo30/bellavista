@@ -9,7 +9,7 @@ function Counter({ target, suffix = '' }) {
   useEffect(() => {
     if (!inView) return;
     const controls = animate(0, target, {
-      duration: 1.8, ease: 'easeOut',
+      duration: 2.2, ease: 'easeOut',
       onUpdate: v => setDisplay(Math.round(v)),
     });
     return controls.stop;
@@ -18,78 +18,157 @@ function Counter({ target, suffix = '' }) {
 }
 
 /*
-  VENTAJAS — Franja de stats + características
+  VENTAJAS — Dark dramatic stats + feature cards
   ──────────────────────────────────────────────
-  • Franja amarilla (#FFFF00) con 4 números grandes
-  • Sección blanca con 4 tarjetas de características
+  • Dark background (#0D0806)
+  • 4 massive yellow numbers in asymmetric grid
+  • Below: cream section with 4 feature cards
 */
+
+const STATS = [
+  { target: 4,   suffix: '+',  labelKey: 'ventajas.stat1', color: '#D11335',  note: 'países' },
+  { target: 100, suffix: '%',  labelKey: 'ventajas.stat2', color: '#009245',  note: 'natural' },
+  { target: 15,  suffix: '+',  labelKey: 'ventajas.stat3', color: '#F15A24',  note: 'años' },
+  { target: 20,  suffix: 'k', labelKey: 'ventajas.stat4', color: '#FFFF00',  note: 'kg/año' },
+];
+
+const FEATURES = [
+  {
+    titleKey: 'ventajas.enfoqueExportador.titulo',
+    descKey:  'ventajas.enfoqueExportador.descripcion',
+    accent: '#D11335',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+      </svg>
+    ),
+  },
+  {
+    titleKey: 'ventajas.calidadControlada.titulo',
+    descKey:  'ventajas.calidadControlada.descripcion',
+    accent: '#009245',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+      </svg>
+    ),
+  },
+  {
+    titleKey: 'ventajas.capacidadSuministro.titulo',
+    descKey:  'ventajas.capacidadSuministro.descripcion',
+    accent: '#F15A24',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+    ),
+  },
+  {
+    titleKey: 'ventajas.privateLabel.titulo',
+    descKey:  'ventajas.privateLabel.descripcion',
+    accent: '#B8EC3F',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+      </svg>
+    ),
+  },
+];
 
 export default function Ventajas() {
   const { t } = useTranslation();
 
-  const stats = [
-    { target: 4,   suffix: '+',  labelKey: 'ventajas.stat1', color: '#D11335' },
-    { target: 100, suffix: '%',  labelKey: 'ventajas.stat2', color: '#009245' },
-    { target: 15,  suffix: '+',  labelKey: 'ventajas.stat3', color: '#F15A24' },
-    { target: 20,  suffix: 'k+', labelKey: 'ventajas.stat4', color: '#D11335' },
-  ];
-
-  const features = [
-    { titleKey: 'ventajas.enfoqueExportador.titulo', descKey: 'ventajas.enfoqueExportador.descripcion', color: '#D11335' },
-    { titleKey: 'ventajas.calidadControlada.titulo', descKey: 'ventajas.calidadControlada.descripcion', color: '#009245' },
-    { titleKey: 'ventajas.capacidadSuministro.titulo', descKey: 'ventajas.capacidadSuministro.descripcion', color: '#FFFF00' },
-    { titleKey: 'ventajas.privateLabel.titulo', descKey: 'ventajas.privateLabel.descripcion', color: '#F15A24' },
-  ];
-
   return (
     <section>
-      {/* ── FRANJA AMARILLA — ESTADÍSTICAS ────── */}
-      <div style={{ backgroundColor: '#FFFF00', padding: '72px 40px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      {/* ── DARK STATS SECTION ─────────────────── */}
+      <div
+        style={{
+          backgroundColor: '#0D0806',
+          padding: '96px 40px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Subtle grid texture */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+          pointerEvents: 'none',
+        }} />
+
+        <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
+
+          {/* Section label */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             style={{
-              fontFamily: 'Kumbh Sans, sans-serif',
-              color: '#603813', fontSize: '11px', fontWeight: 700,
-              letterSpacing: '0.35em', textTransform: 'uppercase',
-              textAlign: 'center', marginBottom: '48px',
+              display: 'flex', alignItems: 'center', gap: '16px',
+              marginBottom: '72px',
             }}
           >
-            {t('ventajas.eyebrow')}
-          </motion.p>
+            <div style={{ height: '2px', width: '40px', backgroundColor: '#FFFF00' }} />
+            <p style={{
+              fontFamily: 'Kumbh Sans, sans-serif',
+              color: 'rgba(255,255,255,0.4)',
+              fontSize: '11px', fontWeight: 700,
+              letterSpacing: '0.4em', textTransform: 'uppercase',
+            }}>
+              {t('ventajas.eyebrow')}
+            </p>
+          </motion.div>
 
+          {/* Stats grid — asymmetric 2x2 */}
           <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}
-            className="stats-row"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '0',
+            }}
+            className="stats-grid-new"
           >
-            {stats.map((s, i) => (
+            {STATS.map((s, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.12, duration: 0.6, ease: [0.16,1,0.3,1] }}
                 style={{
-                  textAlign: 'center',
-                  padding: '0 20px 24px',
-                  borderLeft: i > 0 ? '1px solid rgba(96,56,19,0.15)' : 'none',
+                  padding: '48px 32px',
+                  borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  borderRight: i < STATS.length - 1 ? 'none' : 'none',
+                  position: 'relative',
                 }}
               >
+                {/* Accent top bar */}
+                <div style={{
+                  height: '3px', width: '32px',
+                  backgroundColor: s.color,
+                  marginBottom: '24px',
+                }} />
+
+                {/* Number */}
                 <div style={{
                   fontFamily: 'Schoolbell, cursive',
-                  color: '#1A1A1A',
-                  fontSize: 'clamp(56px, 8vw, 96px)',
-                  lineHeight: 1, marginBottom: '6px',
+                  color: '#FFFF00',
+                  fontSize: 'clamp(64px, 9vw, 108px)',
+                  lineHeight: 0.9,
+                  marginBottom: '16px',
+                  letterSpacing: '-0.02em',
                 }}>
                   <Counter target={s.target} suffix={s.suffix} />
                 </div>
+
+                {/* Label */}
                 <p style={{
                   fontFamily: 'Kumbh Sans, sans-serif',
-                  color: 'rgba(26,26,26,0.65)',
+                  color: 'rgba(255,255,255,0.5)',
                   fontSize: '11px', fontWeight: 700,
-                  letterSpacing: '0.15em', textTransform: 'uppercase',
+                  letterSpacing: '0.2em', textTransform: 'uppercase',
+                  lineHeight: 1.4,
                 }}>
                   {t(s.labelKey)}
                 </p>
@@ -99,87 +178,146 @@ export default function Ventajas() {
         </div>
       </div>
 
-      {/* ── SECCIÓN BLANCA — CARACTERÍSTICAS ──── */}
-      <div style={{ backgroundColor: '#fff', padding: '80px 40px' }}>
+      {/* ── FEATURES SECTION — Cream bg ──────── */}
+      <div
+        style={{
+          backgroundColor: '#F5E6D3',
+          padding: '96px 40px',
+        }}
+      >
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            style={{
-              fontFamily: 'Schoolbell, cursive',
-              color: '#1A1A1A',
-              fontSize: 'clamp(32px, 4vw, 56px)',
-              textAlign: 'center', marginBottom: '56px',
-            }}
-          >
-            {t('ventajas.titulo')}
-          </motion.h2>
 
+          {/* Header row */}
           <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}
-            className="features-row"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '48px',
+              alignItems: 'end',
+              marginBottom: '64px',
+            }}
+            className="ventajas-header-row"
           >
-            {features.map((f, i) => (
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              style={{
+                fontFamily: 'Schoolbell, cursive',
+                color: '#0D0806',
+                fontSize: 'clamp(36px, 5vw, 60px)',
+                lineHeight: 0.95,
+              }}
+            >
+              {t('ventajas.titulo')}
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              style={{ paddingBottom: '8px' }}
+            >
+              <a
+                href="https://wa.me/573184550936?text=Hola%2C%20quiero%20cotizar%20productos%20BellaVista."
+                target="_blank" rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '10px',
+                  backgroundColor: '#0D0806', color: '#FFFF00',
+                  fontFamily: 'Kumbh Sans, sans-serif',
+                  fontWeight: 800, fontSize: '12px',
+                  letterSpacing: '0.1em', textTransform: 'uppercase',
+                  padding: '16px 28px',
+                  textDecoration: 'none',
+                  transition: 'background 0.2s',
+                }}
+                className="ventajas-cta"
+              >
+                {t('ventajas.ctaBoton')}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Feature cards */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '16px',
+            }}
+            className="features-grid-new"
+          >
+            {FEATURES.map((f, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.16,1,0.3,1] }}
                 style={{
-                  borderTop: `4px solid ${f.color}`,
-                  padding: '28px 24px',
-                  backgroundColor: '#FAFAFA',
+                  backgroundColor: '#fff',
+                  padding: '32px 28px',
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
               >
+                {/* Corner accent */}
+                <div style={{
+                  position: 'absolute', top: 0, left: 0,
+                  width: '40px', height: '3px',
+                  backgroundColor: f.accent,
+                }} />
+
+                {/* Icon */}
+                <div style={{
+                  color: f.accent,
+                  marginBottom: '20px',
+                  marginTop: '8px',
+                }}>
+                  {f.icon}
+                </div>
+
+                {/* Title */}
                 <h3 style={{
                   fontFamily: 'Schoolbell, cursive',
-                  color: '#1A1A1A',
-                  fontSize: '22px', marginBottom: '10px', lineHeight: 1.2,
+                  color: '#0D0806',
+                  fontSize: '22px',
+                  lineHeight: 1.1,
+                  marginBottom: '12px',
                 }}>
                   {t(f.titleKey)}
                 </h3>
+
+                {/* Description */}
                 <p style={{
                   fontFamily: 'Kumbh Sans, sans-serif',
-                  color: '#666', fontSize: '13px', lineHeight: 1.7,
+                  color: '#603813',
+                  fontSize: '13px', lineHeight: 1.7,
+                  opacity: 0.75,
                 }}>
                   {t(f.descKey)}
                 </p>
               </motion.div>
             ))}
           </div>
-
-          {/* CTA */}
-          <div style={{ textAlign: 'center', marginTop: '56px' }}>
-            <a
-              href="https://wa.me/573184550936?text=Hola%2C%20quiero%20cotizar%20productos%20BellaVista."
-              target="_blank" rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                backgroundColor: '#D11335', color: '#fff',
-                fontFamily: 'Kumbh Sans, sans-serif',
-                fontWeight: 700, fontSize: '12px',
-                letterSpacing: '0.08em', textTransform: 'uppercase',
-                padding: '14px 32px', borderRadius: '2px',
-                textDecoration: 'none',
-              }}
-            >
-              {t('ventajas.ctaBoton')}
-            </a>
-          </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 860px) {
-          .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
-          .features-row { grid-template-columns: repeat(2, 1fr) !important; }
+        @media (max-width: 900px) {
+          .stats-grid-new { grid-template-columns: repeat(2, 1fr) !important; }
+          .features-grid-new { grid-template-columns: repeat(2, 1fr) !important; }
+          .ventajas-header-row { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 520px) {
-          .stats-row { grid-template-columns: 1fr 1fr !important; }
-          .features-row { grid-template-columns: 1fr !important; }
+          .stats-grid-new { grid-template-columns: 1fr 1fr !important; }
+          .features-grid-new { grid-template-columns: 1fr !important; }
         }
+        .ventajas-cta:hover { background: #D11335 !important; }
       `}</style>
     </section>
   );
